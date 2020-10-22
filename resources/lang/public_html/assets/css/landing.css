@@ -1,0 +1,77 @@
+body{
+    font-family: 'Baloo Thambi 2', cursive !important;
+}
+.text-small{
+    font-size: 0.9em;
+}
+.text-small2{
+    font-size: 0.8em;
+}
+
+.dark-font{
+    font-weight: 900;
+}
+
+.efeboot:active:focus {
+    box-shadow: none !important;
+}
+.efeboot:focus {
+    box-shadow: none !important;
+}
+.efeboot:active {
+    box-shadow: none !important;
+}
+
+/* para todo el diseño */
+.rounded-alt{
+    border-radius: 20px;
+}
+
+.rounded-alt-left{
+    border-radius: 20px 0px 0px 20px;
+}
+
+.bg-pink-alt{
+    background: #B04792;
+}
+
+.bg-blue-alt{
+    background: #3A58A2;
+}
+
+.bg-blue-light{
+    background: #5CBDEB;
+}
+
+.bg-trans{
+    background: transparent !important;
+}
+
+.text-blue-light{
+    color: #5CBDEB;
+}
+
+.text-blue-dark{
+    color: #3A58A2;
+}
+
+.full-100{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+/* header */
+
+/* fondo del header */
+.header-alt{
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
