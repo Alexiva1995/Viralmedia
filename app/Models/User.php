@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\AddSaldo', 'iduser');
     }
+
+    /**
+     * Permite obtener las ordenes de servicio asociada a una categoria
+     *
+     * @return void
+     */
+    public function getUserOrden()
+    {
+        return $this->hasMany('App\Models\OrdenService', 'iduser');
+    }
 }

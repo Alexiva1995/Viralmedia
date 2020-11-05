@@ -42,6 +42,11 @@
     </div>
     {{-- Fin Cuerpo --}}
 
+    {{-- formulario de salir --}}
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+
         {{-- Scritps --}}
         @routes
         @include('layouts.componenteDashboard.scripts')

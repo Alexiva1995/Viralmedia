@@ -21,4 +21,14 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Service', 'categories_id');
     }
+
+    /**
+     * Permite obtener las ordenes de servicio asociada a una categoria
+     *
+     * @return void
+     */
+    public function getCategorieOrden()
+    {
+        return $this->hasMany('App\Models\OrdenService', 'categories_id');
+    }
 }

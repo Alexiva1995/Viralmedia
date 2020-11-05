@@ -44,9 +44,9 @@
                                 <i class="feather icon-message-square"></i> Chats
                             </a> --}}
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="auth-login.html">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="feather icon-power"></i> Logout
-                            </a>
+                            </a>            
                         </div>
                     </li>
                 </ul>

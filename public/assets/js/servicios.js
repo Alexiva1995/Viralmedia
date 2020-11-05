@@ -11,6 +11,11 @@ var vm_servicios = new Vue({
             checkServicio: false,
             showAlert: false,
             Categories: [],
+            Total: {
+                cantidad: 1,
+                precio: 0,
+                total: 0
+            },
             Option:{
                 indexCategory: 0,
                 indexService: 0,
@@ -25,10 +30,18 @@ var vm_servicios = new Vue({
          */
         Service: function(){
             if (this.Option.idCategory != 0 && this.Option.idService != 0) {
+                this.Total.precio = this.Categories[this.Option.indexCategory].services[this.Option.indexService].price
                 return this.Categories[this.Option.indexCategory].services[this.Option.indexService]
             }else{
                 return []
             }
+        },
+
+        /**
+         * Permite obtener el total a pagar
+         */
+        TotalOrden: function (){
+            return (this.Total.cantidad * this.Total.precio)
         },
 
         /**

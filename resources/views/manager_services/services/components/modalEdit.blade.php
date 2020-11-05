@@ -104,6 +104,68 @@
                                     </div>
                                 </fieldset>
                             </div>
+                            <div class="col-12">
+                                <fieldset class="form-group">
+                                    <label for="">Input de Informacion para el servicio</label>
+                                    <div class="row">
+                                        <fieldset class="col-12 col-sm-6 col-md-4">
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <input type="checkbox" name="input_adicionales[]" value="link" v-model="Service.input_adicionales">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="">Link</span>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="col-12 col-sm-6 col-md-4">
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <input type="checkbox" name="input_adicionales[]" value="usuario" v-model="Service.input_adicionales">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="">Usuario</span>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="col-12 col-sm-6 col-md-4">
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <input type="checkbox" name="input_adicionales[]" value="email" v-model="Service.input_adicionales">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="">Email</span>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="col-12 col-sm-6 col-md-4">
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <input type="checkbox" name="input_adicionales[]" value="email_respaldo" v-model="Service.input_adicionales">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="">Email Respaldo</span>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="col-12 col-sm-6 col-md-4">
+                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                <input type="checkbox" name="input_adicionales[]" value="whatsapp" v-model="Service.input_adicionales">
+                                                <span class="vs-checkbox">
+                                                    <span class="vs-checkbox--check">
+                                                        <i class="vs-icon feather icon-check"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="">Whatsapp</span>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </fieldset>
+                            </div>
                             <div class="col-12" v-if="Service.type == 'API'">
                                 <fieldset class="form-group">
                                     <label for="">API Provider Name</label>

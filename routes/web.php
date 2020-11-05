@@ -29,6 +29,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     {
         Route::get('/', 'ServiciosController@index')->name('servicios.index');
         Route::get('/data_services', 'ServiciosController@getDataInfo')->name('servicios.get_data');
+        Route::post('/save_orden', 'ServiciosController@saveOrden')->name('servicios.save.orden');
     });
 
     // Red de usuario

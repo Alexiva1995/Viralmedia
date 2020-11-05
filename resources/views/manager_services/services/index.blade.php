@@ -53,6 +53,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Type</th>
+                                    <th>Input de Informacion Adicional</th>
                                     <th>API ServiceID</th>
                                     <th>API Provider</th>
                                     <th>Precio por cada 1.000($)</th>
@@ -67,14 +68,19 @@
                                 @foreach ($services as $service)
                                 <tr class="text-center">
                                     <td>{{$service->id}}</td>
-                                    <td>{{$service->name}}</td>
+                                    <td>{{$service->package_name}}</td>
                                     <td>{{$service->type}}</td>
+                                    <td>
+                                        @foreach ($service->input_adicionales as $input)
+                                            <p>{{$input}}</p>
+                                        @endforeach
+                                    </td>
                                     <td>{{$service->api_service_id}}</td>
                                     <td>{{$service->api_provide_name}}</td>
                                     <td>{{$service->price}}</td>
                                     <td>{{$service->minimum_amount}} / {{$service->maximum_amount}}</td>
                                     <td>
-                                        <button class="btn btn-info" v-on:click="getDescription('{{$service->id}}')">
+                                        <button class="btn btn-info" onclick="vm_adminService.getDescription('{{$service->id}}')">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                     </td>
@@ -93,10 +99,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button class="btn btn-info" v-on:click="getEditData('{{$service->id}}')">
+                                        <button class="btn btn-info" onclick="vm_adminService.getEditData('{{$service->id}}')">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <button class="btn btn-danger" v-on:click="deleteData('{{$service->id}}')">
+                                        <button class="btn btn-danger" onclick="vm_adminService.deleteData('{{$service->id}}')">
                                             <form action="{{route('services.destroy', $service->id)}}" method="post" id="delete{{$service->id}}">
                                                 @csrf
                                                 @method('DELETE')

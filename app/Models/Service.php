@@ -11,7 +11,7 @@ class Service extends Model
     protected $fillable = [
         'package_name', 'categories_id', 'minimum_amount', 'maximum_amount', 'price',
         'status', 'type_services', 'drip_feed', 'type', 'api_provide_name',
-        'api_service_id', 'description'
+        'api_service_id', 'description', 'input_adicionales'
     ];
 
     /**
@@ -22,6 +22,16 @@ class Service extends Model
     public function getCategories()
     {
         return $this->belongsTo('App\Models\Category', 'id', 'categories_id');
+    }
+
+    /**
+     * Permite obtener las ordenes de servicio asociada a un servicio
+     *
+     * @return void
+     */
+    public function getServiceOrden()
+    {
+        return $this->hasMany('App\Models\OrdenService', 'services_id');
     }
 
 }

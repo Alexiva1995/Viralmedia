@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\View;
 use App\Models\Category;
 use App\Models\Service;
 
+use function GuzzleHttp\json_decode;
+
 class ServicesAdminController extends Controller
 {
     /**
@@ -23,6 +25,9 @@ class ServicesAdminController extends Controller
             $categories = Category::all()->where('status', 1);
             if (!empty(request()->category)) {
                 $services = Service::all()->where('categories_id', request()->category);
+                foreach ($services as $service) {
+                    $service->input_adicionales = json_decode($service->input_adicionales);
+                }
                 $category = Category::find(request()->category);
                 $name_category = $category->name;
             }
@@ -100,14 +105,16 @@ class ServicesAdminController extends Controller
             'maximum_amount' => ['required'],
             'price' => ['required'],
             'type_services' => ['required'],
-            'type' => ['required']
+            'type' => ['required'],
+            'input_adicionales' => ['required']
         ]);
 
         try {
             if ($validate) {
+                $request['input_adicionales'] = json_encode($request->input_adicionales);
                 Service::create($request->all());
                 $route = route('services.index').'?category='.$request->categories_id;
-                return redirect()->with('msj-success', 'Nuevo Servicio Creado');
+                return redirect()->route($route)->with('msj-success', 'Nuevo Servicio Creado');
             }
         } catch (\Throwable $th) {
             dd($th);
@@ -141,6 +148,7 @@ class ServicesAdminController extends Controller
     {
         try {
             $service = Service::find($id);
+            $service->input_adicionales = json_decode($service->input_adicionales);
             return json_encode($service);
         } catch (\Throwable $th) {
             dd($th);
@@ -175,6 +183,7 @@ class ServicesAdminController extends Controller
                 $service->maximum_amount = $request->maximum_amount;
                 $service->price = $request->price;
                 $service->status = $request->status;
+                $request->input_adicionales = json_encode($request->input_adicionales);
                 $service->type_services = $request->type_services;
                 $service->drip_feed = (!empty($request->drip_feed)) ? $request->drip_feed : $service->drip_feed;
                 $service->type = $request->type;
@@ -183,7 +192,7 @@ class ServicesAdminController extends Controller
                 $service->description = $request->description;
                 $service->save();
                 $route = route('services.index').'?category='.$request->categories_id;
-                return redirect()->with('msj-success', 'Servicio '.$id.' Actualizado ');
+                return redirect()->route($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
             }
         } catch (\Throwable $th) {
             dd($th);
@@ -203,7 +212,7 @@ class ServicesAdminController extends Controller
             $category = $service->categories_id;
             $service->delete();
             $route = route('services.index').'?category='.$category;
-            return redirect()->with('msj-success', 'Servicio '.$id.' Eliminado');
+            return redirect()->route($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
         } catch (\Throwable $th) {
             dd($th);
         }

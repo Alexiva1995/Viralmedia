@@ -23,6 +23,7 @@ class CreateServicesTable extends Migration
             $table->double('price')->default(0);
             $table->enum('status', [0, 1])->default(0)->comment('0 - desactivado, 1 - activado');
             $table->string('type_services');
+            $table->text('input_adicionales')->comment('permite saber que tipo de informacion adicional va a pedir para el servicio');
             $table->enum('drip_feed', [0, 1])->default(0)->comment('0 - desactivado, 1 - activado');
             $table->string('type')->comment('si el servicio es manua o por medio de una api');
             $table->string('api_provide_name')->nullable()->comment('nombre del api a usar');

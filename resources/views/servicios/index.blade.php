@@ -24,10 +24,12 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form>
+                            <form action="{{route('servicios.save.orden')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="iduser" value="{{Auth::id()}}">
                                 <div class="form-group">
                                     <label for="">Categoria</label>
-                                    <select name="category_id" class="form-control custom-select" v-model="Option.idCategory">
+                                    <select name="categories_id" class="form-control custom-select" v-model="Option.idCategory">
                                         <option value="0" disabled selected>Seleccione una Opcion</option>
                                         <option :value="item.id" v-for="(item, index) in Categories" v-text="item.name" v-on:click="Option.indexCategory = index"></option>
                                     </select>
@@ -39,13 +41,23 @@
                                         <option :value="item.id" v-for="(item, index) in Services" v-text="item.package_name+' - '+item.price+'$'" v-on:click="Option.indexService = parseInt(index)"></option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Link</label>
-                                    <input type="text" class="form-control" placeholder="https://">
+                                
+                                <div class="form-group" v-for="item in Service.input_adicionales">
+                                    <label for="" v-text="(item == 'usuario') ? 'Ingrese el usuario sin el arroba (@)' : item">@{{item}}</label>
+                                    <input type="text" :name="item" :placeholder="item" class="form-control" required>
                                 </div>
+
                                 <div class="form-group">
-                                    
+                                    <label for="">Cantidad</label>
+                                    <input type="number" class="form-control" name="cantidad" v-if="(Service.maximum_amount == 1) " value="1" readonly v-model="Total.cantidad = 1">
+                                    <input type="number" class="form-control" name="cantidad" v-else value="0" :max="Service.maximum_amount" v-model="Total.cantidad">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="">Total a Pagar</label>
+                                    <input type="number" class="form-control" name="total" :value="TotalOrden" step="any" readonly>
+                                </div>
+
                                 <div class="form-group">
                                     <div class="col-12 d-flex justify-content-center mb-2">
                                         <div class="vs-checkbox-con vs-checkbox-primary">
