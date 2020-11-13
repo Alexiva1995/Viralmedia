@@ -53,6 +53,22 @@ class TreeController extends Controller
     }
 
     /**
+     * Permite obtener la cantidad de usuarios tantos directos, como indirectos
+     *
+     * @param integer $iduser
+     * @return array
+     */
+    public function getTotalUser(int $iduser): array
+    {
+        $directos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 1));
+        $indirectos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 0));
+        return [
+            'directos' => $directos,
+            'indirectos' => $indirectos
+        ];
+    }
+
+    /**
      * Permite obtener la informacion para el arbol o matris
      *
      * @param integer $id - id del usuario a obtener sus hijos

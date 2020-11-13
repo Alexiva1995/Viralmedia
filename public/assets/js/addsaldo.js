@@ -56,7 +56,9 @@ var vm_addsaldo = new Vue({
                         console.log(error.response.data);
                         alert('ocurio un error')
                     })
-                    
+                }
+                if (this.Metodo == 'Coinbase') {
+                    $('#coinbaseform').submit()
                 }
             }else{
                 alert('Debes estar de acuerdo con los terminos y condiciones')

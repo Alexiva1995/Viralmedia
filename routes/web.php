@@ -56,6 +56,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
            Route::get('/{orden}/response_orden', 'AddSaldoController@response_orden_payu')->name('addsaldo.payu.response');
            Route::post('/{orden}/confirmation_orden', 'AddSaldoController@confimation_orden_payu')->name('addsaldo.payu.confirmation');
         });
+        // Rutas para el Coinbase
+        Route::post('/coinbase', 'AddSaldoController@generate_orden_coinbase')->name('addsaldo.coinbase');
+        Route::get('{status}/status_coinbase', 'AddSaldo@status_coinbase')->name('addsaldo.coinbase.status');
     });
 
     /**

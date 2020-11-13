@@ -7,7 +7,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-start pb-2">
                             <div>
-                                <h2 class="text-bold-700">0</h2>
+                                <h2 class="text-bold-700">{{$data['directos']}}</h2>
                                 <p class="mb-0">Referidos directos</p>
                             </div>
                             <div class="avatar bg-rgba-primary p-50">
@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-start pb-2">
                             <div>
-                                <h2 class="text-bold-700">0</h2>
+                                <h2 class="text-bold-700">{{$data['indirectos']}}</h2>
                                 <p class="mb-0">Referidos en red</p>
                             </div>
                             <div class="avatar bg-rgba-danger p-50">
@@ -43,7 +43,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-start pb-2">
                             <div>
-                                <h2 class="text-bold-700">${{number_format(Auth::user()->wallet, '2', ',', '.')}}</h2>
+                                <h2 class="text-bold-700">${{number_format($data['wallet'], '2', ',', '.')}}</h2>
                                 <p class="mb-0">Wallet</p>
                             </div>
                             <div class="avatar bg-rgba-success p-50">

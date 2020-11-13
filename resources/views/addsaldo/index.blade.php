@@ -150,6 +150,9 @@
     {{-- procesar pago payu --}}
     @include('addsaldo.formPasarelas.payu')
     {{-- fin procesar pago payu --}}
+    {{-- procesar pago coinbase --}}
+    @include('addsaldo.formPasarelas.coinbase')
+    {{-- fin procesar pago coinbase --}}
     {{-- modal de detalles de pago --}}
     @if (Session::has('resumen'))
     @include('addsaldo.formPasarelas.modalResumen')

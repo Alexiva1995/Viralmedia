@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div>
-                            <h2 class="text-bold-700 mt-1">$ {{number_format(Auth::user()->balance, '2', ',', '.')}}
+                            <h2 class="text-bold-700 mt-1">$ {{number_format($data['balance'], '2', ',', '.')}}
                             </h2>
                             <p class="mb-0">Tu dinero</p>
                         </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div>
-                            <h2 class="text-bold-700 mt-1">$ {{number_format('0', '2', ',', '.')}}</h2>
+                            <h2 class="text-bold-700 mt-1">$ {{number_format($data['comisiones'], '2', ',', '.')}}</h2>
                             <p class="mb-0">Comisiones totales</p>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div>
-                            <h2 class="text-bold-700 mt-1">0</h2>
+                            <h2 class="text-bold-700 mt-1">{{$data['ordenes']}}</h2>
                             <p class="mb-0">Todas las ordenes</p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div>
-                            <h2 class="text-bold-700 mt-1">0</h2>
+                            <h2 class="text-bold-700 mt-1">{{$data['tickets']}}</h2>
                             <p class="mb-0">Total de tickets</p>
                         </div>
                     </div>

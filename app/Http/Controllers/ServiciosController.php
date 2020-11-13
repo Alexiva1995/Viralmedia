@@ -85,4 +85,20 @@ class ServiciosController extends Controller
             dd($th);
         }
     }
+
+    /**
+     * Permite obtener la cantidad de ordenes que tiene un usuario
+     *
+     * @param integer $iduser
+     * @return integer
+     */
+    public function getTotalOrdenes($iduser): int
+    {
+        $ordenes = OrdenService::where('iduser', $iduser)->get()->count('id');
+        if ($iduser == 1) {
+            $ordenes = OrdenService::all()->count('id');
+        }
+
+        return $ordenes;
+    }
 }

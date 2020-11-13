@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\View;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
+use CoinbaseCommerce\ApiClient;
+use CoinbaseCommerce\Resources\Charge as Charge2;
 
 class AddSaldoController extends Controller
 {
@@ -255,6 +257,73 @@ class AddSaldoController extends Controller
         } catch (\Throwable $th) {
             Log::error("Confirmacion Payu -->".$th);
         }
+    }
+
+
+    /**
+     * Permite general la ordenes con coinbase
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function generate_orden_coinbase(Request $request)
+    {
+        try {
+            $orden = [
+                'iduser' => Auth::id(),
+                'saldo' => $request->saldo,
+                'metodo_pago' => 'Coinbase',
+                'fecha_creacion' => Carbon::now()
+            ];
+
+            $apiKey = env('COINBASE_API_KEY');
+            ApiClient::init($apiKey);
+
+            $idorden = $this->saveAddSaldo($orden);
+
+            $chargerData = new Charge2(
+                [
+                    'description' => 'Monto de recarga '.$request->saldo,
+                    'metadata' => [
+                        'saldo' => $request->saldo,
+                        'orden' => $idorden
+                    ],
+                    'pricing_type' => 'fixed_price',
+                    'redirect_url' => route('addsaldo.coinbase.status', ['pendiente']),
+                    'cancel_url' => route('addsaldo.coinbase.status', ['cancelada']),
+                    'local_price' => [
+                        'amount' => $request->saldo,
+                        'currency' => 'USD'
+                    ],
+                    'name' => 'Recarga de Saldo',
+                    'payments' => [],
+                ]
+            );
+
+            $chargerObj = Charge2::create($chargerData);
+
+            AddSaldo::where('id', $idorden)->update([
+                'id_transacion' => $chargerObj->code,
+            ]);
+
+            return $chargerObj->hosted_url;
+
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+
+    /**
+     * Permite saber si la transacion fue cancelada o esta en espera de aprobacion
+     *
+     * @param string $status
+     * @return void
+     */
+    public function status_coinbase($status)
+    {
+        $concepto = "La transaccion esta ".$status;
+        $tipo = ($status == 'pendiente') ? 'msj-success' : 'msj-warning';
+        return redirect()->back()->with($tipo, $status);
     }
 
 

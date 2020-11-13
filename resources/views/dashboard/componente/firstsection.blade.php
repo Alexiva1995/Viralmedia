@@ -16,9 +16,9 @@
                         </div> --}}
                     </div>
                     <div class="text-center">
-                        <h1 class="mb-2 text-white">Bienvenido {{Auth::user()->fullname}}</h1>
+                        <h1 class="mb-2 text-white">Bienvenido {{$data['usuario']}}</h1>
                         <p class="m-auto w-75">
-                            Tu saldo actual es $ {{number_format(Auth::user()->balance, '2', ',', '.')}} <br>
+                            Tu saldo actual es $ {{number_format($data['balance'], '2', ',', '.')}} <br>
                             ¿Qué tal recargar tu saldo?
                         </p>
                         <a href="{{route('addsaldo.index')}}" class="btn btn-flat-danger bg-white mt-1 padding-button-short waves-effect waves-light">
