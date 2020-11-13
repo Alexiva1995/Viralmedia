@@ -58,7 +58,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         });
         // Rutas para el Coinbase
         Route::post('/coinbase', 'AddSaldoController@generate_orden_coinbase')->name('addsaldo.coinbase');
-        Route::get('{status}/status_coinbase', 'AddSaldo@status_coinbase')->name('addsaldo.coinbase.status');
+        Route::get('{status}/status_coinbase', 'AddSaldoController@status_coinbase')->name('addsaldo.coinbase.status');
     });
 
     /**

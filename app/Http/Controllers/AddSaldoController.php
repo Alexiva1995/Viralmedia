@@ -281,8 +281,7 @@ class AddSaldoController extends Controller
 
             $idorden = $this->saveAddSaldo($orden);
 
-            $chargerData = new Charge2(
-                [
+            $chargerData = [
                     'description' => 'Monto de recarga '.$request->saldo,
                     'metadata' => [
                         'saldo' => $request->saldo,
@@ -297,8 +296,7 @@ class AddSaldoController extends Controller
                     ],
                     'name' => 'Recarga de Saldo',
                     'payments' => [],
-                ]
-            );
+                ];
 
             $chargerObj = Charge2::create($chargerData);
 
@@ -306,7 +304,7 @@ class AddSaldoController extends Controller
                 'id_transacion' => $chargerObj->code,
             ]);
 
-            return $chargerObj->hosted_url;
+            return redirect($chargerObj->hosted_url);
 
         } catch (\Throwable $th) {
             dd($th);
@@ -323,7 +321,7 @@ class AddSaldoController extends Controller
     {
         $concepto = "La transaccion esta ".$status;
         $tipo = ($status == 'pendiente') ? 'msj-success' : 'msj-warning';
-        return redirect()->back()->with($tipo, $status);
+        return redirect()->route('addsaldo.index')->with($tipo, $concepto);
     }
 
 
