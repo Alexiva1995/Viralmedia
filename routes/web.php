@@ -23,6 +23,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 {
     // Inicio
     Route::get('/home', 'HomeController@index')->name('home');
+    // Ruta para obtener la informacion de la graficas del dashboard
+    Route::get('getdatagraphicdashboard', 'HomeController@getDataGraphic')->name('home.data.graphic');
 
     // Servicios
     Route::prefix('servicios')->group(function ()

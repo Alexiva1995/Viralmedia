@@ -7,6 +7,7 @@ use App\Models\OrdenService;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class ServiciosController extends Controller
@@ -94,11 +95,55 @@ class ServiciosController extends Controller
      */
     public function getTotalOrdenes($iduser): int
     {
-        $ordenes = OrdenService::where('iduser', $iduser)->get()->count('id');
-        if ($iduser == 1) {
-            $ordenes = OrdenService::all()->count('id');
+        try {
+            $ordenes = OrdenService::where('iduser', $iduser)->get()->count('id');
+            if ($iduser == 1) {
+                $ordenes = OrdenService::all()->count('id');
+            }
+            return $ordenes;
+        } catch (\Throwable $th) {
+            dd($th);
         }
+    }
 
-        return $ordenes;
+    /**
+     * Permite obtener el total de ordenes por meses
+     *
+     * @param integer $iduser
+     * @return array
+     */
+    public function getDataGraphiOrdens($iduser): array
+    {
+        try {
+            $totalOrdenes = [];
+            if ($iduser == 1) {
+                $ordenes = OrdenService::select(DB::raw('COUNT(id) as ordenes'))
+                                ->where([
+                                    ['status', '>=', 0]
+                                ])
+                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }else{
+                $ordenes = OrdenService::select(DB::raw('COUNT(id) as ordenes'))
+                                ->where([
+                                    ['iduser', '=',  $iduser],
+                                    ['status', '>=', 0]
+                                ])
+                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }
+            foreach ($ordenes as $orden) {
+                $totalOrdenes [] = $orden->ordenes;
+            }
+            return $totalOrdenes;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }

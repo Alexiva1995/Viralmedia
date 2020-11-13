@@ -14,6 +14,8 @@ use Stripe\Customer;
 use Stripe\Charge;
 use CoinbaseCommerce\ApiClient;
 use CoinbaseCommerce\Resources\Charge as Charge2;
+use Illuminate\Support\Facades\DB;
+
 
 class AddSaldoController extends Controller
 {
@@ -337,5 +339,46 @@ class AddSaldoController extends Controller
         $saldo = AddSaldo::create($data);
 
         return $saldo->id;
+    }
+
+    /**
+     * Permite agregar obtener el saldo por meses 
+     *
+     * @param integer $iduser
+     * @return array
+     */
+    public function getDataGraphicSaldo($iduser): array
+    {
+        try {
+            $valorSaldo = [];
+            if ($iduser == 1) {
+                $saldos = AddSaldo::select(DB::raw('SUM(saldo) as saldo'))
+                                ->where([
+                                    ['estado', '>=', 0],
+                                ])
+                                ->groupBy(DB::raw('YEAR(fecha_creacion)'), DB::raw('MONTH(fecha_creacion)'))
+                                ->orderBy(DB::raw('YEAR(fecha_creacion)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(fecha_creacion)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }else{
+                $saldos = AddSaldo::select(DB::raw('SUM(saldo) as saldo'))
+                                ->where([
+                                    ['iduser', '=', $iduser],
+                                    ['estado', '>=', 0],
+                                ])
+                                ->groupBy(DB::raw('YEAR(fecha_creacion)'), DB::raw('MONTH(fecha_creacion)'))
+                                ->orderBy(DB::raw('YEAR(fecha_creacion)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(fecha_creacion)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }
+            foreach ($saldos as $saldo) {
+                $valorSaldo [] = $saldo->saldo;
+            }
+            return $valorSaldo;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }

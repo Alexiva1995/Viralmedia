@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\View;
 
 use App\Http\Controllers\TreeController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\AddSaldoController;
 
 class HomeController extends Controller
 {
     public $treeController;
     public $servicioController;
-
+    public $addsaldoController;
 
     /**
      * Create a new controller instance.
@@ -25,6 +26,7 @@ class HomeController extends Controller
         $this->middleware('auth');
         $this->treeController = new TreeController;
         $this->servicioController = new ServiciosController;
+        $this->addsaldoController = new AddSaldoController;
     }
 
     /**
@@ -48,7 +50,6 @@ class HomeController extends Controller
      */
     public function dataDashboard(int $iduser):array
     {
-
         $cantUsers = $this->treeController->getTotalUser($iduser);
         $data = [
             'directos' => $cantUsers['directos'],
@@ -62,5 +63,23 @@ class HomeController extends Controller
         ];
 
         return $data;
+    }
+
+    /**
+     * Permite obtener la informacion para las graficas del dashboard
+     *
+     * @return string
+     */
+    public function getDataGraphic(): string
+    {
+        $iduser = Auth::id();
+        $data = [
+            'tickets' => [0, 1, 2, 3, 4, 5],
+            'comisiones' => [0, 1, 0, 2, 0, 3],
+            'saldo' => $this->addsaldoController->getDataGraphicSaldo($iduser),
+            'ordenes' => $this->servicioController->getDataGraphiOrdens($iduser)
+        ];
+        
+        return json_encode($data);
     }
 }

@@ -60,12 +60,16 @@ class TreeController extends Controller
      */
     public function getTotalUser(int $iduser): array
     {
-        $directos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 1));
-        $indirectos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 0));
-        return [
-            'directos' => $directos,
-            'indirectos' => $indirectos
-        ];
+        try {
+            $directos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 1));
+            $indirectos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 0));
+            return [
+                'directos' => $directos,
+                'indirectos' => $indirectos
+            ];
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     /**

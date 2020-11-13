@@ -12,7 +12,6 @@
 @push('page_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/dashboard-analytics.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/card-analytics.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/plugins/tour/tour.css')}}">
 @endpush
 
 {{-- page vendor js --}}
@@ -24,8 +23,14 @@
 
 {{-- page js --}}
 @push('page_js')
-<script src="{{asset('assets/app-assets/js/scripts/pages/dashboard-analytics.js')}}"></script>
-<script src="{{asset('assets/app-assets/js/scripts/cards/card-statistics.js')}}"></script>
+{{-- <script src="{{asset('assets/app-assets/js/scripts/pages/dashboard-analytics.js')}}"></script> --}}
+{{-- <script src="{{asset('assets/app-assets/js/scripts/cards/card-statistics.js')}}"></script> --}}
+<script src="{{asset('assets/js/librerias/vue.js')}}"></script>
+<script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
+@endpush
+{{-- custom js --}}
+@push('custom_js')
+<script src="{{asset('assets/js/dashboard.js')}}"></script>
 @endpush
 
 @section('content')
