@@ -7,6 +7,7 @@ use App\Models\OrdenService;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -116,7 +117,7 @@ class ServiciosController extends Controller
     {
         try {
             $totalOrdenes = [];
-            if ($iduser == 1) {
+            if (Auth::user()->admin == 1) {
                 $ordenes = OrdenService::select(DB::raw('COUNT(id) as ordenes'))
                                 ->where([
                                     ['status', '>=', 0]

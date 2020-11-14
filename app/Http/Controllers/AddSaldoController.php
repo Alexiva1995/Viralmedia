@@ -351,7 +351,7 @@ class AddSaldoController extends Controller
     {
         try {
             $valorSaldo = [];
-            if ($iduser == 1) {
+            if (Auth::user()->admin == 1) {
                 $saldos = AddSaldo::select(DB::raw('SUM(saldo) as saldo'))
                                 ->where([
                                     ['estado', '>=', 0],

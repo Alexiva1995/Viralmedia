@@ -62,6 +62,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Permite obtener todas las ordenes de compra de saldo realizadas
+     *
+     * @return void
+     */
+    public function getWallet()
+    {
+        return $this->hasMany('App\Models\Wallet', 'iduser');
+    }
+
+    /**
      * Permite obtener las ordenes de servicio asociada a una categoria
      *
      * @return void

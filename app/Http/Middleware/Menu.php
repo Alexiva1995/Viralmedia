@@ -95,7 +95,7 @@ class Menu
             // Billetera
             'Billetera' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('wallet.index'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-credit-card',
                 'complementoruta' => '',

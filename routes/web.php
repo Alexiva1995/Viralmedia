@@ -63,6 +63,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('{status}/status_coinbase', 'AddSaldoController@status_coinbase')->name('addsaldo.coinbase.status');
     });
 
+    // Ruta para la billetera
+    Route::prefix('wallet')->group(function ()
+    {
+        Route::get('/', 'WalletController@index')->name('wallet.index');
+    });
+
     /**
      * Seccion del sistema para el admin
      */

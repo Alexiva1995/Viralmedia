@@ -167,6 +167,23 @@ class TreeController extends Controller
     }
 
     /**
+     * Se trare la informacion de los hijos 
+     *
+     * @param integer $id - id a buscar hijos
+     * @param integer $nivel - nivel en que los hijos se encuentra
+     * @param string $typeTree - tipo de arbol a usar
+     * @return object
+     */
+    private function getDataSponsor($id, $nivel, $typeTree) : object
+    {
+        $resul = User::where($typeTree, '=', $id)->get();
+        foreach ($resul as $user) {
+            $user->nivel = $nivel;
+        }
+        return $resul;
+    }
+
+    /**
      * Permite tener la informacion de los hijos como un listado
      *
      * @param integer $parent - id del padre
@@ -193,10 +210,8 @@ class TreeController extends Controller
                     }
                 }else{
                     foreach($data as $user){
-                        if ($user->nivel == 1) {
-                            $array_tree_user [] = $user;
-                            $array_tree_user = $this->getChidrens2($user->id, $array_tree_user, ($nivel+1), $typeTree, $allNetwork);
-                        }
+                        $array_tree_user [] = $user;
+                        $array_tree_user = $this->getChidrens2($user->id, $array_tree_user, ($nivel+1), $typeTree, $allNetwork);
                     }
                 }
             }
@@ -204,6 +219,31 @@ class TreeController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
+    }
+
+    /**
+     * Permite obtener a todos mis patrocinadores
+     *
+     * @param integer $child - id del hijo
+     * @param array $array_tree_user - arreglo de patrocinadores
+     * @param integer $nivel - nivel a buscar
+     * @param string $typeTree - llave a buscar
+     * @param string $keySponsor - llave para buscar el sponsor, position o referido
+     * @return array
+     */
+    public function getSponsor($child, $array_tree_user, $nivel, $typeTree, $keySponsor): array
+    {
+        if (!is_array($array_tree_user))
+        $array_tree_user = [];
+    
+        $data = $this->getDataSponsor($child, $nivel, $typeTree);
+        if (count($data) > 0) {
+            foreach($data as $user){
+                $array_tree_user [] = $user;
+                $array_tree_user = $this->getSponsor($user->$keySponsor, $array_tree_user, ($nivel+1), $typeTree, $keySponsor);
+            }
+        }
+        return $array_tree_user;
     }
 
 
