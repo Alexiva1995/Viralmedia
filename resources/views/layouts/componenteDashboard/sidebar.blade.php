@@ -34,7 +34,6 @@
                     <a href="{{$item['ruta']}}">
                         <i class="{{$item['icon']}} text-white"></i>
                         <span class="menu-title text-white" data-i18n="{{$index}}">{{$index}}</span>
-                        <span class="badge badge badge-info badge-pill float-right mr-2">{{count($item['submenus'])}}</span>
                     </a>
                     <ul class="menu-content bg-purple-alt">
                         @foreach ($item['submenus'] as $submenu)

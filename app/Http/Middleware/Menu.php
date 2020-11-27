@@ -211,7 +211,7 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-list-alt',
                 'complementoruta' => '',
                 'submenus' => [
                     [
@@ -240,7 +240,7 @@ class Menu
                 'submenu' => 0,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'feather icon-award',
                 'complementoruta' => '',
             ],
             // Fin lideres
@@ -249,7 +249,7 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
                 'submenus' => [
                     [
@@ -278,7 +278,7 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-cog',
                 'complementoruta' => '',
                 'submenus' => [
                     [
@@ -301,7 +301,7 @@ class Menu
                 'submenu' => 0,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-users',
                 'complementoruta' => '',
             ],
             // Fin Usuarios
@@ -310,7 +310,7 @@ class Menu
                 'submenu' => 0,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-history',
                 'complementoruta' => '',
             ],
             // Fin Transaction logs
@@ -319,7 +319,7 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa fa-cogs',
                 'complementoruta' => '',
                 'submenus' => [
                     [
