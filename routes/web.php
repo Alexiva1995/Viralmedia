@@ -55,6 +55,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('request', 'RecordController@indexRequest')->name('record_request');
     });
     
+    //Ruta lideres
+    Route::prefix('leaders')->group(function(){
+        Route::get('/', 'LeadersController@index')->name('leaders');
+    });
 
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()

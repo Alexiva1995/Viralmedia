@@ -238,7 +238,7 @@ class Menu
             // Lideres
             'Lideres' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('leaders'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-award',
                 'complementoruta' => '',
