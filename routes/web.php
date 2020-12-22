@@ -52,6 +52,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         //Ruta para historial de ordenes 
         Route::get('/', 'RecordController@index')->name('record_order');
         Route::get('commissions', 'RecordController@indexCommissions')->name('record_commission');
+        Route::get('request', 'RecordController@indexRequest')->name('record_request');
     });
     
 

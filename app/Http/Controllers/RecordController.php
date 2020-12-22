@@ -19,4 +19,8 @@ class RecordController extends Controller
         View::share('titleg', 'Historial Comisiones');
         return view('record.commissions');
     }
+    public function indexRequest(){
+        View::share('titleg', 'Historial Pedidos');
+        return view('record.request');
+    }
 }

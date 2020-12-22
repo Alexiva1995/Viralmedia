@@ -188,19 +188,19 @@ class Menu
                     [
                         'name' => 'Historial Ordenes',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('record_order','orders'),
+                        'ruta' => route('record_order'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Historial Comisiones',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('record_commission', 'commissions'),
+                        'ruta' => route('record_commission'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Historial Pedidos',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_request'),
                         'complementoruta' => ''
                     ],
                 ],

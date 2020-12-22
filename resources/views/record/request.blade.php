@@ -14,26 +14,23 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Cliente names</th>
-                                    <th># Pedido </th>
+                                    <th># Pedido</th>
+                                    <th>Categoria</th>
+                                    <th>Servicios</th>
                                     <th>Estado</th>
                                     <th>Fecha</th>
-                                    <th>Total Pedido</th>
-                                    <th>Comision</th>
-                                    <th>Ganancia</th>
-
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
                                     <td> 1</td>
-                                    <td> admin</td>
-                                    <td> 10</td>
-                                    <td>Test</td>
-                                    <td> 22/12/20</td>                                    
+                                    <td> 3550</td>
+                                    <td> Test</td>
+                                    <td>Testeo</td>
+                                    <td> Finish</td>   
+                                    <td>22/12/2020</td>                                   
                                     <td> 1000</td>
-                                    <td> 5%</td>
-                                    <td> 50</td>
                                 </tr>
                                
                             </tbody>
