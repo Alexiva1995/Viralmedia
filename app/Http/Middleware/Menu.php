@@ -180,7 +180,7 @@ class Menu
             // Historial
             'Historial' => [
                 'submenu' => 1,
-                'ruta' => 'javascript:;',
+                'ruta' => 'javascript:;', 
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
@@ -188,7 +188,7 @@ class Menu
                     [
                         'name' => 'Historial Ordenes',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_order','orders'),
                         'complementoruta' => ''
                     ],
                     [

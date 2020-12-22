@@ -45,6 +45,14 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('{type}/{id}', 'TreeController@moretree')->name('genealogy_type_id'); 
     });
 
+    //Ruta historial 
+    Route::prefix('record')->group(function()
+    {
+        //Ruta para historial de ordenes 
+        Route::get('/', 'RecordController@index')->name('record_order');
+    });
+    
+
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()
     {
