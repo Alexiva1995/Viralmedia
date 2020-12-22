@@ -194,7 +194,7 @@ class Menu
                     [
                         'name' => 'Historial Comisiones',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_commission', 'commissions'),
                         'complementoruta' => ''
                     ],
                     [

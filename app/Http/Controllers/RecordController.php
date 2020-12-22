@@ -14,4 +14,9 @@ class RecordController extends Controller
         View::share('titleg', 'Historial Ordenes');
         return view('record.orders');
     }
+
+    public function indexCommissions(){
+        View::share('titleg', 'Historial Comisiones');
+        return view('record.commissions');
+    }
 }
