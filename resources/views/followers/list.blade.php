@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div id="record">
+<div id="follower-list">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -14,26 +14,23 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Cliente names</th>
-                                    <th># Pedido </th>
-                                    <th>Estado</th>
-                                    <th>Fecha</th>
-                                    <th>Total Pedido</th>
-                                    <th>Comision</th>
-                                    <th>Ganancia</th>
+                                    <th># de seguidor</th>
+                                    <th>Nombre</th>                                   
+                                    <th>Pais</th>
+                                    <th>Fecha de inicio</th>                    
+                                    <th>Red</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
                                     <td> 1</td>
-                                    <td> admin</td>
-                                    <td> 10</td>
-                                    <td>Test</td>
+                                    <td> 500</td>
+                                     <td>Test</td>
+                                     <td> Vzla</td>
                                     <td> 22/12/20</td>                                    
-                                    <td> 1000</td>
-                                    <td> 5%</td>
-                                    <td> 50</td>
+                                    <td> Facebook</td>
+                                    
                                 </tr>
                                
                             </tbody>

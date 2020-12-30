@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div id="category">
+<div id="leaders">
     <div class="col-12">
         <div class="card">
             <div class="card-content">

@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div id="record">
+<div id="settlement">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -12,28 +12,26 @@
                     <div class="table-responsive">
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
-                                <tr class="text-center text-white bg-purple-alt2">
+                                <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
-                                    <th>Cliente names</th>
-                                    <th># Pedido </th>
-                                    <th>Estado</th>
-                                    <th>Fecha</th>
-                                    <th>Total Pedido</th>
-                                    <th>Comision</th>
-                                    <th>Ganancia</th>
-
+                                    <th>Name</th>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Pais</th>
+                                    <th>Fecha de solicitud </th>
+                                    <th>Total</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
                                     <td> 1</td>
                                     <td> admin</td>
-                                    <td> 10</td>
-                                    <td>Test</td>
-                                    <td> 22/12/20</td>                                    
+                                    <td> admin</td>
+                                    <td> admin@viralmedia.com</td>
+                                    <td>test</td>
+                                    <td>12/28/2020</td>                                    
                                     <td> 1000</td>
-                                    <td> 5%</td>
-                                    <td> 50</td>
                                 </tr>
                                
                             </tbody>
