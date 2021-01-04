@@ -267,7 +267,7 @@ class Menu
                     [
                         'name' => 'Registro Comunity',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('comunity'),
                         'complementoruta' => ''
                     ],
                 ],
@@ -299,7 +299,7 @@ class Menu
             // Usuarios
             'Usuarios' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('users'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'fa fa-users',
                 'complementoruta' => '',
@@ -308,7 +308,7 @@ class Menu
             // Transaction logs
             'Transaction logs' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('logs'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'fa fa-history',
                 'complementoruta' => '',
@@ -325,19 +325,19 @@ class Menu
                     [
                         'name' => 'Generales',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('general'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Noticias',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('news'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Idioma',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('languages'),
                         'complementoruta' => ''
                     ],
                 ],

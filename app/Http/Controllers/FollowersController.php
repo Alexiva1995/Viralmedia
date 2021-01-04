@@ -18,4 +18,9 @@ class FollowersController extends Controller
 
     }
 
+    public function comunity(){
+        View::share('titleg', 'Registro Comunity');
+        return view('followers.comunity');
+    }
+
 }

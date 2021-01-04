@@ -78,8 +78,27 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('services')->group(function(){
         Route::get('list','FollowersController@list')->name('followers');
         Route::get('graphics','FollowersController@graphic')->name('graphics');
+        Route::get('comunity','FollowersController@comunity')->name('comunity');
 
     });
+    //Ruta usuarios
+    Route::prefix('user')->group(function(){
+        Route::get('/', 'UserController@index')->name('users');
+    });
+
+    //Ruta logs
+    Route::prefix('logs')->group(function(){
+        Route::get('/', 'LogsController@index')->name('logs');
+    });
+
+    //Ruta de Ajuste de sistema
+    Route::prefix('system')->group(function(){
+        Route::get('general','SystemController@general')->name('general');
+        Route::get('news','SystemController@news')->name('news');
+        Route::get('languages','SystemController@languages')->name('languages');
+
+    });
+
 
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()
