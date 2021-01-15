@@ -34,7 +34,7 @@ class ServicesAdminController extends Controller
             $types_services = $this->getServiceType();
             $api_providers = $this->getAPIProvider();
 
-            return view('manager_services.services.index', compact('categories', 'services', 'types_services', 'api_providers', 'name_category'));
+        return view('manager_services.services.index', compact('categories', 'services', 'types_services', 'api_providers','name_category'));
         } catch (\Throwable $th) {
             dd($th);
         }

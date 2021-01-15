@@ -43,7 +43,11 @@
                                     @endforeach
                                 </select>
                             </fieldset>
+                            @if($name_category}== null)
+                            <p>Lorem ipsum dolor sit amet consec</p>
+                            @else
                             <h5>Categoria Selecionada: {{$name_category}}</h5>
+                            @endif
                         </form>
                     </div>
                     <div class="table-responsive mt-2">
