@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -44,6 +45,60 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         // Ruta para visualizar el arbol o la matriz de un usuario en especifico
         Route::get('{type}/{id}', 'TreeController@moretree')->name('genealogy_type_id'); 
     });
+
+    //Ruta historial 
+    Route::prefix('record')->group(function()
+    {
+        //Ruta para historial de ordenes 
+        Route::get('/', 'RecordController@index')->name('record_order');
+        //Ruta para historial de comisiones
+        Route::get('commissions', 'RecordController@indexCommissions')->name('record_commission');
+        //Ruta para historial de pedidos
+        Route::get('request', 'RecordController@indexRequest')->name('record_request');
+    });
+
+    //Ruta de liquidacion 
+
+    Route::prefix('settlement')->group(function() 
+    {
+        //Ruta liquidaciones realizadas
+        Route::get('general', 'SettlementController@index')->name('settlement');
+        Route::get('history', 'SettlementController@history')->name('settlement_done');
+        Route::get('pending', 'SettlementController@pending')->name('settlement_pending');
+
+    });
+    
+    //Ruta lideres
+    Route::prefix('leaders')->group(function(){
+        Route::get('/', 'LeadersController@index')->name('leaders');
+    });
+
+    //Ruta de seguimiento de servicios 
+
+    Route::prefix('services')->group(function(){
+        Route::get('list','FollowersController@list')->name('followers');
+        Route::get('graphics','FollowersController@graphic')->name('graphics');
+        Route::get('comunity','FollowersController@comunity')->name('comunity');
+
+    });
+    //Ruta usuarios
+    Route::prefix('user')->group(function(){
+        Route::get('/', 'UserController@index')->name('users');
+    });
+
+    //Ruta logs
+    Route::prefix('logs')->group(function(){
+        Route::get('/', 'LogsController@index')->name('logs');
+    });
+
+    //Ruta de Ajuste de sistema
+    Route::prefix('system')->group(function(){
+        Route::get('general','SystemController@general')->name('general');
+        Route::get('news','SystemController@news')->name('news');
+        Route::get('languages','SystemController@languages')->name('languages');
+
+    });
+
 
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()

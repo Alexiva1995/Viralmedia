@@ -180,7 +180,7 @@ class Menu
             // Historial
             'Historial' => [
                 'submenu' => 1,
-                'ruta' => 'javascript:;',
+                'ruta' => 'javascript:;', 
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
@@ -188,19 +188,19 @@ class Menu
                     [
                         'name' => 'Historial Ordenes',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_order'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Historial Comisiones',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_commission'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Historial Pedidos',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('record_request'),
                         'complementoruta' => ''
                     ],
                 ],
@@ -211,25 +211,25 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-list-alt',
                 'complementoruta' => '',
                 'submenus' => [
                     [
                         'name' => 'General Liquidaciones',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('settlement'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Liquidaciones Pendientes',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('settlement_pending'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Liquidaciones Realizadas',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('settlement_done'),
                         'complementoruta' => ''
                     ],
                 ],
@@ -238,9 +238,9 @@ class Menu
             // Lideres
             'Lideres' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('leaders'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'feather icon-award',
                 'complementoruta' => '',
             ],
             // Fin lideres
@@ -249,25 +249,25 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
                 'submenus' => [
                     [
                         'name' => 'Registro Seguidores VIP',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('followers'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Grafico',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('graphics'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Comunity',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('comunity'),
                         'complementoruta' => ''
                     ],
                 ],
@@ -278,7 +278,7 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-cog',
                 'complementoruta' => '',
                 'submenus' => [
                     [
@@ -299,18 +299,18 @@ class Menu
             // Usuarios
             'Usuarios' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('users'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-users',
                 'complementoruta' => '',
             ],
             // Fin Usuarios
             // Transaction logs
             'Transaction logs' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('logs'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa-history',
                 'complementoruta' => '',
             ],
             // Fin Transaction logs
@@ -319,25 +319,25 @@ class Menu
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '',
+                'icon' => 'fa fa fa-cogs',
                 'complementoruta' => '',
                 'submenus' => [
                     [
                         'name' => 'Generales',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('general'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Noticias',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('news'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Idioma',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => 'javascript:;',
+                        'ruta' => route('languages'),
                         'complementoruta' => ''
                     ],
                 ],
