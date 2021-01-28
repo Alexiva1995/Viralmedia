@@ -26,6 +26,7 @@ class ServicesAdminController extends Controller
             if (!empty(request()->category)) {
                 $services = Service::all()->where('categories_id', request()->category);
                 foreach ($services as $service) {
+                    $service->input_adicionales = null;
                     if ($service->input_adicionales != null || $service->input_adicionales != '') {
                         $service->input_adicionales = json_decode($service->input_adicionales);
                     }
