@@ -46,7 +46,7 @@
                             <div class="col-12 col-md-6">
                                 <fieldset class="form-group">
                                     <label for="">Precio</label>
-                                    <input type="number" name="price" class="form-control" required>
+                                    <input type="number" name="price" class="form-control" required step="any">
                                 </fieldset>
                             </div>
                             <div class="col-12 col-md-6">

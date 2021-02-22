@@ -43,7 +43,11 @@
                                     @endforeach
                                 </select>
                             </fieldset>
+                            @if($name_category == null)
+                            <p>Lorem ipsum dolor sit amet consec</p>
+                            @else
                             <h5>Categoria Selecionada: {{$name_category}}</h5>
+                            @endif
                         </form>
                     </div>
                     <div class="table-responsive mt-2">
@@ -71,9 +75,11 @@
                                     <td>{{$service->package_name}}</td>
                                     <td>{{$service->type}}</td>
                                     <td>
-                                        @foreach ($service->input_adicionales as $input)
-                                            <p>{{$input}}</p>
-                                        @endforeach
+                                        @if ($service->input_adicionales != null)
+                                            @foreach ($service->input_adicionales as $input)
+                                                <p>{{$input}}</p>
+                                            @endforeach
+                                        @endif
                                     </td>
                                     <td>{{$service->api_service_id}}</td>
                                     <td>{{$service->api_provide_name}}</td>
