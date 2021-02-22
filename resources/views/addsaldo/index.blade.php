@@ -117,8 +117,9 @@
                                                         <i class="vs-icon feather icon-check"></i>
                                                     </span>
                                                 </span>
-                                                <span class="">Si, yo acepto los <a href="http://">Terminos y condiciones de compra</a></span>
+                                                <span class="">Si, yo acepto los</span>
                                             </div>
+                                            <a href="http://" style="margin: 0.25rem 0;">Terminos y condiciones de compra</a>
                                         </div>
                                     </div>
                                     <div class="form-group">

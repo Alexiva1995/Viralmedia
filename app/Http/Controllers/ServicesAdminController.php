@@ -26,7 +26,10 @@ class ServicesAdminController extends Controller
             if (!empty(request()->category)) {
                 $services = Service::all()->where('categories_id', request()->category);
                 foreach ($services as $service) {
-                    $service->input_adicionales = json_decode($service->input_adicionales);
+                    $service->input_adicionales = null;
+                    if ($service->input_adicionales != null || $service->input_adicionales != '') {
+                        $service->input_adicionales = json_decode($service->input_adicionales);
+                    }
                 }
                 $category = Category::find(request()->category);
                 $name_category = $category->name;
@@ -114,7 +117,7 @@ class ServicesAdminController extends Controller
                 $request['input_adicionales'] = json_encode($request->input_adicionales);
                 Service::create($request->all());
                 $route = route('services.index').'?category='.$request->categories_id;
-                return redirect()->route($route)->with('msj-success', 'Nuevo Servicio Creado');
+                return redirect($route)->with('msj-success', 'Nuevo Servicio Creado');
             }
         } catch (\Throwable $th) {
             dd($th);
@@ -192,7 +195,7 @@ class ServicesAdminController extends Controller
                 $service->description = $request->description;
                 $service->save();
                 $route = route('services.index').'?category='.$request->categories_id;
-                return redirect()->route($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
+                return redirect($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
             }
         } catch (\Throwable $th) {
             dd($th);
@@ -212,7 +215,7 @@ class ServicesAdminController extends Controller
             $category = $service->categories_id;
             $service->delete();
             $route = route('services.index').'?category='.$category;
-            return redirect()->route($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
+            return redirect($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
         } catch (\Throwable $th) {
             dd($th);
         }
