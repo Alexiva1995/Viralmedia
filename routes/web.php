@@ -81,9 +81,13 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('comunity','FollowersController@comunity')->name('comunity');
 
     });
+    
     //Ruta usuarios
     Route::prefix('user')->group(function(){
-        Route::get('/', 'UserController@index')->name('users');
+
+            Route::get('/', 'UserController@index')->name('users');
+            Route::get('profile', 'UserController@edit')->name('profile');
+            Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
     });
 
     //Ruta logs

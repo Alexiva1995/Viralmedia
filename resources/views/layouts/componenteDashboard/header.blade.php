@@ -31,8 +31,8 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="page-user-profile.html">
-                                <i class="feather icon-user"></i> Edit Profile
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                <i class="feather icon-user"></i> Editar Perfil
                             </a>
                             {{-- <a class="dropdown-item" href="app-email.html">
                                 <i class="feather icon-mail"></i> My Inbox
