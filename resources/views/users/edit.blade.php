@@ -16,10 +16,10 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/core/app-menu.js')}}"></script>
-<script src="{{asset('assets/js/core/app.js')}}"></script>
-<script src="{{asset('assets/js/scripts/components.js')}}"></script>
-<script src="{{asset('assets/js/scripts/pages/account-setting.js')}}"></script>
+
+<script src="{{asset('assets/app-assets/js/core/app-menu.js')}}"></script>
+<script src="{{asset('assets/app-assets/js/core/app.js')}}"></script>
+<script src="{{asset('assets/app-assets/js/scripts/components.js')}}"></script>
 @endpush
 
 @section('content')
@@ -96,59 +96,87 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <form action="{{ route('users.update', $user->id) }}" method="POST"
+                                        <form action="{{ route('profile.update',$user->id) }}" method="POST"
                                             enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PATCH')
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
+                                                        @csrf
+                                                        @method('PATCH')
                                                         <div class="controls">
-                                                            <label for="name">Nombre</label>
-                                                            <input type="text" class="form-control" id="name"
+                                                            <label class="required" for="">Nombre</label>
+                                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                                                 placeholder="Nombre" value="{{ $user->name }}">
+                                                                @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                              @enderror
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label for="last_name">Apellido</label>
-                                                            <input type="text" class="form-control" id="last_name"
+                                                            <label class="required" for="last_name">Apellido</label>
+                                                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name"
                                                                 placeholder="Apellido" value="{{ $user->last_name }}">
+                                                                @error('last_name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                              @enderror
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label for="account-e-mail">Email</label>
-                                                            <input type="email" class="form-control" id="account-e-mail"
+                                                            <label class="required" for="email">Email</label>
+                                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
                                                                 placeholder="Email" value="{{ $user->email }}">
+                                                                @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                              @enderror
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                 {{-- <div class="col-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label for="account-e-mail">Email</label>
-                                                            <input type="email" class="form-control" id="account-e-mail"
+                                                            <label class="required" for="email">Email</label>
+                                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
                                                                 placeholder="Email" value="{{ $user->email }}">
+                                                                @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                              @enderror
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="account-company">Zona horaria</label>
-                                                        <select type="text" class="form-control" id="account-company"
-                                                            placeholder="Company name">
-                                                            <option>1</option>
-                                                            <option>1</option>
-                                                            <option>1</option>
-                                                            <option>1</option>
+                                                        <label class="required" for="utc">Zona horaria</label>
+                                                        <select type="text" class="form-control @error('utc') is-invalid @enderror" id="utc" name="utc">
+                                                            <option value="{{ $user->utc }}">{{ $user->utc }}</option>
+                                                            @foreach ($timezone as $zone)
+                                                            <option  value="{{ $zone->list_utc }}">{{ $zone->list_utc }}</option>
+                                                            @endforeach
+                                                         
                                                         </select>
+                                                        @error('utc')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                      @enderror
                                                     </div>
-                                                </div>
+                                                </div> 
+
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                     <button type="submit"
                                                         class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
@@ -156,9 +184,6 @@
                                             </div>
                                         </form>
                                     </div>
-
-
-
 
 
                                     <div class="tab-pane fade" id="account-vertical-info" role="tabpanel"
@@ -322,7 +347,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> 
 
                                 </div>
                             </div>
