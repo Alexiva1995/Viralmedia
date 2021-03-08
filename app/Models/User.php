@@ -5,10 +5,18 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements HasMedia
+
 {
     use Notifiable;
+    use HasMediaTrait;
+
+
+
 
     protected $table = 'users';
 
@@ -20,7 +28,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'last_name', 'email', 'password', 'whatsapp',
         'fullname', 'referred_id', 'admin', 'balance', 'status',
-        'wallet', 'id_pais','utc'
+        'wallet', 'id_pais','utc','address','website',
     ];
 
     /**
@@ -39,7 +47,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
+    ]; 
 
     /**
      * Permite obtener la informacion del pais asociado a este usuario
@@ -74,10 +82,22 @@ class User extends Authenticatable
     /**
      * Permite obtener las ordenes de servicio asociada a una categoria
      *
-     * @return void
+     * @return void 
      */
     public function getUserOrden()
     {
         return $this->hasMany('App\Models\OrdenService', 'iduser');
     }
+
+
+    public function getPhotoUrlAttribute()
+    {
+        if($this->getMedia('photo')->isEmpty())
+        {
+            return $this->role == "completion specialist" ?  "/img/completion_photo.png" : "/img/user_photo.jpg";
+        } else {
+            return $this->getMedia('photo')->first()->file;
+        }
+    }
+
 }

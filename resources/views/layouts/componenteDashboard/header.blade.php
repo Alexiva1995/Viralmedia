@@ -25,10 +25,12 @@
                                 <span class="user-name text-bold-600">{{Auth::user()->fullname}}</span>
                                 <span class="user-status headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
                             </div>
+                      
                             <span>
                                 <img class="round" src="{{asset('assets/img/sistema/usuario.png')}}"
                                     alt="avatar" height="40" width="40">
                             </span>
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('profile') }}">
