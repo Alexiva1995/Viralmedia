@@ -88,8 +88,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
             Route::get('/', 'UserController@index')->name('users');
             Route::get('profile', 'UserController@edit')->name('profile');
             Route::patch('profile-update', 'UserController@update')->name('profile.update');
-            Route::post('profile-store','ProfileController@Store')->name('profile.store');
-
     });
 
     //Ruta logs

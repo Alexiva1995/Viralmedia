@@ -25,11 +25,18 @@
                                 <span class="user-name text-bold-600">{{Auth::user()->fullname}}</span>
                                 <span class="user-status headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
                             </div>
-                      
+
+                            @if(!Auth::user()->getMedia('photo')->isEmpty())
+                            <span>
+                                <img class="round" src="{{ Auth::user()->photoUrl }}"
+                                    alt="{{ Auth::user()->fullname }}" height="50" width="50">
+                            </span>
+                            @else
                             <span>
                                 <img class="round" src="{{asset('assets/img/sistema/usuario.png')}}"
-                                    alt="avatar" height="40" width="40">
+                                    alt="avatar" height="50" width="50">
                             </span>
+                            @endif
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

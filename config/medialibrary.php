@@ -23,7 +23,8 @@ return [
     /*
      * The fully qualified class name of the media model.
      */
-    'media_model' => Spatie\MediaLibrary\Models\Media::class,
+    // 'media_model' => Spatie\MediaLibrary\Models\Media::class,
+    'media_model' => App\Media::class,
 
     's3' => [
         /*
@@ -129,7 +130,7 @@ return [
      * The engine that should perform the image conversions.
      * Should be either `gd` or `imagick`.
      */
-    'image_driver' => env('IMAGE_DRIVER', 'gd'),
+    'image_driver' => env('gd'),
 
     /*
      * FFMPEG & FFProbe binaries paths, only used if you try to generate video

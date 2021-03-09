@@ -18,11 +18,11 @@
 @push('custom_js')
 <script>
       $(document).ready(function() {
-       
-
-          @if(!$user->getMedia('photo')->isEmpty())
-          previewPersistedFile('{{ $user->getMedia('photo')->first()->file }}', 'photo_preview');
-        @endif
+        @if(!$user->getMedia('photo')->isEmpty())
+            @if(in_array($user->getMedia('photo')->first()->mime_type,array("image/png", "image/gif", "image/jpeg")))
+              previewPersistedFile("{{ $user->getMedia('photo')->first()->file }}", 'photo_preview');
+            @endif
+          @endif
       });
 
     function previewFile(input, preview_id) {

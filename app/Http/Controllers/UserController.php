@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\Timezone;
-use App\Models\Country;
-use App\Models\User;
-use Carbon\Carbon;
-use DataTables;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
+use App\Models\User;
+use App\Models\Country;
+use App\Models\Timezone;
 
 class UserController extends Controller
 {
@@ -23,6 +20,7 @@ class UserController extends Controller
         return view('users.index');
     }
     
+    // vista de editar perfil
     public function edit()
     {
         $timezone = Timezone::orderBy('list_utc','ASC')->get();
@@ -34,7 +32,6 @@ class UserController extends Controller
               ->with('user',$user)
               ->with('countries',$countries)
               ->with('timezone',$timezone);
-
     }
 
 
@@ -45,39 +42,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $fields = [
-            "name" => ['required'],
-            "last_name" => ['required'],
-            "email" => [
-               'required',
-               'string',
-               'email',
-               'max:255',
-           ],
-           'photo' => ['required','image','max:2000','mimes:jpeg,png,gif'],
 
-        ];
-
-        $msj = [
-            'name.required' => 'El nombre es requerido',
-            'email.unique' => 'El correo debe ser unico',
-            'photo.required' => 'The photo is required',
-        ];
-
-        $this->validate($request, $fields, $msj);
-
-        $user->update($request->all());
-        $user->utc = $request->utc;
-        $user->whatsapp = $request->whatsapp;
-        $user->website = $request->website;
-        $user->address = $request->address;
-        $user->save();
-
-        $user = User::create($request->all());
-  
-        
-
-        return redirect()->route('welcome')->withSuccess('Se creo tu usuario con Exito, Verifica el Correo Electronico');
     }
 
 
@@ -105,6 +70,7 @@ class UserController extends Controller
 
         $this->validate($request, $fields, $msj);
 
+        // foto
         $user->update($request->all());
         if ($request->hasFile('photo')) {
             if(!$user->getMedia('photo')->isEmpty()) {
@@ -118,12 +84,6 @@ class UserController extends Controller
         $user->website = $request->website;
         $user->address = $request->address;
         $user->save();
-
-        // $file = $request->file('image_url');
-        // $input = $request->all();
-        // $img = $this->create($input);
-
-        // $img->addMedia($file)->toMediaCollection;
 
         return redirect()->route('profile')->with('message','Se actualizo tu perfil');
 
