@@ -15,11 +15,6 @@ class RecordController extends Controller
         return view('record.orders');
     }
 
-    public function indexOrders(){
-        View::share('titleg', 'Historial Ordenes de Usuarios');
-        return view('record.ordersUser');
-    }
-
     public function indexCommissions(){
         View::share('titleg', 'Historial Comisiones');
         return view('record.commissions');

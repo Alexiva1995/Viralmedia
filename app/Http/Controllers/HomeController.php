@@ -41,12 +41,6 @@ class HomeController extends Controller
         return view('dashboard.index', compact('data'));
     }
 
-    public function indexUser()
-    {
-        View::share('titleg', '');
-        $data = $this->dataDashboard(Auth::id());
-        return view('dashboard.indexUser', compact('data'));
-    }
 
     /**
      * Permite obtener la informacion a mostrar en el dashboard

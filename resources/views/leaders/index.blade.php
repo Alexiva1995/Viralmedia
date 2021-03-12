@@ -22,8 +22,7 @@
                                     <th>Balance</th>
                                     
                                 </tr>
-                            </thead> 
-                            @foreach ($user as $item)                                
+                            </thead>
                             <tbody>
                                 <tr class="text-center">
                                     <td> 1</td>
@@ -36,7 +35,6 @@
                                 </tr>
                                
                             </tbody>
-                            @endforeach
                         </table>
                     </div>
                 </div>

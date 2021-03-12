@@ -23,5 +23,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/dashboard2.css')}}">
 
 @stack('custom_css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/toastr.min.css')}}">
 	
 <!-- END: Custom CSS-->

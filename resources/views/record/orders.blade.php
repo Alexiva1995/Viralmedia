@@ -10,40 +10,27 @@
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <h1>Historial de Ordenes</h1>
-                        <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Usuario</th>
-                                    <th>Categoria</th>
-                                    <th>Servicio</th>
-                                    <th>Estatus</th>
-                                    <th>Fecha de Creacion</th>
-                                    <th>Accion</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
                                 </tr>
-                            </thead> 
+                            </thead>
                             <tbody>
-                             @foreach ($orden as $item)
                                 <tr class="text-center">
-                                    <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getOrdenUser->fullname}}</td>
-                                    <td>{{ $item->getOrdenCategorie->name}}</td>
-                                    <td>{{ $item->getOrdenService->package_name}}</td>
-                                    @if ($item->status == 'Pendiente')
-                                        <td> <a class=" btn btn-info text-white text-bold-600">Pendiente</a></td>
-                                    @elseif($item->status == 'Completada')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
-                                    @elseif($item->status == 'Rechazada')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Rechazada</a></td>
-                                    @elseif($item->status == 'Cancelada')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Cancelada</a></td>
-                                    @endif
-                                    <td>{{ $item->created_at}}</td>
-                                    <td><a href="{{ route('record_order.edit',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
+                                    <td> 1</td>
+                                    <td> admin</td>
+                                    <td> domys</td>
+                                    <td>Test</td>
+                                    <td> 22/12/20</td>                                    
+                                    <td> 1000</td>
                                 </tr>
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
