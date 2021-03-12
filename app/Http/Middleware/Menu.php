@@ -35,11 +35,13 @@ class Menu
      */
     public function menuUsuario()
     {
+       // $orden = app($OrdenService)->find($id);
+
         return [
             // Inicio
             'Inicio' => [
                 'submenu' => 0,
-                'ruta' => route('home'),
+                'ruta' => route('home.user'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-home',
                 'complementoruta' => '',
@@ -104,7 +106,7 @@ class Menu
             // Historial de Ordenes
             'Historial de Ordenes' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' => route('record_order_user'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
@@ -113,8 +115,8 @@ class Menu
             // App Movil
             'App Movil' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'ruta' => 'https://play.google.com/store/apps/details?id=com.ViralMedia.panelOk',
+                'blank'=> '_blank', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-smartphone',
                 'complementoruta' => '',
             ],
@@ -122,8 +124,8 @@ class Menu
             // Noticias en Telegram
             'Noticias en telegram' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'ruta' => 'https://t.me/viralmediapanel',
+                'blank'=> '_blank', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'fa fa-newspaper-o',
                 'complementoruta' => '',
             ],

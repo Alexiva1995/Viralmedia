@@ -70,6 +70,8 @@ class UserController extends Controller
 
         $this->validate($request, $fields, $msj);
 
+        $fullname = $request->name .' '. $request->last_name;
+
         // foto
         $user->update($request->all());
         if ($request->hasFile('photo')) {
@@ -78,14 +80,14 @@ class UserController extends Controller
             }
             $user->addMediaFromRequest("photo")->toMediaCollection('photo');
         }
-
+        $user->fullname = $fullname;
         $user->utc = $request->utc;
         $user->whatsapp = $request->whatsapp;
         $user->website = $request->website;
         $user->address = $request->address;
         $user->save();
 
-        return redirect()->route('profile')->with('message','Se actualizo tu perfil');
+        return redirect()->route('profile')->with('msj-success','Se actualizo tu perfil');
 
     }
 

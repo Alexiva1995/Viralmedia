@@ -13,25 +13,25 @@
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">                                
-                                    <th>N°</th>
-                                    <th>Nombre</th>
-                                    <th>Codigo</th>
-                                    <th>Icono</th>
-                                    <th>Por Defecto</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Pais</th>
                                     <th>Fecha</th>
-                                    <th>Estado</th>
+                                   
+                                    
                                 </tr>
                             </thead>
-                            
                             <tbody>
                                 <tr class="text-center">
-                                    <td>1</td>
-                                    <td>Español</td>
-                                    <td>ES</td>
-                                    <td><img src="{{asset('assets/img/sistema/es.png')}}" width="30" height="30" alt=""></td>
-                                    <td>Si</td>                                    
-                                    <td>2019-11-18 22:00:08</td> 
-                                    <td>Activo</td> 
+                                    <td> 1</td>
+                                    <td> admin</td>
+                                    <td> admin</td>
+                                    <td> admin@viralmedia.com</td>
+                                    <td>Vnezuela</td>                                    
+                                    <td>12/28/2020</td> 
+                                    
                                 </tr>
                                
                             </tbody>
@@ -43,6 +43,7 @@
     </div>
 
 </div>
+
 
 @endsection
 

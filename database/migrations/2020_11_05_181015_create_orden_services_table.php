@@ -28,7 +28,7 @@ class CreateOrdenServicesTable extends Migration
             $table->string('email_respaldo', 200)->nullable()->comment('para los servicios que usan email_respaldo');
             $table->string('whatsapp', 200)->nullable()->comment('para los servicios que usan whatsapp');
             $table->decimal('total');
-            $table->enum('status', [0, 1, 2, 3])->default(0)->comment('0 - En Espera, 1 - Completa, 2 - Rechazada, 3 - Cancelada');
+            $table->enum('status', ['Pendiente', 'Completada', 'Rechazada', 'Cancelada'])->default('Pendiente');
             $table->timestamps();
         });
     }

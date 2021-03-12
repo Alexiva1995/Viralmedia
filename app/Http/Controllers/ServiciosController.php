@@ -67,9 +67,9 @@ class ServiciosController extends Controller
             'email' => ['nullable', 'email'],
             'email_respaldo' => ['nullable', 'email'], 
             'whatsapp' => ['nullable', 'string'],
-            'total' => ['required']
+            'total' => ['required'],
+            'status' => ['Pendiente']
         ]);
-
         try {
             if ($validate){
                 $user = User::find($request->iduser);
@@ -77,15 +77,35 @@ class ServiciosController extends Controller
                 //     $concepto = "Su Saldo Es Insuficiente para realizar esta compra";
                 //     return redirect()->back()->with('msj-warning', $concepto);    
                 // }
+                $orden = User::all();
+                if($user->balance >= '10'){
                 $orden = OrdenService::create($request->all());
                 $saldoAcumulado = ($orden->getOrdenUser->balance - $request->total);
                 $orden->getOrdenUser->update(['balance' => $saldoAcumulado]);
                 $concepto = "Orden N° ".$orden->id." Procesada Exitosamente";
                 return redirect()->back()->with('msj-success', $concepto);
+            }else{
+                
+                return redirect()->back()->with('msj-warning', 'Saldo Insuficiente, Servicio no Adquirido');
+            }
             }
         } catch (\Throwable $th) {
             dd($th);
         }
+    }
+
+    public function showOrdenUser(Request $request)
+    {
+        $user = Auth::id();
+        $categories = Category::all();
+        $service = Service::all();
+        $orden = OrdenService::all()
+        ->where('iduser', $user);
+
+        return view('record.ordersUser')
+        ->with('orden', $orden)
+        ->with('categories', $categories)
+        ->with('service', $service);
     }
 
     /**

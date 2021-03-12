@@ -24,7 +24,7 @@
             @foreach ($menu as $index => $item)
                 @if ($item['submenu'] == 0)
                 <li class=" nav-item">
-                    <a href="{{$item['ruta']}}{{$item['complementoruta']}}">
+                    <a href="{{$item['ruta']}}{{$item['complementoruta']}}" target="{{$item['blank']}}">
                         <i class="{{$item['icon']}} text-white"></i>
                         <span class="menu-title text-white" data-i18n="{{$index}}">{{$index}}</span>
                     </a>
@@ -38,7 +38,7 @@
                     <ul class="menu-content bg-purple-alt">
                         @foreach ($item['submenus'] as $submenu)
                         <li class="activ">
-                            <a href="{{$submenu['ruta']}}{{$submenu['complementoruta']}}" class="text-white">
+                            <a href="{{$submenu['ruta']}}{{$submenu['complementoruta']}}" class="text-white" target="{{$submenu['blank']}}">
                                 <i class="feather icon-circle text-white"></i>
                                 <span class="menu-item text-white" data-i18n="{{$submenu['name']}}">{{$submenu['name']}}</span></a>
                         </li>
