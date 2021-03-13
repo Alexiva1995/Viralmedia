@@ -109,6 +109,17 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
     });
 
+     //Ruta de los Tickets
+     Route::prefix('tickets')->group(function(){
+        Route::get('ticket-create','TicketsController@create')->name('ticket.create');
+        Route::post('ticket-store','TicketsController@store')->name('ticket.store');
+        Route::get('ticket-edit/{id}','TicketsController@edit')->name('ticket.edit');
+        Route::patch('ticket-update','TicketsController@edit')->name('ticket.edit');
+        Route::get('ticket-list-user','TicketsController@listUser')->name('ticket.list-user');
+        Route::get('ticket-show-user','TicketsController@showUser')->name('ticket.show-user');
+        Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
+        Route::get('ticket-show-admin','TicketsController@showAdmin')->name('ticket.show-admin');
+    });
 
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()

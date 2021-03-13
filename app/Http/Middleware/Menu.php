@@ -94,6 +94,29 @@ class Menu
                 ],
             ],
             // Fin red
+             // tickets
+             'Tickets' => [
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
+                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-tag',
+                'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Crear Ticket',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('ticket.create'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Lista de Tickets',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('ticket.list-user'),
+                        'complementoruta' => ''
+                    ],
+                ],
+            ],
+            // Fin tickets
             // Billetera
             'Billetera' => [
                 'submenu' => 0,
@@ -179,6 +202,23 @@ class Menu
                 ],
             ],
             // Fin red
+                       // tickets
+                    'Tickets' => [
+                        'submenu' => 1,
+                        'ruta' => 'javascript:;',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'icon' => 'feather icon-tag',
+                        'complementoruta' => '',
+                        'submenus' => [
+                    [
+                        'name' => 'Lista de Tickets',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('ticket.list-admin'),
+                        'complementoruta' => ''
+                    ],
+                ],
+            ],
+             // Fin tickets
             // Historial
             'Historial' => [
                 'submenu' => 1,

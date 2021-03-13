@@ -68,7 +68,7 @@ class ServiciosController extends Controller
             'email_respaldo' => ['nullable', 'email'], 
             'whatsapp' => ['nullable', 'string'],
             'total' => ['required'],
-            'status' => ['Pendiente']
+            'status' => ['0']
         ]);
         try {
             if ($validate){

@@ -17,17 +17,18 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Categoria</th>
-                                    <th>Servicio</th>
-                                    <th>Monto</th>
-                                    <th>Estatus</th>
-                                    <th>Link</th>
+                                    <th>Whatsapp</th>
+                                    <th>Email</th>
+                                    <th>Asunto</th>
+                                    <th>Descripción</th>
+                                    <th>Estado</th>
                                     <th>Fecha de Creacion</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($orden as $item)
+                                {{-- @foreach ($orden as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
                                     <td>{{ $item->getOrdenCategorie->name}}</td>
@@ -45,7 +46,7 @@
                                     <td>{{ $item->link}}</td>
                                     <td>{{ $item->created_at}}</td>
                                 </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
