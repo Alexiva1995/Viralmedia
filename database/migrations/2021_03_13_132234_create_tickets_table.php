@@ -19,9 +19,9 @@ class CreateTicketsTable extends Migration
             $table->string('whatsapp');
             $table->string('email');
             $table->string('issue');
-            $table->string('description');
-            $table->string('note_admin');
-            $table->enum('status', ['Pendiente', 'Procesada', 'Solucionado', 'Cancelada'])->default('Pendiente');
+            $table->longtext('description');
+            $table->longtext('note_admin')->nullable();
+            $table->enum('status', [0, 1, 2, 3])->default(0)->comment('0 - En Espera, 1 - Solucionado, 2 - Procesando, 3 - Cancelada');
             $table->timestamps();
         });
     }

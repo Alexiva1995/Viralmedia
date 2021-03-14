@@ -68,7 +68,7 @@ class ServiciosController extends Controller
             'email_respaldo' => ['nullable', 'email'], 
             'whatsapp' => ['nullable', 'string'],
             'total' => ['required'],
-            'status' => ['0']
+            'status' => ['0'],
         ]);
         try {
             if ($validate){
@@ -82,7 +82,7 @@ class ServiciosController extends Controller
                 $orden = OrdenService::create($request->all());
                 $saldoAcumulado = ($orden->getOrdenUser->balance - $request->total);
                 $orden->getOrdenUser->update(['balance' => $saldoAcumulado]);
-                $concepto = "Orden N° ".$orden->id." Procesada Exitosamente";
+                $concepto = "Orden N° ".$orden->id." Procesando Exitosamente";
                 return redirect()->back()->with('msj-success', $concepto);
             }else{
                 

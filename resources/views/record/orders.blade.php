@@ -31,17 +31,21 @@
                                     <td>{{ $item->getOrdenUser->fullname}}</td>
                                     <td>{{ $item->getOrdenCategorie->name}}</td>
                                     <td>{{ $item->getOrdenService->package_name}}</td>
-                                    @if ($item->status == 'Pendiente')
-                                        <td> <a class=" btn btn-info text-white text-bold-600">Pendiente</a></td>
-                                    @elseif($item->status == 'Completada')
+                                    @if ($item->status == '0')
+                                        <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
+                                    @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
-                                    @elseif($item->status == 'Rechazada')
+                                    @elseif($item->status == '2')
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Rechazada</a></td>
-                                    @elseif($item->status == 'Cancelada')
+                                    @elseif($item->status == '3')
                                     <td> <a class=" btn btn-warning text-white text-bold-600">Cancelada</a></td>
                                     @endif
                                     <td>{{ $item->created_at}}</td>
+                                    @if($item->status == '0')
                                     <td><a href="{{ route('record_order.edit',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
+                                    @else
+                                    <td><a class="btn btn-secondary text-bold-600">Sin Acción</a></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

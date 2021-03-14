@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 
 class TicketsController extends Controller
 {
+
+    // funciones del user
 
     public function create(){
 
@@ -25,7 +31,7 @@ class TicketsController extends Controller
             "whatsapp" => ['required'],
             "issue" => ['required'],
             "description" => ['required'],
-            'status' => ['Pendiente'],
+            'status' => ['0'],
         ];
 
         $msj = [
@@ -45,34 +51,127 @@ class TicketsController extends Controller
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
 
-    public function edit(){
-        return view('tickets.edit');
+    public function editUser($id){
+
+        $ticket = Ticket::find($id);
+
+        return view('tickets.componenteTickets.user.edit-user')
+        ->with('ticket', $ticket);
     }
 
-    public function update(){
-        return view('tickets.edit');
+    public function updateUser(Request $request, $id){
 
+        $ticket = Ticket::find($id);
+
+        $fields = [
+            "email" => ['required'],
+            "whatsapp" => ['required'],
+            "issue" => ['required'],
+            "description" => ['required'],
+            'status' => ['0'],
+        ];
+
+        $msj = [
+            'email.required' => 'El email es Requerido',
+            'whatsapp.required' => 'El whatsapp es Requerido',
+            'issue.required' => 'El asunto es Requerido',
+            'description.required' => 'La descripción es Requerido',
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $ticket->update($request->all());
+        $ticket->note_admin = $request->note_admin;
+        $ticket->save();
+        
+        $route = route('ticket.list-user');
+        return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
+    }
+
+
+    public function listUser(Request $request){
+
+        $ticket = Ticket::all();
+
+        return view('tickets.componenteTickets.user.list-user')
+        ->with('ticket', $ticket);
+    }
+
+    public function showUser($id){
+
+        $ticket = Ticket::find($id);
+
+        return view('tickets.componenteTickets.user.show-user')
+        ->with('ticket', $ticket);
+    }
+
+
+
+
+
+
+
+
+
+    // funciones del admin
+    public function editAdmin($id){
+
+        $ticket = Ticket::find($id);
+
+        return view('tickets.componenteTickets.admin.edit-admin')
+        ->with('ticket', $ticket);
+    }
+
+    public function updateAdmin(Request $request, $id){
+
+        $ticket = Ticket::find($id);
+
+        $fields = [
+            'status' => ['required'],
+            'note_admin' => ['required']
+        ];
+        
+        $msj = [
+            'status.required' => 'Es requerido el Estatus de la ticket',
+            'note_admin.required' => 'Es requerido Nota del admin',
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $ticket->update($request->all());
+        $ticket->note_admin = $request->note_admin;
+        $ticket->save();
+        
+        $route = route('ticket.list-admin');
+        return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
     }
 
     public function listAdmin(){
-        return view('tickets.componenteTickets.list-admin');
+        
+        $ticket = Ticket::all();
 
+        return view('tickets.componenteTickets.admin.list-admin')
+        ->with('ticket', $ticket);
     }
 
-    public function showAdmin(){
-        return view('tickets.componenteTickets.show-admin');
-    }
+    public function showAdmin($id){
 
-    public function listUser(){
-        return view('tickets.componenteTickets.list-user');
-    }
+        $ticket = Ticket::find($id);
 
-    public function showUser(){
-        return view('tickets.componenteTickets.show-user');
+        return view('tickets.componenteTickets.admin.show-admin')
+        ->with('ticket', $ticket);
     }
 
 
-        /**
+
+
+
+
+
+
+
+
+    /**
      * Permite obtener la cantidad de Tickets que tiene un usuario
      *
      * @param integer $iduser

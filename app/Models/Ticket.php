@@ -15,4 +15,8 @@ class Ticket extends Model
         'iduser', 'whatsapp', 'email', 'issue', 'description', 'status'
     ];
 
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'iduser', 'id');
+    }
 }

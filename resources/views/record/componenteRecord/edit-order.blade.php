@@ -89,10 +89,29 @@
                                             <select name="status" id="status"
                                                 class="custom-select status @error('status') is-invalid @enderror"
                                                 required data-toggle="select">
-                                                <option value="{{ $orden->status }}">{{ $orden->status }}</option>
-                                                <option value="Completada">Completada</option>
-                                                <option value="Rechazada">Rechazada</option>
-                                                <option value="Cancelada">Cancelada</option>
+                                                @if ( $orden->status == 0 )
+                                                <option value="{{ $orden->status }}">En Espera</option>
+                                                <option value="1">Completada</option>
+                                                <option value="2">Rechazada</option>
+                                                <option value="3">Cancelada</option>
+                                                @elseif($orden->status == 1)
+                                                <option value="{{ $orden->status }}">Completada</option>
+                                                <option value="0">En Espera</option>
+                                                <option value="2">Rechazada</option>
+                                                <option value="3">Cancelada</option>
+
+                                                @elseif($orden->status == 2)
+                                                <option value="{{ $orden->status }}">Rechazada</option>
+                                                <option value="0">En Espera</option>
+                                                <option value="1">Completada</option>
+                                                <option value="3">Cancelada</option>
+
+                                                @elseif($orden->status == 3)
+                                                <option value="{{ $orden->status }}">Cancelada</option>
+                                                <option value="0">En Espera</option>
+                                                <option value="1">Completada</option>
+                                                <option value="2">Rechazada</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>

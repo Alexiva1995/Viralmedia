@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 use App\Http\Controllers\TreeController;
+use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\AddSaldoController;
 
 class HomeController extends Controller
 {
     public $treeController;
+    public $ticketController;
     public $servicioController;
     public $addsaldoController;
 
@@ -25,6 +27,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->treeController = new TreeController;
+        $this->ticketController = new TicketsController;
         $this->servicioController = new ServiciosController;
         $this->addsaldoController = new AddSaldoController;
     }
@@ -62,7 +65,7 @@ class HomeController extends Controller
             'indirectos' => $cantUsers['indirectos'],
             'wallet' => Auth::user()->wallet,
             'balance' => Auth::user()->balance,
-            'tickets' => 0,
+            'tickets' => $this->ticketController->getTotalTickets($iduser),
             'comisiones' => 0,
             'ordenes' => $this->servicioController->getTotalOrdenes($iduser),
             'usuario' => Auth::user()->fullname
@@ -80,7 +83,7 @@ class HomeController extends Controller
     {
         $iduser = Auth::id();
         $data = [
-            'tickets' => [0, 1, 2, 3, 4, 5],
+            'tickets' => $this->ticketController->getDataGraphiTickets($iduser),
             'comisiones' => [0, 1, 0, 2, 0, 3],
             'saldo' => $this->addsaldoController->getDataGraphicSaldo($iduser),
             'ordenes' => $this->servicioController->getDataGraphiOrdens($iduser)

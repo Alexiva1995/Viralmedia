@@ -113,12 +113,18 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
      Route::prefix('tickets')->group(function(){
         Route::get('ticket-create','TicketsController@create')->name('ticket.create');
         Route::post('ticket-store','TicketsController@store')->name('ticket.store');
-        Route::get('ticket-edit/{id}','TicketsController@edit')->name('ticket.edit');
-        Route::patch('ticket-update','TicketsController@edit')->name('ticket.edit');
+
+        // Para el usuario
+        Route::get('ticket-edit-user/{id}','TicketsController@editUser')->name('ticket.edit-user');
+        Route::patch('ticket-update-user/{id}','TicketsController@updateUser')->name('ticket.update-user');
         Route::get('ticket-list-user','TicketsController@listUser')->name('ticket.list-user');
-        Route::get('ticket-show-user','TicketsController@showUser')->name('ticket.show-user');
+        Route::get('ticket-show-user/{id}','TicketsController@showUser')->name('ticket.show-user');
+
+        // Para el Admin
+        Route::get('ticket-edit-admin/{id}','TicketsController@editAdmin')->name('ticket.edit-admin');
+        Route::patch('ticket-update-admin/{id}','TicketsController@updateAdmin')->name('ticket.update-admin');
         Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
-        Route::get('ticket-show-admin','TicketsController@showAdmin')->name('ticket.show-admin');
+        Route::get('ticket-show-admin/{id}','TicketsController@showAdmin')->name('ticket.show-admin');
     });
 
     // Ruta para agregar saldo
