@@ -105,6 +105,8 @@ class ServiciosController extends Controller
         $orden = OrdenService::all()
         ->where('iduser', $user);
 
+        View::share('titleg', 'Historial de Ordenes');
+
         return view('record.componenteRecord.user.orders-user')
         ->with('orden', $orden)
         ->with('categories', $categories)

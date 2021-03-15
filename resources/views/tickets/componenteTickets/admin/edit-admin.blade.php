@@ -8,8 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Atendiendo el Ticket #{{ $ticket->id}}</h4>
-                    <h4 class="card-title mt-1">Usuario: <span
-                            class="text-primary">{{ $ticket->getUser->fullname}}</span></h4>
+                    <h4 class="card-title mt-2">Usuario: <span class="text-primary">{{ $ticket->getUser->fullname}}</span></h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -67,29 +66,10 @@
                                                 <select name="status" id="status"
                                                     class="custom-select status @error('status') is-invalid @enderror"
                                                     required data-toggle="select">
-                                                    @if ( $ticket->status == 0 )
-                                                    <option value="{{ $ticket->status }}">En Espera</option>
-                                                    <option value="1">Solucionado</option>
-                                                    <option value="2">Procesando</option>
-                                                    <option value="3">Cancelada</option>
-                                                    @elseif($ticket->status == 1)
-                                                    <option value="{{ $ticket->status }}">Solucionado</option>
-                                                    <option value="0">En Espera</option>
-                                                    <option value="2">Procesando</option>
-                                                    <option value="3">Cancelada</option>
-
-                                                    @elseif($ticket->status == 2)
-                                                    <option value="{{ $ticket->status }}">Procesando</option>
-                                                    <option value="0">En Espera</option>
-                                                    <option value="1">Solucionado</option>
-                                                    <option value="3">Cancelada</option>
-
-                                                    @elseif($ticket->status == 3)
-                                                    <option value="{{ $ticket->status }}">Cancelada</option>
-                                                    <option value="0">En Espera</option>
-                                                    <option value="1">Solucionado</option>
-                                                    <option value="2">Procesando</option>
-                                                    @endif
+                                                    <option value="0" @if($ticket->status == '0') selected  @endif>En Espera</option>
+                                                    <option value="1" @if($ticket->status == '1') selected  @endif>Solucionado</option>
+                                                    <option value="2" @if($ticket->status == '2') selected  @endif>Procesando</option>
+                                                    <option value="3" @if($ticket->status == '3') selected  @endif>Cancelada</option>
                                                 </select>
                                             </div>
                                         </div>

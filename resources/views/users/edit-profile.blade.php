@@ -95,7 +95,7 @@
                         </li>
                     </ul>
                 </div>
-
+ 
 
 
                 <!-- right content section -->
@@ -228,8 +228,6 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        @csrf
-                                                        @method('PATCH')
                                                         <div class="controls">
                                                             <label class="required" for="account-phone">Website</label>
                                                             <input type="text"

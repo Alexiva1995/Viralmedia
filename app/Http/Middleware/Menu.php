@@ -341,7 +341,7 @@ class Menu
             // Usuarios
             'Usuarios' => [
                 'submenu' => 0,
-                'ruta' => route('users'),
+                'ruta' => route('users.list-user'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'fa fa-users',
                 'complementoruta' => '',

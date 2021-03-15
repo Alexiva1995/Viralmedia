@@ -1,23 +1,24 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
 <div id="record">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <h1>Historial de Tickets</h1>
+                        <h1>Lista de Usuarios</h1>
                         <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Whatsapp</th>
+                                    <th>Perfil</th>
                                     <th>Email</th>
-                                    <th>Asunto</th>
-                                    <th>Descripción</th>
+                                    <th>Fondo</th>
+                                    <th>Rol</th>
                                     <th>Estado</th>
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
@@ -25,28 +26,34 @@
                             </thead>
 
                             <tbody>
-                                 @foreach ($ticket as $item)
+                                 @foreach ($user as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->whatsapp}}</td>
+                                    <td>{{ $item->fullname}}</td>
                                     <td>{{ $item->email}}</td>
-                                    <td>{{ $item->issue}}</td>
-                                    <td>{{ $item->description}}</td>
+                                    <td>{{ $item->balance}}</td>
+
+                                    @if ($item->admin == '1')
+                                    <td><a class=" btn btn-success text-white text-bold-600">Administrador</a></td>
+                                    @else
+                                    <td><a class=" btn btn-secondary text-white text-bold-600">Normal</a></td>
+                                    @endif
+
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
+                                    <td> <a class=" btn btn-info text-white text-bold-600">Inactivo</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Solucionado</a></td>
+                                    <td> <a class=" btn btn-success text-white text-bold-600">Activo</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Procesando</a></td>
+                                    <td> <a class=" btn btn-warning text-white text-bold-600">Suspendido</a></td>
                                     @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Bloqueado</a></td>
+                                    @elseif($item->status == '4')
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Caducado</a></td>
+                                    @elseif($item->status == '5')
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Eliminado</a></td>
                                     @endif
                                     <td>{{ $item->created_at}}</td>
-                                    @if ($item->status == '0')
-                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
-                                    @else
-                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
-                                    @endif
+                                    <td><a href="{{ route('users.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

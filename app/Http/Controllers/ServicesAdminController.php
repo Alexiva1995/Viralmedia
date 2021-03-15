@@ -215,6 +215,8 @@ class ServicesAdminController extends Controller
     {
         $orden = OrdenService::all();
 
+        View::share('titleg', 'Historial de Ordenes');
+
         return view('record.componenteRecord.admin.orders-admin')
         ->with('orden', $orden);
     }

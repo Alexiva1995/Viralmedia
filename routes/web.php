@@ -97,9 +97,13 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     //Ruta usuarios
     Route::prefix('user')->group(function(){
 
-            Route::get('/', 'UserController@index')->name('users');
-            Route::get('profile', 'UserController@edit')->name('profile');
-            Route::patch('profile-update', 'UserController@update')->name('profile.update');
+            Route::get('user-list', 'UserController@listUser')->name('users.list-user');
+            Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
+            Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
+
+
+            Route::get('profile', 'UserController@editProfile')->name('profile');
+            Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
     });
 
     //Ruta logs

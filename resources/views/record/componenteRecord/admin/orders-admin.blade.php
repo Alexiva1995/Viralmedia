@@ -39,11 +39,7 @@
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
                                     @endif
                                     <td>{{ $item->created_at}}</td>
-                                    @if($item->status == '0')
-                                    <td><a href="{{ route('record_order.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
-                                    @else
-                                    <td><a href="{{ route('record_order.show-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
-                                    @endif
+                                    <td><a href="{{ route('record_order.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
