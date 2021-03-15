@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@section('content')
 <div id="record">
     <div class="col-12">
         <div class="card">
@@ -23,6 +21,7 @@
                                     <th>Estatus</th>
                                     <th>Link</th>
                                     <th>Fecha de Creacion</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
 
@@ -38,12 +37,17 @@
                                     @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Rechazada</a></td>
+                                    <td> <a class=" btn btn-warning text-white text-bold-600">Rechazada</a></td>
                                     @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
                                     @endif
                                     <td>{{ $item->link}}</td>
                                     <td>{{ $item->created_at}}</td>
+                                    @if($item->status == '0')
+                                    <td><a href="{{ route('record_order.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
+                                    @else
+                                    <td><a href="{{ route('record_order.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

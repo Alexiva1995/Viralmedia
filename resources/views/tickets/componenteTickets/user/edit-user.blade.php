@@ -19,38 +19,44 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email de contacto</label>
-                                            <input type="email"  id="email" class="form-control" value="{{ $ticket->email }}" name="email">
+                                            <input type="email" id="email" class="form-control"
+                                                value="{{ $ticket->email }}" name="email">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Whatsapp de contacto</label>
-                                            <input type="text"  id="whatsapp" class="form-control" value="{{ $ticket->whatsapp }}" name="whatsapp">
+                                            <input type="text" id="whatsapp" class="form-control"
+                                                value="{{ $ticket->whatsapp }}" name="whatsapp">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Asunto del Ticket</label>
-                                            <input type="text" id="issue"  class="form-control" value="{{ $ticket->issue }}" name="issue">
+                                            <input type="text" id="issue" class="form-control"
+                                                value="{{ $ticket->issue }}" name="issue">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Especificación del Ticket</label>
-                                            <textarea type="text" rows="5"  id="description" class="form-control" name="description">{{ $ticket->description }}</textarea>
+                                            <textarea type="text" rows="5" id="description" class="form-control"
+                                                name="description">{{ $ticket->description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nota del Administrador</label>
-                                            <textarea type="text" rows="5"  id="note_admin" readonly placeholder="En este campo estara la nota que deja el administrador que atendio su orden" class="form-control" name="note_admin">{{$ticket->note_admin}}</textarea>
+                                            <textarea type="text" rows="5" id="note_admin" readonly
+                                                placeholder="En este campo estara la nota que deja el administrador que atendio su orden"
+                                                class="form-control"
+                                                name="note_admin">{{$ticket->note_admin}}</textarea>
                                         </div>
                                     </div>
-
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar Ticket</button>
+                                        <button type="submit"
+                                            class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar Ticket</button>
                                     </div>
-                            
                                 </div>
                             </div>
                         </form>

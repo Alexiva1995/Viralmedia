@@ -94,7 +94,10 @@ class ServiciosController extends Controller
         }
     }
 
-    public function showOrdenUser(Request $request)
+
+    // permite ver la lista de ordenes
+
+    public function indexUser(Request $request)
     {
         $user = Auth::id();
         $categories = Category::all();
@@ -102,12 +105,66 @@ class ServiciosController extends Controller
         $orden = OrdenService::all()
         ->where('iduser', $user);
 
-        return view('record.ordersUser')
+        return view('record.componenteRecord.user.orders-user')
         ->with('orden', $orden)
         ->with('categories', $categories)
         ->with('service', $service);
     }
 
+    // permite editar la orden
+
+    public function editUser(Request $request, $id)
+    {
+        $orden = OrdenService::find($id);
+        return view('record.componenteRecord.user.edit-order-user')
+        ->with('orden', $orden);
+    }
+
+    // permite actualizar la orden
+
+    public function updateUser(Request $request, $id)
+    {
+
+        $orden = OrdenService::find($id);
+
+        
+        $fields = [
+            'link' => ['nullable', 'url'],
+            'email' => ['nullable', 'email'],
+            'whatsapp' => ['nullable', 'string'],
+        ];
+        
+        $msj = [
+            // 'email.required' => 'Es requerido el Estatus de la Orden',
+            // 'whatsapp.required' => 'Es requerido el Estatus de la Orden',
+            // 'link.required' => 'Es requerido el Estatus de la Orden',
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $orden->update($request->all());
+        $orden->save();
+        
+        return redirect()->route('record_order.index-user')->with('msj-success', 'Orden '.$id.' Actualizado');
+
+    }
+
+    // permite ver la orden
+
+    public function showUser(Request $request, $id)
+    {
+        $orden = OrdenService::find($id);
+        return view('record.componenteRecord.user.show-order-user')
+        ->with('orden', $orden);
+    }
+
+
+
+
+
+
+
+ 
     /**
      * Permite obtener la cantidad de ordenes que tiene un usuario
      *

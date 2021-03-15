@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@section('content')
 <div id="record">
     <div class="col-12">
         <div class="card">
@@ -21,7 +19,7 @@
                                     <th>Servicio</th>
                                     <th>Estatus</th>
                                     <th>Fecha de Creacion</th>
-                                    <th>Accion</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead> 
                             <tbody>
@@ -36,15 +34,15 @@
                                     @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Rechazada</a></td>
+                                    <td> <a class=" btn btn-warning text-white text-bold-600">Rechazada</a></td>
                                     @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
                                     @endif
                                     <td>{{ $item->created_at}}</td>
                                     @if($item->status == '0')
-                                    <td><a href="{{ route('record_order.edit',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
+                                    <td><a href="{{ route('record_order.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
                                     @else
-                                    <td><a class="btn btn-secondary text-bold-600">Sin Acción</a></td>
+                                    <td><a href="{{ route('record_order.show-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
                                     @endif
                                 </tr>
                                 @endforeach
@@ -55,9 +53,7 @@
             </div>
         </div>
     </div>
-
 </div>
-
 
 @endsection
 

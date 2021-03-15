@@ -22,34 +22,29 @@ class ServicesAdminController extends Controller
      */
     public function index()
     {
-        // try {
-        //     // title
-        //     View::share('titleg', 'Servicios');
+         try {
+             // title
+             View::share('titleg', 'Servicios');
 
-        //     $categories = Category::all()->where('status', 1);
-        //     if (!empty(request()->category)) {
-        //         $services = Service::all()->where('categories_id', request()->category);
-        //         foreach ($services as $service) {
-        //             $service->input_adicionales = null;
-        //             if ($service->input_adicionales != null || $service->input_adicionales != '') {
-        //                 $service->input_adicionales = json_decode($service->input_adicionales);
-        //             }
-        //         }
-        //         $category = Category::find(request()->category);
-        //         $name_category = $category->name;
-        //     }
-        //     $types_services = $this->getServiceType();
-        //     $api_providers = $this->getAPIProvider();
+             $categories = Category::all()->where('status', 1);
+             if (!empty(request()->category)) {
+                 $services = Service::all()->where('categories_id', request()->category);
+                 foreach ($services as $service) {
+                     $service->input_adicionales = null;
+                     if ($service->input_adicionales != null || $service->input_adicionales != '') {
+                         $service->input_adicionales = json_decode($service->input_adicionales);
+                     }
+                 }
+                 $category = Category::find(request()->category);
+                 $name_category = $category->name;
+             }
+             $types_services = $this->getServiceType();
+             $api_providers = $this->getAPIProvider();
 
-        // return view('manager_services.services.index', compact('categories', 'services', 'types_services', 'api_providers','name_category'));
-        // } catch (\Throwable $th) {
-        //     dd($th);
-        // }
-
-        $orden = OrdenService::all();
-
-        return view('record.orders')
-        ->with('orden', $orden);
+         return view('manager_services.services.index', compact('categories', 'services', 'types_services', 'api_providers','name_category'));
+         } catch (\Throwable $th) {
+             dd($th);
+         }
 
 
     }
@@ -152,89 +147,44 @@ class ServicesAdminController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
 
-        $orden = OrdenService::find($id);
-        return view('record.componenteRecord.edit-order')
-        ->with('orden', $orden);
-        // try {
-        //     $service = Service::find($id);
-        //     $service->input_adicionales = json_decode($service->input_adicionales);
-        //     return json_encode($service);
-        // } catch (\Throwable $th) {
-        //     dd($th);
-        // }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
-        $orden = OrdenService::find($id);
+             $validate = $request->validate([
+            'package_name' => ['required'],
+            'categories_id' => ['required'],
+            'minimum_amount' => ['required'],
+            'maximum_amount' => ['required'],
+            'price' => ['required'],
+            'type_services' => ['required'],
+            'type' => ['required']
 
-        $fields = [
-            'status' => ['required']
-        ];
-        
-        $msj = [
-            'status.required' => 'Es requerido el Estatus de la Orden',
-        ];
-        
-        $this->validate($request, $fields, $msj);
+             ]);
 
-        $orden->update($request->all());
-        $orden->save();
-        
-        $route = route('services.index').'?category='.$request->categories_id;
-        return redirect($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
-
-            // $validate = $request->validate([
-            //'package_name' => ['required'],
-            //'categories_id' => ['required'],
-            //'minimum_amount' => ['required'],
-            //'maximum_amount' => ['required'],
-            //'price' => ['required'],
-            //'type_services' => ['required'],
-            //'type' => ['required']
-
-            // ]);
-
-        // try {
-        //     if ($validate) {
-        //         $service = Service::find($id);
-        //         $service->package_name = $request->package_name;
-        //         $service->categories_id = $request->categories_id;
-        //         $service->minimum_amount = $request->minimum_amount;
-        //         $service->maximum_amount = $request->maximum_amount;
-        //         $service->price = $request->price;
-        //         $service->status = $request->status;
-        //         $request->input_adicionales = json_encode($request->input_adicionales);
-        //         $service->type_services = $request->type_services;
-        //         $service->drip_feed = (!empty($request->drip_feed)) ? $request->drip_feed : $service->drip_feed;
-        //         $service->type = $request->type;
-        //         $service->api_provide_name = $request->api_provide_name;
-        //         $service->api_service_id = $request->api_service_id;
-        //         $service->description = $request->description;
-        //         $service->save();
-        //         $route = route('services.index').'?category='.$request->categories_id;
-        //         return redirect($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
-        //     }
-        // } catch (\Throwable $th) {
-        //     dd($th);
-        // }
+         try {
+             if ($validate) {
+                 $service = Service::find($id);
+                 $service->package_name = $request->package_name;
+                 $service->categories_id = $request->categories_id;
+                 $service->minimum_amount = $request->minimum_amount;
+                 $service->maximum_amount = $request->maximum_amount;
+                 $service->price = $request->price;
+                 $service->status = $request->status;
+                 $request->input_adicionales = json_encode($request->input_adicionales);
+                 $service->type_services = $request->type_services;
+                 $service->drip_feed = (!empty($request->drip_feed)) ? $request->drip_feed : $service->drip_feed;
+                 $service->type = $request->type;
+                 $service->api_provide_name = $request->api_provide_name;
+                 $service->api_service_id = $request->api_service_id;
+                 $service->description = $request->description;
+                 $service->save();
+                 $route = route('services.index').'?category='.$request->categories_id;
+                 return redirect($route)->with('msj-success', 'Servicio '.$id.' Actualizado ');
+             }
+         } catch (\Throwable $th) {
+             dd($th);
+         }
     }
 
     /**
@@ -255,4 +205,70 @@ class ServicesAdminController extends Controller
             dd($th);
         }
     }
+
+
+
+
+    // permite ver la lista de ordenes
+
+    public function indexAdmin()
+    {
+        $orden = OrdenService::all();
+
+        return view('record.componenteRecord.admin.orders-admin')
+        ->with('orden', $orden);
+    }
+
+    // permite editar la orden
+
+    public function editAdmin($id)
+    {
+
+        $orden = OrdenService::find($id);
+        return view('record.componenteRecord.admin.edit-order-admin')
+        ->with('orden', $orden);
+        // try {
+        //     $service = Service::find($id);
+        //     $service->input_adicionales = json_decode($service->input_adicionales);
+        //     return json_encode($service);
+        // } catch (\Throwable $th) {
+        //     dd($th);
+        // }
+    }
+
+    // permite actualizar la orden
+
+    public function updateAdmin(Request $request, $id)
+    {
+
+        $orden = OrdenService::find($id);
+
+        $fields = [
+            'status' => ['required']
+        ];
+        
+        $msj = [
+            'status.required' => 'Es requerido el Estatus de la Orden',
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $orden->update($request->all());
+        $orden->save();
+        
+        return redirect()->route('record_order.index-admin')->with('msj-success', 'Orden '.$id.' Actualizado');
+
+    }
+
+    // permite ver la orden
+
+    public function showAdmin($id)
+    {
+   
+       $orden = OrdenService::find($id);
+       return view('record.componenteRecord.admin.show-order-admin')
+       ->with('orden', $orden);
+    }
+   
+
 }

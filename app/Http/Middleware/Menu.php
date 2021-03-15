@@ -129,7 +129,7 @@ class Menu
             // Historial de Ordenes
             'Historial de Ordenes' => [
                 'submenu' => 0,
-                'ruta' => route('record_order_user'),
+                'ruta' => route('record_order.index-user'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
@@ -230,7 +230,7 @@ class Menu
                     [
                         'name' => 'Historial Ordenes',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('record_order'),
+                        'ruta' => route('record_order.index-admin'),
                         'complementoruta' => ''
                     ],
                     [

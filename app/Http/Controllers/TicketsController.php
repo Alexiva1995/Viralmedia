@@ -17,12 +17,14 @@ use Illuminate\Validation\ValidationException;
 class TicketsController extends Controller
 {
 
-    // funciones del user
+    // permite ver la vista de creacion del ticket
 
     public function create(){
 
         return view('tickets.create');
     }
+
+    // permite la creacion del ticket
 
     public function store(Request $request){
 
@@ -51,6 +53,8 @@ class TicketsController extends Controller
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
 
+    // permite editar el ticket
+
     public function editUser($id){
 
         $ticket = Ticket::find($id);
@@ -58,6 +62,8 @@ class TicketsController extends Controller
         return view('tickets.componenteTickets.user.edit-user')
         ->with('ticket', $ticket);
     }
+
+    // permite actualizar el ticket
 
     public function updateUser(Request $request, $id){
 
@@ -88,6 +94,7 @@ class TicketsController extends Controller
         return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
     }
 
+    // permite ver la lista de tickets
 
     public function listUser(Request $request){
 
@@ -96,6 +103,8 @@ class TicketsController extends Controller
         return view('tickets.componenteTickets.user.list-user')
         ->with('ticket', $ticket);
     }
+
+    // permite ver el ticket
 
     public function showUser($id){
 
@@ -108,12 +117,8 @@ class TicketsController extends Controller
 
 
 
+    // permite editar el ticket
 
-
-
-
-
-    // funciones del admin
     public function editAdmin($id){
 
         $ticket = Ticket::find($id);
@@ -121,6 +126,8 @@ class TicketsController extends Controller
         return view('tickets.componenteTickets.admin.edit-admin')
         ->with('ticket', $ticket);
     }
+
+    // permite actualizar el ticket
 
     public function updateAdmin(Request $request, $id){
 
@@ -146,6 +153,8 @@ class TicketsController extends Controller
         return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
     }
 
+    // permite ver la lista de tickets
+
     public function listAdmin(){
         
         $ticket = Ticket::all();
@@ -153,6 +162,8 @@ class TicketsController extends Controller
         return view('tickets.componenteTickets.admin.list-admin')
         ->with('ticket', $ticket);
     }
+
+    // permite ver el ticket
 
     public function showAdmin($id){
 

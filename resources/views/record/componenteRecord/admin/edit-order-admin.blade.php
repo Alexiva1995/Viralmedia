@@ -2,11 +2,8 @@
 
 @section('content')
 
-
-@section('content')
-
 <section class="multiple-validation">
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -14,7 +11,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form id="contact-form" method="POST" action="{{ route('record_order.update', $orden->id)}}"
+                        <form id="contact-form" method="POST" action="{{ route('record_order.update-admin', $orden->id)}}"
                             role="form">
                             @csrf
                             @method('PATCH')
@@ -49,6 +46,15 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="controls">
+                                            <label>Whatsapp</label>
+                                            <input type="text" class="form-control" readonly
+                                                value="{{ $orden->link}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="controls">
                                             <label>Categoria</label>
                                             <input type="text" class="form-control" readonly
                                                 value="{{ $orden->getOrdenCategorie->name}}">
@@ -68,7 +74,8 @@
                                     <div class="form-group">
                                         <div class="controls">
                                             <label>Monto de la Orden</label>
-                                            <input type="text" class="form-control" readonly value="{{ $orden->total}}">
+                                            <input type="text" class="form-control" readonly 
+                                            value="{{ $orden->total}}">
                                         </div>
                                     </div>
                                 </div>

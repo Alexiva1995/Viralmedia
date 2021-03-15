@@ -8,7 +8,8 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Atendiendo el Ticket #{{ $ticket->id}}</h4>
-                    <h4 class="card-title mt-1">Usuario: <span class="text-primary">{{ $ticket->getUser->fullname}}</span></h4>
+                    <h4 class="card-title mt-1">Usuario: <span
+                            class="text-primary">{{ $ticket->getUser->fullname}}</span></h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -20,32 +21,41 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email de contacto</label>
-                                            <input type="email" readonly id="email" class="form-control" value="{{ $ticket->email }}" name="email">
+                                            <input type="email" readonly id="email" class="form-control"
+                                                value="{{ $ticket->email }}" name="email">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Whatsapp de contacto</label>
-                                            <input type="text" readonly id="whatsapp" class="form-control" value="{{ $ticket->whatsapp }}" name="whatsapp">
+                                            <input type="text" readonly id="whatsapp" class="form-control"
+                                                value="{{ $ticket->whatsapp }}" name="whatsapp">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Asunto del Ticket</label>
-                                            <input type="text" id="issue" readonly class="form-control" value="{{ $ticket->issue }}" name="issue">
+                                            <input type="text" id="issue" readonly class="form-control"
+                                                value="{{ $ticket->issue }}" name="issue">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Especificación del Ticket</label>
-                                            <textarea type="text" rows="5" readonly id="description" class="form-control" name="description">{{ $ticket->description }}</textarea>
+                                            <textarea type="text" rows="5" readonly id="description"
+                                                class="form-control"
+                                                name="description">{{ $ticket->description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nota del Administrador</label>
-                                            <span class="text-danger text-bold-600">(Dejar nota Obligatoria para el usuario)</span>
-                                            <textarea type="text" rows="5"  id="note_admin" placeholder="En este campo estara la nota que deja el administrador que atendio su orden" class="form-control" name="note_admin">{{$ticket->note_admin}}</textarea>
+                                            <span class="text-danger text-bold-600">(Dejar nota Obligatoria para el
+                                                usuario)</span>
+                                            <textarea type="text" rows="5" id="note_admin"
+                                                placeholder="En este campo estara la nota que deja el administrador que atendio su orden"
+                                                class="form-control"
+                                                name="note_admin">{{$ticket->note_admin}}</textarea>
                                         </div>
                                     </div>
 
@@ -67,13 +77,13 @@
                                                     <option value="0">En Espera</option>
                                                     <option value="2">Procesando</option>
                                                     <option value="3">Cancelada</option>
-    
+
                                                     @elseif($ticket->status == 2)
                                                     <option value="{{ $ticket->status }}">Procesando</option>
                                                     <option value="0">En Espera</option>
                                                     <option value="1">Solucionado</option>
                                                     <option value="3">Cancelada</option>
-    
+
                                                     @elseif($ticket->status == 3)
                                                     <option value="{{ $ticket->status }}">Cancelada</option>
                                                     <option value="0">En Espera</option>
@@ -84,12 +94,11 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar Ticket</button>
+                                        <button type="submit"
+                                            class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar
+                                            Ticket</button>
                                     </div>
-                            
-
                                 </div>
                             </div>
                         </form>

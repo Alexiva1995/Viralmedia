@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@section('content')
 <div id="record">
     <div class="col-12">
         <div class="card">
@@ -47,10 +45,8 @@
                                     <td>{{ $item->created_at}}</td>
                                     @if ($item->status == '0')
                                     <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
-                                    @elseif($item->status == '1' || $item->status == '2' )
-                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
                                     @else
-                                    <td><a class="btn btn-secondary text-bold-600">Sin Acción</a></td>
+                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
                                     @endif
                                 </tr>
                                 @endforeach

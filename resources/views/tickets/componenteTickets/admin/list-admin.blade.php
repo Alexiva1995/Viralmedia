@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@section('content')
 <div id="record">
     <div class="col-12">
         <div class="card">
@@ -45,7 +43,7 @@
                                     <td>{{ $item->created_at}}</td>
                                     @if ($item->status == '0' || $item->status == '2')
                                     <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Atender</a></td>
-                                    @elseif($item->status == '1' )
+                                    @else
                                     <td><a href="{{ route('ticket.show-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
                                     @endif
                                 </tr>

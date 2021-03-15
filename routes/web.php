@@ -52,11 +52,17 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('record')->group(function()
     {
         //Ruta para historial de ordenes 
-        Route::get('/', 'ServicesAdminController@index')->name('record_order');
-        Route::get('order/{id}', 'ServicesAdminController@edit')->name('record_order.edit');
-        Route::patch('order/{id}', 'ServicesAdminController@update')->name('record_order.update');
+        Route::get('orders/admin', 'ServicesAdminController@indexAdmin')->name('record_order.index-admin');
+        Route::get('order/admin/{id}', 'ServicesAdminController@editAdmin')->name('record_order.edit-admin');
+        Route::patch('order/admin/{id}', 'ServicesAdminController@updateAdmin')->name('record_order.update-admin');
+        Route::get('order/show/admin/{id}','ServicesAdminController@showAdmin')->name('record_order.show-admin');
+
         //Ruta para historial de ordenes de usuarios
-        Route::get('orders/user', 'ServiciosController@showOrdenUser')->name('record_order_user');
+        Route::get('orders/user', 'ServiciosController@indexUser')->name('record_order.index-user');
+        Route::get('orders/user/{id}', 'ServiciosController@editUser')->name('record_order.edit-user');
+        Route::patch('orders/user/{id}', 'ServiciosController@updateUser')->name('record_order.update-user');
+        Route::get('order/show/user/{id}','ServiciosController@showUser')->name('record_order.show-user');
+
         //Ruta para historial de comisiones
         Route::get('commissions', 'RecordController@indexCommissions')->name('record_commission');
         //Ruta para historial de pedidos

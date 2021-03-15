@@ -36,20 +36,22 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Especifique la situacion</label>
-                                            <textarea type="text" rows="5" id="description" class="form-control" name="description"></textarea>
+                                            <textarea type="text" rows="5" id="description" class="form-control"
+                                                name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nota del Administrador</label>
-                                            <textarea type="text" rows="5" readonly id="note_admin" class="form-control" name="note_admin">En este campo estara la nota que deja el administrador que atendio su orden</textarea>
+                                            <textarea type="text" rows="5" readonly id="note_admin" class="form-control"
+                                                name="note_admin">En este campo estara la nota que deja el administrador que atendio su orden</textarea>
                                         </div>
                                     </div>
-
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Enviar Ticket</button>
+                                        <button type="submit"
+                                            class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Enviar
+                                            Ticket</button>
                                     </div>
-
                                 </div>
                             </div>
                         </form>
