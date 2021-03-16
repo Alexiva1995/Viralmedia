@@ -24,4 +24,5 @@
 
 <!-- BEGIN: Custom js-->
 @stack('custom_js')
+
 <!-- END: Custom js-->

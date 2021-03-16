@@ -15,7 +15,7 @@
                                     Contacta con nosotros, estaremos <br>
                                     encantado de ayudarte
                                 </p>
-                                <a href="javascript:;"
+                                <a href="{{route('ticket.create')}}"
                                     class="btn text-white padding-button-short btn-block bg-purple-alt2 mt-1 waves-effect waves-light">CONTACTANOS</a
                                     href="javascript:;">
                     </div>

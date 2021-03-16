@@ -32,7 +32,7 @@
                                     <td> admin@viralmedia.com</td>
                                     <td>Vnezuela</td>                                    
                                     <td>12/28/2020</td> 
-                                    <td>Pendiente</td>                                   
+                                    <td>En Espera</td>                                   
                                     <td> 1000</td>
                                 </tr>
                                
