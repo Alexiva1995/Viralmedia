@@ -79,16 +79,23 @@
                                 Más información
                             </a>
                         </li> --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill"
                                 href="#account-vertical-social" aria-expanded="false">
                                 <i class="feather icon-link mr-50 font-medium-3"></i>
                                 Tu clave API
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill"
                                 href="#account-vertical-password" aria-expanded="false">
+                                <i class="feather icon-lock mr-50 font-medium-3"></i>
+                                Cambiar la contraseña
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex py-75"
+                                href="{{ route('profile.change-password')}}">
                                 <i class="feather icon-lock mr-50 font-medium-3"></i>
                                 Cambiar la contraseña
                             </a>
@@ -373,7 +380,7 @@
                                 </div> --}}
 
 
-                                <div class="tab-pane fade " id="account-vertical-social" role="tabpanel"
+                              {{-- <div class="tab-pane fade " id="account-vertical-social" role="tabpanel"
                                     aria-labelledby="account-pill-social" aria-expanded="false">
                                     <form>
                                         <div class="row ">
@@ -461,7 +468,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>

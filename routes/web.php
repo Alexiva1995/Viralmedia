@@ -104,6 +104,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
             Route::get('profile', 'UserController@editProfile')->name('profile');
             Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
+
+            Route::get('change-password', 'ChangePasswordController@index')->name('profile.change-password');
+            Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
     });
 
     //Ruta logs
