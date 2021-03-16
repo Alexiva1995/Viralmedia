@@ -14,27 +14,21 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>Ranking</th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Pais</th>
-                                    <th>Cantidad de referidos</th>
-                                    <th>Balance</th>
-                                    
+                                    <th>Usuario</th>
+                                    <th>Referidos</th>
+                                    <th>Total de Comisiones</th>
                                 </tr>
-                            </thead>
+                            </thead> 
+                            @foreach ($user as $key => $item)                                
                             <tbody>
                                 <tr class="text-center">
-                                    <td> 1</td>
-                                    <td> 1</td>
-                                    <td> admin</td>
-                                    <td> admin@viralmedia.com</td>
-                                    <td>Venezuela</td>
-                                    <td> 50</td>                                    
-                                    <td> 1000</td>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $item->fullname }}</td>
+                                    <td>{{ $totalReferidos }} FALTA</td>                                    
+                                    <td>FALTA</td>
                                 </tr>
-                               
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

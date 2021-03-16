@@ -24,6 +24,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 {
     // Inicio
     Route::get('/home', 'HomeController@index')->name('home');
+     // Inicio de usuarios
+    Route::get('/home-user', 'HomeController@index')->name('home.user');
     // Ruta para obtener la informacion de la graficas del dashboard
     Route::get('getdatagraphicdashboard', 'HomeController@getDataGraphic')->name('home.data.graphic');
 
@@ -50,7 +52,17 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('record')->group(function()
     {
         //Ruta para historial de ordenes 
-        Route::get('/', 'RecordController@index')->name('record_order');
+        Route::get('orders/admin', 'ServicesAdminController@indexAdmin')->name('record_order.index-admin');
+        Route::get('order/admin/{id}', 'ServicesAdminController@editAdmin')->name('record_order.edit-admin');
+        Route::patch('order/admin/{id}', 'ServicesAdminController@updateAdmin')->name('record_order.update-admin');
+        Route::get('order/show/admin/{id}','ServicesAdminController@showAdmin')->name('record_order.show-admin');
+
+        //Ruta para historial de ordenes de usuarios
+        Route::get('orders/user', 'ServiciosController@indexUser')->name('record_order.index-user');
+        Route::get('orders/user/{id}', 'ServiciosController@editUser')->name('record_order.edit-user');
+        Route::patch('orders/user/{id}', 'ServiciosController@updateUser')->name('record_order.update-user');
+        Route::get('order/show/user/{id}','ServiciosController@showUser')->name('record_order.show-user');
+
         //Ruta para historial de comisiones
         Route::get('commissions', 'RecordController@indexCommissions')->name('record_commission');
         //Ruta para historial de pedidos
@@ -81,9 +93,21 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('comunity','FollowersController@comunity')->name('comunity');
 
     });
+    
     //Ruta usuarios
     Route::prefix('user')->group(function(){
-        Route::get('/', 'UserController@index')->name('users');
+
+            Route::get('user-list', 'UserController@listUser')->name('users.list-user');
+            Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
+            Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
+
+
+            Route::get('profile', 'UserController@editProfile')->name('profile');
+            Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
+
+            Route::get('change-password', 'ChangePasswordController@index')->name('profile.change-password');
+            Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
     });
 
     //Ruta logs
@@ -99,6 +123,23 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
     });
 
+     //Ruta de los Tickets
+     Route::prefix('tickets')->group(function(){
+        Route::get('ticket-create','TicketsController@create')->name('ticket.create');
+        Route::post('ticket-store','TicketsController@store')->name('ticket.store');
+
+        // Para el usuario
+        Route::get('ticket-edit-user/{id}','TicketsController@editUser')->name('ticket.edit-user');
+        Route::patch('ticket-update-user/{id}','TicketsController@updateUser')->name('ticket.update-user');
+        Route::get('ticket-list-user','TicketsController@listUser')->name('ticket.list-user');
+        Route::get('ticket-show-user/{id}','TicketsController@showUser')->name('ticket.show-user');
+
+        // Para el Admin
+        Route::get('ticket-edit-admin/{id}','TicketsController@editAdmin')->name('ticket.edit-admin');
+        Route::patch('ticket-update-admin/{id}','TicketsController@updateAdmin')->name('ticket.update-admin');
+        Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
+        Route::get('ticket-show-admin/{id}','TicketsController@showAdmin')->name('ticket.show-admin');
+    });
 
     // Ruta para agregar saldo
     Route::prefix('addsaldo')->group(function ()

@@ -67,9 +67,9 @@ class ServiciosController extends Controller
             'email' => ['nullable', 'email'],
             'email_respaldo' => ['nullable', 'email'], 
             'whatsapp' => ['nullable', 'string'],
-            'total' => ['required']
+            'total' => ['required'],
+            'status' => ['0'],
         ]);
-
         try {
             if ($validate){
                 $user = User::find($request->iduser);
@@ -77,17 +77,96 @@ class ServiciosController extends Controller
                 //     $concepto = "Su Saldo Es Insuficiente para realizar esta compra";
                 //     return redirect()->back()->with('msj-warning', $concepto);    
                 // }
+                $orden = User::all();
+                if($user->balance >= '10'){
                 $orden = OrdenService::create($request->all());
                 $saldoAcumulado = ($orden->getOrdenUser->balance - $request->total);
                 $orden->getOrdenUser->update(['balance' => $saldoAcumulado]);
-                $concepto = "Orden N° ".$orden->id." Procesada Exitosamente";
+                $concepto = "Orden N° ".$orden->id." Procesando Exitosamente";
                 return redirect()->back()->with('msj-success', $concepto);
+            }else{
+                
+                return redirect()->back()->with('msj-warning', 'Saldo Insuficiente, Servicio no Adquirido');
+            }
             }
         } catch (\Throwable $th) {
             dd($th);
         }
     }
 
+
+    // permite ver la lista de ordenes
+
+    public function indexUser(Request $request)
+    {
+        $user = Auth::id();
+        $categories = Category::all();
+        $service = Service::all();
+        $orden = OrdenService::all()
+        ->where('iduser', $user);
+
+        View::share('titleg', 'Historial de Ordenes');
+
+        return view('record.componenteRecord.user.orders-user')
+        ->with('orden', $orden)
+        ->with('categories', $categories)
+        ->with('service', $service);
+    }
+
+    // permite editar la orden
+
+    public function editUser(Request $request, $id)
+    {
+        $orden = OrdenService::find($id);
+        return view('record.componenteRecord.user.edit-order-user')
+        ->with('orden', $orden);
+    }
+
+    // permite actualizar la orden
+
+    public function updateUser(Request $request, $id)
+    {
+
+        $orden = OrdenService::find($id);
+
+        
+        $fields = [
+            'link' => ['nullable', 'url'],
+            'email' => ['nullable', 'email'],
+            'whatsapp' => ['nullable', 'string'],
+        ];
+        
+        $msj = [
+            // 'email.required' => 'Es requerido el Estatus de la Orden',
+            // 'whatsapp.required' => 'Es requerido el Estatus de la Orden',
+            // 'link.required' => 'Es requerido el Estatus de la Orden',
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $orden->update($request->all());
+        $orden->save();
+        
+        return redirect()->route('record_order.index-user')->with('msj-success', 'Orden '.$id.' Actualizado');
+
+    }
+
+    // permite ver la orden
+
+    public function showUser(Request $request, $id)
+    {
+        $orden = OrdenService::find($id);
+        return view('record.componenteRecord.user.show-order-user')
+        ->with('orden', $orden);
+    }
+
+
+
+
+
+
+
+ 
     /**
      * Permite obtener la cantidad de ordenes que tiene un usuario
      *
