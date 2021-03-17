@@ -24,7 +24,7 @@
                                 <tr class="text-center">
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $item->fullname }}</td>
-                                    <td>{{ $totalReferidos }} FALTA</td>                                    
+                                    <td>{{ $item->referidos }}</td>                                    
                                     <td>FALTA</td>
                                 </tr>
                             </tbody>
