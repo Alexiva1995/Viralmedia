@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form id="contact-form" method="POST" action="{{ route('record_order.update-admin', $orden->id)}}"
+                        <form id="contact-form" method="POST" action="{{ route('followers.update', $orden->id)}}"
                             role="form">
                             @csrf
                             @method('PATCH')

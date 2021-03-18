@@ -1,8 +1,29 @@
 @extends('layouts.dashboard')
 
+@push('vendor_css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/librerias/emojionearea.min.css')}}">
+@endpush
+
+@push('page_vendor_js')
+<script src="{{asset('assets/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('assets/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
+@endpush
+
+{{-- permite llamar las librerias montadas --}}
+@push('page_js')
+<script src="{{asset('assets/js/librerias/vue.js')}}"></script>
+<script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
+<script src="{{asset('assets/js/librerias/emojionearea.min.js')}}"></script>
+@endpush
+
+@push('custom_js')
+<script src="{{asset('assets/js/ordenRecord.js')}}"></script>
+@endpush
+
 @section('content')
 
-<div id="record">
+<div id="adminrecord">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -39,7 +60,15 @@
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
                                     @endif
                                     <td>{{ $item->created_at}}</td>
-                                    <td><a href="{{ route('record_order.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    <td><a href="{{ route('record_order.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a>
+                                        <button class="btn btn-danger" onclick="vm_ordenRecord.deleteData('{{$item->id}}')">
+                                            <form action="{{route('record_order.destroy-admin', $item->id)}}" method="post" id="delete{{$item->id}}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

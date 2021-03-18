@@ -98,7 +98,7 @@ class TicketsController extends Controller
 
     public function listUser(Request $request){
 
-        $ticket = Ticket::all();
+        $ticket = Ticket::where('iduser', Auth::id())->get();
 
         View::share('titleg', 'Historial de Tickets');
 

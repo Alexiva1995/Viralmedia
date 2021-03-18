@@ -100,6 +100,17 @@ class UserController extends Controller
 
     }
 
+    // permite eliminar una orden
+    
+    public function destroyUser($id)
+    {
+      $user = User::find($id);
+      
+      $user->delete();
+      
+      return redirect()->route('users.list-user')->with('msj-success', 'Usuario '.$id.' Eliminado');
+    }
+
 
 
 
@@ -163,5 +174,6 @@ class UserController extends Controller
         return redirect()->route('profile')->with('msj-success','Se actualizo tu perfil');
 
     }
+    
 
 }

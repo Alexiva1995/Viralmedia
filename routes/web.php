@@ -56,6 +56,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('order/admin/{id}', 'ServicesAdminController@editAdmin')->name('record_order.edit-admin');
         Route::patch('order/admin/{id}', 'ServicesAdminController@updateAdmin')->name('record_order.update-admin');
         Route::get('order/show/admin/{id}','ServicesAdminController@showAdmin')->name('record_order.show-admin');
+        Route::delete('order/delete/admin/{id}','ServicesAdminController@destroyAdmin')->name('record_order.destroy-admin');
 
         //Ruta para historial de ordenes de usuarios
         Route::get('orders/user', 'ServiciosController@indexUser')->name('record_order.index-user');
@@ -88,9 +89,20 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     //Ruta de seguimiento de servicios 
 
     Route::prefix('services')->group(function(){
-        Route::get('list','FollowersController@list')->name('followers');
-        Route::get('graphics','FollowersController@graphic')->name('graphics');
-        Route::get('comunity','FollowersController@comunity')->name('comunity');
+        Route::get('list-followers','FollowersController@listFollowers')->name('followers.list');
+        Route::get('edit-followers/{id}','FollowersController@editFollowers')->name('followers.edit');
+        Route::patch('update-followers/{id}','FollowersController@updateFollowers')->name('followers.update');
+        Route::delete('delete-followers/{id}','FollowersController@destroyFollowers')->name('followers.destroy');
+
+        Route::get('list-graphics','FollowersController@listGraphic')->name('graphics.list');
+        Route::get('edit-graphics/{id}','FollowersController@editGraphic')->name('graphics.edit');
+        Route::patch('update-graphics/{id}','FollowersController@updateGraphic')->name('graphics.update');
+        Route::delete('delete-graphics/{id}','FollowersController@destroyGraphic')->name('graphics.destroy');
+
+        Route::get('comunity','FollowersController@listComunity')->name('comunity.list');
+        Route::get('edit-comunity/{id}','FollowersController@editComunity')->name('comunity.edit');
+        Route::patch('update-comunity/{id}','FollowersController@updateComunity')->name('comunity.update');
+        Route::delete('delete-comunity/{id}','FollowersController@destroyComunity')->name('comunity.destroy');
 
     });
     
@@ -100,6 +112,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
             Route::get('user-list', 'UserController@listUser')->name('users.list-user');
             Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
             Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
+            Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
 
 
             Route::get('profile', 'UserController@editProfile')->name('profile');

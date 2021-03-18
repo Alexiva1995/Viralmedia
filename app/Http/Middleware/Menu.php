@@ -297,19 +297,19 @@ class Menu
                     [
                         'name' => 'Registro Seguidores VIP',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('followers'),
+                        'ruta' => route('followers.list'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Grafico',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('graphics'),
+                        'ruta' => route('graphics.list'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Comunity',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('comunity'),
+                        'ruta' => route('comunity.list'),
                         'complementoruta' => ''
                     ],
                 ],

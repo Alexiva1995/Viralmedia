@@ -1,5 +1,26 @@
 @extends('layouts.dashboard')
 
+@push('vendor_css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/librerias/emojionearea.min.css')}}">
+@endpush
+
+@push('page_vendor_js')
+<script src="{{asset('assets/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('assets/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
+@endpush
+
+{{-- permite llamar las librerias montadas --}}
+@push('page_js')
+<script src="{{asset('assets/js/librerias/vue.js')}}"></script>
+<script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
+<script src="{{asset('assets/js/librerias/emojionearea.min.js')}}"></script>
+@endpush
+
+@push('custom_js')
+<script src="{{asset('assets/js/ordenFollowers.js')}}"></script>
+@endpush
+
 @section('content')
 
 <div id="record">
@@ -19,7 +40,7 @@
                                     <th>Email</th>
                                     <th>Fondo</th>
                                     <th>Rol</th>
-                                    <th>Estado</th>
+                                    {{-- <th>Estado</th> --}}
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
@@ -39,7 +60,7 @@
                                     <td><a class=" btn btn-secondary text-white text-bold-600">Normal</a></td>
                                     @endif
 
-                                    @if ($item->status == '0')
+                                    {{-- @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">Inactivo</a></td>
                                     @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Activo</a></td>
@@ -50,10 +71,22 @@
                                     @elseif($item->status == '4')
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Caducado</a></td>
                                     @elseif($item->status == '5')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Eliminado</a></td>
-                                    @endif
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Eliminado</a></td> 
+                                    @endif --}}
                                     <td>{{ $item->created_at}}</td>
-                                    <td><a href="{{ route('users.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
+                                    <td>@if(Auth::user()->id == $item->id)
+                                    <a href="{{ route('profile') }}" class="btn btn-secondary text-bold-600">Editar</a>
+                                    @else
+                                    <a href="{{ route('users.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a>
+                                    <button class="btn btn-danger" onclick="vm_ordenFollowers.deleteData('{{$item->id}}')">
+                                        <form action="{{route('users.destroy-user', $item->id)}}" method="post" id="delete{{$item->id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
