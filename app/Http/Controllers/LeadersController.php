@@ -3,20 +3,28 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 use App\Models\User;
-
-use Illuminate\Http\Request;
+use App\Http\Controllers\TreeController;
 
 class LeadersController extends Controller
 {
+
+    public $treeController;
+
+    public function __construct()
+    {
+        $this->treeController = new TreeController();
+    }
+
     public function index(){
 
-        $user = User::all();
+        $users = User::all();
 
-        $totalReferidos = User::where('referred_id', '=', 'id')->get()->count('id');
+        foreach ($users as $user) {
+            $user->referidos = count($this->treeController->getChidrens2($user->id, [], 1, 'referred_id', 0));
+        }
 
         View::share('titleg', 'Lideres');
         return view('leaders.index')
-        ->with('user', $user)
-        ->with('totalReferidos', $totalReferidos);
+        ->with('user', $users);
     }
 }
