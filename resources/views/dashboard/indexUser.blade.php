@@ -31,9 +31,15 @@
 {{-- custom js --}}
 @push('custom_js')
 <script src="{{asset('assets/js/dashboard.js')}}"></script>
+<script src="{{asset('assets/js/news.js')}}"></script>
+
 @endpush
 
 @section('content')
+
+{{-- modal de noticia --}}
+@include('ajust.news-component.news-modal')
+
 <section id="dashboard-analytics">
     {{-- Primera Seccion --}}
     @include('dashboard.componente.firstsection')

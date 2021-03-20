@@ -14,13 +14,13 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
-                                    <th>User</th>                          
-                                    <th>Pais</th>
-                                    <th>Fecha</th>
-                                    <th>Tipo de transaccion</th>
-                                    <th>Cantidad</th>
-                                   
-                                    
+                                    <th>Usuario</th>                          
+                                    <th>ID de Transación</th>
+                                    <th>Metodo de Pago</th>
+                                    <th>Monto (Comision Incluida)</th>
+                                    <th>Estado</th>
+                                    <th>Fecha de Creación</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +31,8 @@
                                     <td>12/28/2020</td>
                                     <td> Retiro</td>
                                     <td> 50</td>
-                                    
+                                    <td> 50</td>
+                                    <td> 50</td>
                                 </tr>
                                
                             </tbody>

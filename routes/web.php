@@ -25,7 +25,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     // Inicio
     Route::get('/home', 'HomeController@index')->name('home');
      // Inicio de usuarios
-    Route::get('/home-user', 'HomeController@index')->name('home.user');
+    Route::get('/home-user', 'HomeController@indexUser')->name('home.user');
     // Ruta para obtener la informacion de la graficas del dashboard
     Route::get('getdatagraphicdashboard', 'HomeController@getDataGraphic')->name('home.data.graphic');
 
@@ -130,8 +130,17 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
     //Ruta de Ajuste de sistema
     Route::prefix('system')->group(function(){
+
         Route::get('general','SystemController@general')->name('general');
-        Route::get('news','SystemController@news')->name('news');
+
+        Route::get('news','SystemController@listNews')->name('news.list');
+        Route::get('create-news','SystemController@createNews')->name('news.create');
+        Route::post('store-news','SystemController@storeNews')->name('news.store');
+
+        Route::get('edit-news/{id}','SystemController@editNews')->name('news.edit');
+        Route::patch('update-news/{id}','SystemController@updateNews')->name('news.update');
+        Route::delete('delete-news/{id}','SystemController@destroyNews')->name('news.destroy');
+
         Route::get('languages','SystemController@languages')->name('languages');
 
     });

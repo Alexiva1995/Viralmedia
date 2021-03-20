@@ -19,7 +19,7 @@ var vm_user = new Vue({
             Route: '',
             Option:{
                 service_type: '',
-                type: ''
+                type: '' 
             },
             Description: ''
         }
