@@ -18,12 +18,12 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/ordenFollowers.js')}}"></script>
+<script src="{{asset('assets/js/news.js')}}"></script>
 @endpush
 
 @section('content')
 
-<div id="record">
+<div id="news">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -75,8 +75,8 @@
 
                                     <td>
                                     <a href="{{ route('news.edit', $item->id) }}" class="btn btn-secondary text-bold-600">Editar</a>
-                                    <button class="btn btn-danger" onclick="vm_ordenFollowers.deleteData('{{$item->id}}')">
-                                        <form action="{{route('users.destroy-user', $item->id)}}" method="post" id="delete{{$item->id}}">
+                                    <button class="btn btn-danger" onclick="vm_news.deleteData('{{$item->id}}')">
+                                        <form action="{{route('news.destroy', $item->id)}}" method="post" id="delete{{$item->id}}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

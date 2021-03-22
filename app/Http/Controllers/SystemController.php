@@ -65,7 +65,7 @@ class SystemController extends Controller
         $new = News::find($id);
  
         return view('ajust.news-component.news-edit')
-        ->with('new',$new);
+        ->with('new',$new); 
     }
     
     public function updateNews(Request $request, $id)
@@ -93,6 +93,19 @@ class SystemController extends Controller
 
         return redirect()->route('news.list')->with('msj-success','Se actualizo la Noticia Exitosamente');
     }
+
+
+        // permite eliminar una orden
+    
+        public function destroyNews($id)
+        {
+          $new = News::find($id);
+          
+          $new->delete();
+          
+          return redirect()->route('news.list')->with('msj-success', 'Noticia '.$id.' Eliminado');
+        }
+    
 
 
     public function languages(){

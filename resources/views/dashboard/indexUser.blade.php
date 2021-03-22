@@ -1,3 +1,6 @@
+@php
+$new = \App\Models\News::where('status', '1')->get();
+@endphp
 @extends('layouts.dashboard')
 
 {{-- vendor css --}}
@@ -31,14 +34,29 @@
 {{-- custom js --}}
 @push('custom_js')
 <script src="{{asset('assets/js/dashboard.js')}}"></script>
-<script src="{{asset('assets/js/news.js')}}"></script>
 
+<script>
+    var vm_news = new Vue({
+        el: '#news',
+        created: function(){
+            $(document).ready(function(){
+                $('#modalNew').modal({backdrop: 'static', keyboard: false, show:true})
+            })
+            this.getDataService();
+        },
+    })
+    
+    </script>
 @endpush
 
 @section('content')
 
+@if ($new->status = '1')
+
 {{-- modal de noticia --}}
 @include('ajust.news-component.news-modal')
+
+@endif
 
 <section id="dashboard-analytics">
     {{-- Primera Seccion --}}

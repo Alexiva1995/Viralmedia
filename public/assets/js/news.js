@@ -20,5 +20,24 @@ var vm_news = new Vue({
             }
         },
 
+          /**
+         * Permite borrar un servicio
+         * @param {integer} id 
+         */
+           deleteData: function(id){
+            Swal.fire({
+                title: "Advertencia",
+                text: "Esta seguro que quieres eliminar la Noticia "+id,
+                type: "warning",
+                confirmButtonClass: 'btn btn-primary',
+                buttonsStyling: false,
+            }).then(function(result){
+                if (result.value) {
+                    $('#delete'+id).submit()
+                }
+            });
+        },
+
     }
 })
+
