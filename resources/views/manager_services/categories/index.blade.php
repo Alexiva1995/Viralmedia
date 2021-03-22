@@ -57,10 +57,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button class="btn btn-info" v-on:click="getEditData('{{$category->id}}')">
+                                        <button class="btn btn-info" onclick="vm_category.getEditData('{{$category->id}}')">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <button class="btn btn-danger" v-on:click="deleteData('{{$category->id}}')">
+                                        <button class="btn btn-danger" onclick="vm_category.deleteData('{{$category->id}}')">
                                             <form action="{{route('category.destroy', $category->id)}}" method="post" id="delete{{$category->id}}">
                                                 @csrf
                                                 @method('DELETE')
