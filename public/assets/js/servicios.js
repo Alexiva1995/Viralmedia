@@ -49,7 +49,6 @@ var vm_servicios = new Vue({
          */
         Services: function(){
             if (this.Option.idCategory != 0) {
-                console.log(this.Categories[this.Option.indexCategory].services.length);
                 if (this.Categories[this.Option.indexCategory].services.length == 0) {
                     this.Option.idService = 0
                 }

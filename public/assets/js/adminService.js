@@ -60,10 +60,13 @@ var vm_adminService = new Vue({
             });
         },
 
+        /**
+         * Permite obtener la informacion del servicio
+         * @param {integer} id 
+         */
         getDescription: function(id){
             let url = route('services.show', id)
             axios.get(url).then((response) => {
-                console.log(response.data);
                 this.Description = response.data
                 $('#modalDescriptionServices').modal('show')
             }).catch((error) => {
@@ -75,7 +78,6 @@ var vm_adminService = new Vue({
          * Permite aplicar el filtro selecionado
          */
         aplicFiltro: function(){
-            console.log('entre');
             $('#filtro').submit();
         }
 
