@@ -52,6 +52,11 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="feather icon-user"></i> Editar Perfil
                             </a>
+                            @if (session('impersonated_by'))
+                            <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
+                                <i class="feather icon-user"></i> Volver a mi Usuario
+                            </a>    
+                            @endif
                             {{-- <a class="dropdown-item" href="app-email.html">
                                 <i class="feather icon-mail"></i> My Inbox
                             </a>

@@ -40,7 +40,7 @@
                                     <th>Email</th>
                                     <th>Fondo</th>
                                     <th>Rol</th>
-                                    {{-- <th>Estado</th> --}}
+                                    <th>Estado</th>
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
@@ -55,12 +55,12 @@
                                     <td>{{ $item->balance}}</td>
 
                                     @if ($item->admin == '1')
-                                    <td><a class=" btn btn-success text-white text-bold-600">Administrador</a></td>
+                                    <td>Administrador</td>
                                     @else
-                                    <td><a class=" btn btn-secondary text-white text-bold-600">Normal</a></td>
+                                    <td>Normal</td>
                                     @endif
 
-                                    {{-- @if ($item->status == '0')
+                                    @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">Inactivo</a></td>
                                     @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Activo</a></td>
@@ -72,12 +72,21 @@
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Caducado</a></td>
                                     @elseif($item->status == '5')
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Eliminado</a></td> 
-                                    @endif --}}
+                                    @endif
                                     <td>{{ $item->created_at}}</td>
                                     <td>@if(Auth::user()->id == $item->id)
                                     <a href="{{ route('profile') }}" class="btn btn-secondary text-bold-600">Editar</a>
                                     @else
                                     <a href="{{ route('users.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a>
+                                    
+                                    
+                                    <form action="{{route('impersonate.start', $item)}}" method="POST" class="btn" id="formImpersonate">
+                                        @csrf
+                                    <button class="btn btn-primary">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                     </form>
+
                                     <button class="btn btn-danger" onclick="vm_ordenFollowers.deleteData('{{$item->id}}')">
                                         <form action="{{route('users.destroy-user', $item->id)}}" method="post" id="delete{{$item->id}}">
                                             @csrf

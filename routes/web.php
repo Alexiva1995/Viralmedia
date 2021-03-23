@@ -29,6 +29,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     // Ruta para obtener la informacion de la graficas del dashboard
     Route::get('getdatagraphicdashboard', 'HomeController@getDataGraphic')->name('home.data.graphic');
 
+         // no admin
+         Route::get('/impersonate/stop', 'ImpersonateController@stop')->name('impersonate.stop');
+
     // Servicios
     Route::prefix('servicios')->group(function ()
     {
@@ -192,6 +195,11 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
      */
     Route::prefix('admin')->group(function ()
     {
+
+        // admin
+        Route::post('/impersonate/{user}/start', 'ImpersonateController@start')->name('impersonate.start');
+
+   
         //Agregar servicios
         Route::prefix('manager_services')->group(function ()
         {
