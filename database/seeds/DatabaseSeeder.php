@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(CountryTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ServicesTableSeeder::class);
-        $this->call(TimeZoneTableSeeder::class);
-        $this->call(AddSaldoTableSeeder::class);
-        $this->call(WalletTableSeeder::class);
+        //$this->call(TimeZoneTableSeeder::class);
+        //$this->call(AddSaldoTableSeeder::class);
+        //$this->call(WalletTableSeeder::class);
     }
 }

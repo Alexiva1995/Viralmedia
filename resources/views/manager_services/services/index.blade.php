@@ -57,7 +57,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Type</th>
-                                    <th>Input de Informacion Adicional</th>
+                                    {{-- <th>Input de Informacion Adicional</th> --}}
                                     <th>API ServiceID</th>
                                     <th>API Provider</th>
                                     <th>Precio por cada 1.000($)</th>
@@ -74,13 +74,13 @@
                                     <td>{{$service->id}}</td>
                                     <td>{{$service->package_name}}</td>
                                     <td>{{$service->type}}</td>
-                                    <td>
+                                    {{-- <td>
                                         @if ($service->input_adicionales != null)
                                             @foreach ($service->input_adicionales as $input)
                                                 <p>{{$input}}</p>
                                             @endforeach
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>{{$service->api_service_id}}</td>
                                     <td>{{$service->api_provide_name}}</td>
                                     <td>{{$service->price}}</td>

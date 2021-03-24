@@ -131,6 +131,25 @@ class ServicesAdminController extends Controller
 
     }
 
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $service = Service::find($id);
+            $category = $service->categories_id;
+            $service->delete();
+            $route = route('services.index').'?category='.$category;
+            return redirect($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
