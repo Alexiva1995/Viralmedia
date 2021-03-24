@@ -82,7 +82,26 @@
                                         @endif
                                     </td> --}}
                                     <td>{{$service->api_service_id}}</td>
-                                    <td>{{$service->api_provide_name}}</td>
+
+                                    @if ($service->api_provide_name == '1')
+                                    <td>CustomServer Version 10.1</td>
+                                    @elseif($service->api_provide_name == '2')
+                                    <td>HQ second server</td>
+                                    @elseif($service->api_provide_name == '3')
+                                    <td>Hq tercer servidor dedicated</td>
+                                    @elseif($service->api_provide_name == '4')
+                                    <td>Cuarta Api Dedicated</td>
+                                    @elseif($service->api_provide_name == '5')
+                                    <td>Proxima Api en Proceso</td>
+                                    @elseif($service->api_provide_name == '6')
+                                    <td>yoyo</td>
+                                    @elseif($service->api_provide_name == '7')
+                                    <td>BulkFollows</td>
+                                    @elseif($service->api_provide_name == '8')
+                                    <td>Tony Pannel</td>
+                                    @endif
+
+
                                     <td>{{$service->price}}</td>
                                     <td>{{$service->minimum_amount}} / {{$service->maximum_amount}}</td>
                                     <td>
