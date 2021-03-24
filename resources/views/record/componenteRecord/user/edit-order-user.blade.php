@@ -31,7 +31,7 @@
                                             <label>Email</label>
                                             <span class="text-danger">editable</span>
                                             <input type="email" class="form-control" name="email" id="email"
-                                                value="{{ $orden->email}}">
+                                                value="{{ $orden->getOrdenUser->email}}">
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                             <label>Whatsapp</label>
                                             <span class="text-danger">editable</span>
                                             <input type="text" class="form-control" name="whatsapp" id="whatsapp"
-                                                value="{{ $orden->whatsapp}}">
+                                                value="{{ $orden->getOrdenUser->whatsapp}}">
                                         </div>
                                     </div>
                                 </div>

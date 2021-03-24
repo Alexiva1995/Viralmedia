@@ -208,7 +208,7 @@ class ServicesAdminController extends Controller
 
     public function indexAdmin()
     {
-        $orden = OrdenService::all();
+        $orden = OrdenService::whereIn('categories_id', ['3','4','5','6','7','8','9','14','16','17','18','19'])->get();
 
         View::share('titleg', 'Historial de Ordenes');
 
@@ -241,11 +241,15 @@ class ServicesAdminController extends Controller
         $orden = OrdenService::find($id);
 
         $fields = [
-            'status' => ['required']
+            'status' => ['required'],
+            'count_start' => ['required'],
+            'count_end' => ['required']
         ];
         
         $msj = [
             'status.required' => 'Es requerido el Estatus de la Orden',
+            'count_start.required' => 'Es requerido los seguidores actuales',
+            'count_end.required' => 'Es requerido los seguidores faltantes',
         ];
         
         $this->validate($request, $fields, $msj);

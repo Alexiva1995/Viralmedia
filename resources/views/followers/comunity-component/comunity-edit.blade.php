@@ -93,14 +93,12 @@
                                         <div class="controls">
                                             <label for="status">Estado de la Orden <span
                                                     class="text-danger">OBLIGATORIO</span></label>
-                                            <select name="status" id="status"
-                                                class="custom-select status @error('status') is-invalid @enderror"
-                                                required data-toggle="select">
-                                                <option value="0" @if($orden->status == '0') selected  @endif>En Espera</option>
-                                                <option value="1" @if($orden->status == '1') selected  @endif>Completada</option>
-                                                <option value="2" @if($orden->status == '2') selected  @endif>Rechazada</option>
-                                                <option value="3" @if($orden->status == '3') selected  @endif>Cancelada</option>
-                                            </select>
+                                                    <select name="status" id="status"
+                                                    class="custom-select status @error('status') is-invalid @enderror"
+                                                    required data-toggle="select">
+                                                    <option value="0" @if($orden->status == '0') selected  @endif>Sin contacto</option>
+                                                    <option value="1" @if($orden->status == '1') selected  @endif>En dialogo</option>
+                                                </select>
                                         </div>
                                     </div>
                                 </div>

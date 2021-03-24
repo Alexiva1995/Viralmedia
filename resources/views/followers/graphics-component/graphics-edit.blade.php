@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form id="contact-form" method="POST" action="{{ route('followers.update', $orden->id)}}"
+                        <form id="contact-form" method="POST" action="{{ route('graphics.update', $orden->id)}}"
                             role="form">
                             @csrf
                             @method('PATCH')
@@ -40,15 +40,6 @@
                                             <label>Whatsapp</label>
                                             <input type="text" class="form-control" readonly
                                                 value="{{ $orden->getOrdenUser->whatsapp}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="controls">
-                                            <label>Whatsapp</label>
-                                            <input type="text" class="form-control" readonly
-                                                value="{{ $orden->link}}">
                                         </div>
                                     </div>
                                 </div>
@@ -91,16 +82,26 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="controls">
+                                            <label>Link</label>
+                                            <span class="text-danger">editable</span>
+                                            <input type="text" class="form-control"
+                                                value="{{ $orden->link}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="controls">
                                             <label for="status">Estado de la Orden <span
                                                     class="text-danger">OBLIGATORIO</span></label>
-                                            <select name="status" id="status"
-                                                class="custom-select status @error('status') is-invalid @enderror"
-                                                required data-toggle="select">
-                                                <option value="0" @if($orden->status == '0') selected  @endif>En Espera</option>
-                                                <option value="1" @if($orden->status == '1') selected  @endif>Completada</option>
-                                                <option value="2" @if($orden->status == '2') selected  @endif>Rechazada</option>
-                                                <option value="3" @if($orden->status == '3') selected  @endif>Cancelada</option>
-                                            </select>
+                                                    <select name="status" id="status"
+                                                    class="custom-select status @error('status') is-invalid @enderror"
+                                                    required data-toggle="select">
+                                                    <option value="0" @if($orden->status == '0') selected  @endif>En Espera</option>
+                                                    <option value="1" @if($orden->status == '1') selected  @endif>Incompleto</option>
+                                                    <option value="2" @if($orden->status == '2') selected  @endif>Completada</option>
+                                                    <option value="3" @if($orden->status == '3') selected  @endif>Cancelada</option>
+                                                </select>
                                         </div>
                                     </div>
                                 </div>

@@ -51,7 +51,7 @@ $new = \App\Models\News::where('status', '1')->get();
 
 @section('content')
 
-@if ($new->status = '1')
+@if(!$new->isEmpty())
 
 {{-- modal de noticia --}}
 @include('ajust.news-component.news-modal')

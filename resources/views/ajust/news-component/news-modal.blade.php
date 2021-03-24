@@ -1,7 +1,6 @@
 @php
 $news = \App\Models\News::where('status', '1')->get();
 @endphp
-@if ($news->status = '1')
 <div class="modal fade" tabindex="99" role="dialog" id="modalNew" data-backdrop="static" style="z-index: 99999999999">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -60,6 +59,3 @@ $news = \App\Models\News::where('status', '1')->get();
         </div>
     </div>
 </div>
-@else
-<h1>sadasdasd</h1>
-@endif

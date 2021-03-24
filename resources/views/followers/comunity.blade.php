@@ -37,12 +37,8 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Usuario</th>
-                                    <th>Email</th>
-                                    <th>Categoria</th>
-                                    <th>Link</th>
+                                    <th>Datos</th>
                                     <th>Estado</th>
-                                    <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
                             </thead>
@@ -51,21 +47,16 @@
                                  @foreach ($orden as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getOrdenUser->fullname}}</td>
-                                    <td>{{ $item->getOrdenUser->email}}</td>
-                                    <td>{{ $item->getOrdenCategorie->name}}</td>
-                                    <td>{{ $item->link}}</td>
-
+                                    <td>
+                                    <p class="text-left"><b>Usuario:</b> {{ $item->getOrdenUser->fullname}}</p>
+                                    <p class="text-left"><b>Email:</b> {{ $item->getOrdenUser->email}}</p>
+                                    <p class="text-left"><b>Fecha de Creacion:</b>{{ $item->created_at}}}</p>
+                                    </td>
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
+                                    <td> <a class=" btn btn-info text-white text-bold-600">Sin contacto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
-                                    @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Rechazada</a></td>
-                                    @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" btn btn-success text-white text-bold-600">En dialogo</a></td>
                                     @endif
-                                    <td>{{ $item->created_at}}</td>
                                     <td><a href="{{ route('comunity.edit',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a>
                                         <button class="btn btn-danger" onclick="vm_ordenComunity.deleteData('{{$item->id}}')">
                                             <form action="{{route('comunity.destroy', $item->id)}}" method="post" id="delete{{$item->id}}">

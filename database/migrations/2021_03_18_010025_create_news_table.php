@@ -19,8 +19,8 @@ class CreateNewsTable extends Migration
             $table->longtext('description');
             $table->enum('type', [0, 1])->default(0)->comment('0 - Nuevos servicios, 1 - Anuncio, 2');
             $table->enum('status', [0, 1, 2])->default(0)->comment('0 - Desactivado, 1 - Activado, 2 - Expirado');
-            $table->date('date_start');
-            $table->date('date_end');
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
             $table->timestamps();
         });
     }

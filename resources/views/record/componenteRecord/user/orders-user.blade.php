@@ -35,9 +35,9 @@
                                     @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
+                                    <td> <a class=" btn btn-warning text-white text-bold-600">Incompleto</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Rechazada</a></td>
+                                    <td> <a class=" btn btn-success text-white text-bold-600">Completada</a></td>
                                     @elseif($item->status == '3')
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
                                     @endif

@@ -16,7 +16,7 @@ class FollowersController extends Controller
     public function listFollowers(){
 
         $orden = OrdenService::whereIn('categories_id', ['1','10','15'])->get();
-
+        
         View::share('titleg', 'Registro de seguidores');
         return view('followers.list')->with('orden', $orden);
     }
@@ -34,11 +34,15 @@ class FollowersController extends Controller
         $orden = OrdenService::find($id);
 
         $fields = [
-            'status' => ['required']
+            'status' => ['required'],
+            'count_start' => ['required'],
+            'count_end' => ['required']
         ];
         
         $msj = [
             'status.required' => 'Es requerido el Estatus de la Orden',
+            'count_start.required' => 'Es requerido los seguidores actuales',
+            'count_end.required' => 'Es requerido los seguidores faltantes',
         ];
         
         $this->validate($request, $fields, $msj);
@@ -46,7 +50,13 @@ class FollowersController extends Controller
         $orden->update($request->all());
         $orden->save();
         
-        return redirect()->route('followers.list')->with('msj-success', 'Orden '.$id.' Actualizado');
+        $start = $request->count_start;
+        $end = $request->count_end;
+        $count = $start + $end;
+
+        return redirect()->route('followers.list')
+        ->with('count', $count)
+        ->with('msj-success', 'Orden '.$id.' Actualizado');
     }
 
     public function destroyFollowers($id)
@@ -73,7 +83,7 @@ class FollowersController extends Controller
      
         $orden = OrdenService::find($id);
 
-        View::share('titleg', 'Registro de seguidores');
+        View::share('titleg', 'Registro Grafico');
         return view('followers.graphics-component.graphics-edit')->with('orden', $orden);
     }
 

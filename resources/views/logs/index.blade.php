@@ -35,7 +35,7 @@
                                     @elseif($item->metodo_pago == 'Payu')
                                     <td><img src="{{asset('assets/img/sistema/payu1.png')}}" height="50" width="90"></td>
                                     @elseif($item->metodo_pago == 'Coinbase')
-                                    <td><img src="{{asset('assets/img/sistema/coinbase1.png')}}" height="47" width="100"></td>
+                                    <td><img src="{{asset('assets/img/sistema/coinbase1.png')}}" height="40" width="110"></td>
                                     @endif
                                     
                                     <td>{{$item->saldo}}</td>

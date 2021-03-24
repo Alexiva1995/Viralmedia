@@ -61,12 +61,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <div class="controls">
                                             <label>Servicio</label>
                                             <input type="text" class="form-control" readonly
                                                 value="{{ $orden->getOrdenService->package_name}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label>Cantidad de Servicio</label>
+                                            <input type="text" class="form-control" readonly 
+                                            value="{{ $orden->cantidad}}">
                                         </div>
                                     </div>
                                 </div>
@@ -88,6 +97,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label>Seguidores Actuales</label>
+                                            <input type="number" class="form-control" name="count_start" id="count_start"
+                                                value="{{ $orden->count_start}}"> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label>Seguidores Faltantes</label>
+                                            <input type="number" class="form-control" name="count_end" id="count_end"
+                                                value="{{ $orden->count_end}}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="controls">
@@ -97,8 +124,8 @@
                                                 class="custom-select status @error('status') is-invalid @enderror"
                                                 required data-toggle="select">
                                                 <option value="0" @if($orden->status == '0') selected  @endif>En Espera</option>
-                                                <option value="1" @if($orden->status == '1') selected  @endif>Completada</option>
-                                                <option value="2" @if($orden->status == '2') selected  @endif>Rechazada</option>
+                                                <option value="1" @if($orden->status == '1') selected  @endif>Incompleto</option>
+                                                <option value="2" @if($orden->status == '2') selected  @endif>Completada</option>
                                                 <option value="3" @if($orden->status == '3') selected  @endif>Cancelada</option>
                                             </select>
                                         </div>

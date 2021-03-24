@@ -41,8 +41,8 @@
                                     <th>Descripción</th>
                                     <th>Tipo</th>
                                     <th>Estado</th>
-                                    <th>Fecha de Inicio</th>
-                                    <th>Fecha de Expiracion</th>
+                                    {{-- <th>Fecha de Inicio</th>
+                                    <th>Fecha de Expiracion</th> --}}
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
@@ -66,11 +66,11 @@
                                     @elseif($item->status == '1')
                                     <td> <a class=" btn btn-success text-white text-bold-600">Activado</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Expirado</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Expirado</a></td>
                                     @endif
 
-                                    <td>{{ $item->date_start}}</td>
-                                    <td>{{ $item->date_end}}</td>
+                                    {{-- <td>{{ $item->date_start}}</td>
+                                    <td>{{ $item->date_end}}</td> --}}
                                     <td>{{ $item->created_at}}</td>
 
                                     <td>

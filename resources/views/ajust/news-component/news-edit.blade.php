@@ -110,7 +110,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <div class="form-group">
                                             <label>Fecha de Inicio</label>
                                             <input type="date" class="form-control" id="date_start" name="date_start" value="{{$new->date_start}}">
@@ -121,7 +121,7 @@
                                             <label>Fecha de Expiracion</label>
                                             <input type="date" class="form-control" id="date_end" name="date_end" value="{{$new->date_end}}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-12">
                                         <button type="submit"
                                             class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar
