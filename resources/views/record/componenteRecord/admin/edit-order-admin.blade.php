@@ -61,12 +61,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <div class="controls">
                                             <label>Servicio</label>
                                             <input type="text" class="form-control" readonly
                                                 value="{{ $orden->getOrdenService->package_name}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label>Cantidad de Servicio</label>
+                                            <input type="text" class="form-control" readonly 
+                                            value="{{ $orden->cantidad}}">
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +109,7 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <div class="controls">
-                                            <label>Seguidores Faltantes</label>
+                                            <label>Seguidores del Servicio</label>
                                             <input type="number" class="form-control" name="count_end" id="count_end"
                                                 value="{{ $orden->count_end}}">
                                         </div>

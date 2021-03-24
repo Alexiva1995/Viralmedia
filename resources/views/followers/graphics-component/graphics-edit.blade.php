@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Enviar</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">GUARDAR</button>
                         </form>
                     </div>
                 </div>

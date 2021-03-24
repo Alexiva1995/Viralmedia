@@ -46,7 +46,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="controls">
-                                            <label>Whatsapp</label>
+                                            <label>Link</label>
                                             <input type="text" class="form-control" readonly
                                                 value="{{ $orden->link}}">
                                         </div>
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Enviar</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">GUARDAR</button>
                         </form>
                     </div>
                 </div>

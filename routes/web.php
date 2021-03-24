@@ -29,8 +29,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     // Ruta para obtener la informacion de la graficas del dashboard
     Route::get('getdatagraphicdashboard', 'HomeController@getDataGraphic')->name('home.data.graphic');
 
-         // no admin
-         Route::get('/impersonate/stop', 'ImpersonateController@stop')->name('impersonate.stop');
+    // no admin
+    Route::get('/impersonate/stop', 'ImpersonateController@stop')->name('impersonate.stop');
 
     // Servicios
     Route::prefix('servicios')->group(function ()

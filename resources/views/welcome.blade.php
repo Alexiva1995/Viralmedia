@@ -9,9 +9,9 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Coming Soon - Vuexy - Bootstrap HTML admin template</title>
+    <title>Estaremos Disponible Pronto</title>
     <link rel="apple-touch-icon" href="{{asset('assets/app-assets/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/ico/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/sistema/favicon.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -57,16 +57,16 @@
                             <div class="card text-center w-100 mb-0">
                                 <div class="card-header justify-content-center pb-0">
                                     <div class="card-title">
-                                        <h2 class="mb-0">Estaremos Disponible Pronto</h2>
+                                        <h2 class="mb-1">Estaremos Disponible Pronto</h2>
                                     </div>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body pt-0">
                                         <img src="{{asset('assets/app-assets/images/pages/rocket.png')}}" class="img-responsive block width-150 mx-auto" width="150" alt="bg-img">
                                         <div id="clockFlat" class="card-text text-center getting-started pt-2 d-flex justify-content-center flex-wrap"></div>
-                                        <div class="divider">
+                                        {{-- <div class="divider">
                                             <div class="divider-text">Login</div>
-                                        </div>
+                                        </div> --}}
                                         {{-- <p class="text-left">
                                             If you would like to be notified when our app is live, Please subscribe to our mailing list.
                                         </p>

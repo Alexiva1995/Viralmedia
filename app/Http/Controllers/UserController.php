@@ -124,7 +124,7 @@ class UserController extends Controller
 
        $user = Auth::user();
 
-       return view('users.edit-profile')
+       return view('users.profile')
              ->with('user',$user)
              ->with('countries',$countries)
              ->with('timezone',$timezone);

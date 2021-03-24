@@ -26,7 +26,7 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        return view('users.changePassword');
+        return view('users.componenteProfile.changePassword');
     } 
    
     /**

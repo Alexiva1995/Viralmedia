@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{asset('assets/img/sistema/favicon.png')}}" type="image/x-icon">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>ViralMediaPanel</title>
     {{-- Styles --}}
     @include('layouts.componenteDashboard.styles')
     {{-- Fin Styles --}}
