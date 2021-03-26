@@ -1,10 +1,10 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewsTable extends Migration
+class CreateConfigTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('config', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('title')->nullable();
+            $table->string('title');
             $table->longtext('description');
-            $table->enum('status', [0, 1, 2])->default(0)->comment('0 - Desactivado, 1 - Activado, 2 - Expirado');
-            $table->date('date_start')->nullable();
-            $table->date('date_end')->nullable();
+            $table->longtext('keyword');
+            $table->enum('status', [0, 1])->default(1)->comment('0 - Mantenimiento, 1 - Produccion');
+            $table->longtext('term');
+            // $table->longtext('politic');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('config');
     }
-}
+} 

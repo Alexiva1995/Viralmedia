@@ -11,10 +11,10 @@ use App\Models\News;
 
 class SystemController extends Controller
 {
-    public function general(){
-        View::share('titleg', 'Ajustes Generales');
-        return view('ajust.general');
-    }
+    // public function general(){
+    //     View::share('titleg', 'Ajustes Generales');
+    //     return view('ajust.general');
+    // }
 
     public function listNews(){
 

@@ -164,8 +164,8 @@ $referred = DB::table('users')
                             </div>
                         </div>
 
-                        <fieldset class="checkbox mt-1">
-                            <div class="vs-checkbox-con vs-checkbox-primary justify-content-center">
+                        <fieldset class="checkbox mt-1 ml-2">
+                            <div class="vs-checkbox-con vs-checkbox-primary float-left justify-content-center">
                                 <input type="checkbox" name="term" id="term"
                                     {{ old('term') ? 'checked' : '' }}>
                                 <span class="vs-checkbox">
@@ -173,13 +173,14 @@ $referred = DB::table('users')
                                         <i class="vs-icon feather icon-check"></i>
                                     </span>
                                 </span>
-                                <span class="">Acepto los <a href="http://">Terminos y Condiciones</a></span>
                                 @error('term')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                
                             </div>
+                            <span class="">Acepto los <a href="{{ route('term') }}">Terminos y Condiciones</a></span>
                         </fieldset>
 
                     </form>

@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Config;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$config = Config::all()->where('id', '=', '1')->first();
+
+if($config->status != 1){
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+}else{
+    
+Route::get('/', function () {
+
+    return view('auth.login');
+});
+
+Route::get('/term', 'ConfigController@term')->name('term');
+
+}
 
 Auth::routes();
 
@@ -134,7 +151,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     //Ruta de Ajuste de sistema
     Route::prefix('system')->group(function(){
 
-        Route::get('general','SystemController@general')->name('general');
+        Route::get('general','ConfigController@index')->name('general');
+        Route::patch('update-general','ConfigController@update')->name('general.update');
 
         Route::get('news','SystemController@listNews')->name('news.list');
         Route::get('create-news','SystemController@createNews')->name('news.create');

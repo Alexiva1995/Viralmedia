@@ -1,3 +1,7 @@
+@php
+$config = \App\Models\Config::all()->where('id', '=', '1')->first();
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -5,14 +9,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{asset('assets/img/sistema/favicon.png')}}" type="image/x-icon">
+    
+    <meta name="keywords" content="{{ $config->keyword }}">
+    <meta name="description" content="{{ $config->description }}">
+    <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon">
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>ViralMediaPanel</title>
+    <title>{{ $config->title }}</title>
     {{-- Styles --}}
     @include('layouts.componenteDashboard.styles')
     {{-- Fin Styles --}}
 </head>
 
+<style>
+
+    body::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    body::-webkit-scrollbar-thumb {
+        background: #EF2566;
+        border-radius: 7px;
+    }
+    </style>
+    
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     {{-- Notificaciones del sistema --}}
