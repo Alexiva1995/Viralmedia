@@ -57,7 +57,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Type</th>
-                                    <th>Input de Informacion Adicional</th>
+                                    {{-- <th>Input de Informacion Adicional</th> --}}
                                     <th>API ServiceID</th>
                                     <th>API Provider</th>
                                     <th>Precio por cada 1.000($)</th>
@@ -74,15 +74,34 @@
                                     <td>{{$service->id}}</td>
                                     <td>{{$service->package_name}}</td>
                                     <td>{{$service->type}}</td>
-                                    <td>
+                                    {{-- <td>
                                         @if ($service->input_adicionales != null)
                                             @foreach ($service->input_adicionales as $input)
                                                 <p>{{$input}}</p>
                                             @endforeach
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>{{$service->api_service_id}}</td>
-                                    <td>{{$service->api_provide_name}}</td>
+
+                                    @if ($service->api_provide_name == '1')
+                                    <td>CustomServer Version 10.1</td>
+                                    @elseif($service->api_provide_name == '2')
+                                    <td>HQ second server</td>
+                                    @elseif($service->api_provide_name == '3')
+                                    <td>Hq tercer servidor dedicated</td>
+                                    @elseif($service->api_provide_name == '4')
+                                    <td>Cuarta Api Dedicated</td>
+                                    @elseif($service->api_provide_name == '5')
+                                    <td>Proxima Api en Proceso</td>
+                                    @elseif($service->api_provide_name == '6')
+                                    <td>yoyo</td>
+                                    @elseif($service->api_provide_name == '7')
+                                    <td>BulkFollows</td>
+                                    @elseif($service->api_provide_name == '8')
+                                    <td>Tony Pannel</td>
+                                    @endif
+
+
                                     <td>{{$service->price}}</td>
                                     <td>{{$service->minimum_amount}} / {{$service->maximum_amount}}</td>
                                     <td>

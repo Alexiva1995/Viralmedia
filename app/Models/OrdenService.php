@@ -14,8 +14,8 @@ class OrdenService extends Model
 
     protected $fillable = [
         'iduser', 'categories_id', 'service_id', 'cantidad', 'link', 
-        'usuario', 'email', 'email_respaldo', 'whatsapp', 'total', 
-        'status'
+        'usuario', 'email', 'email_respaldo', 'whatsapp', 'total','count_start',
+        'count_end','status'
     ];
 
 
@@ -63,8 +63,10 @@ class OrdenService extends Model
     {
         if ($this->updated_at != null) {
             return $this->updated_at;
-            // return Carbon::createFromTimeString($this->updated_at, 'America/Edmonton')->setTimezone('America/Caracas')->format('Y-m-d H:i:s');
-        }
-        return null;
+        // return Carbon::createFromTimeString($this->updated_at, 'America/Edmonton')->setTimezone('America/Caracas')->format('Y-m-d H:i:s');
     }
+
+    return null;
+    }
+    
 }

@@ -19,19 +19,22 @@
                     {{-- Notificaciones --}}
                     {{-- @include('layouts.componenteDashboard.notificaciones') --}}
                     {{-- Fin Notificaciones --}}
-                    <li class="dropdown dropdown-user nav-item pt-2">
+                    {{-- <li class="dropdown dropdown-user nav-item pt-2">
                         <div class="user-nav d-sm-flex d-none">
                             <span class="user-status headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
                         </div>
-                    </li>
+                    </li> --}}
                         <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 @if (Auth()->user()->admin == '1')
-                                <span class="user-name text-bold-600">{{Auth::user()->fullname}}</span>
-                                <span class="user-name text-bold-600 text-danger p">Administrador</span>
+                                <span class="user-name text-bold-600">{{Auth::user()->fullname}} <span class="text-primary">ADMIN</span></span>
+                                {{-- <span class="user-name text-bold-600 text-primary p">Administrador</span> --}}
+                                <span class="user-name headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
+
                                 @else
                                 <span class="user-name text-bold-600">{{Auth::user()->fullname}}</span>
+                                <span class="user-name headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
                                 @endif
                             </div>
 
@@ -43,7 +46,7 @@
                             @else
                             <span>
                                 <img class="round" src="{{asset('assets/img/sistema/logoarbol.png')}}"
-                                    alt="avatar" height="50" width="50">
+                                    alt="{{ Auth::user()->fullname }}" height="50" width="50">
                             </span>
                             @endif
 
@@ -52,6 +55,11 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="feather icon-user"></i> Editar Perfil
                             </a>
+                            @if (session('impersonated_by'))
+                            <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
+                                <i class="feather icon-log-in"></i> Volver a mi Usuario
+                            </a>    
+                            @endif
                             {{-- <a class="dropdown-item" href="app-email.html">
                                 <i class="feather icon-mail"></i> My Inbox
                             </a>
@@ -63,7 +71,7 @@
                             </a> --}}
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="feather icon-power"></i> Logout
+                                <i class="feather icon-log-out"></i> Logout
                             </a>            
                         </div>
                     </li>

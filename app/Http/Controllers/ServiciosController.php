@@ -99,11 +99,9 @@ class ServiciosController extends Controller
 
     public function indexUser(Request $request)
     {
-        $user = Auth::id();
         $categories = Category::all();
         $service = Service::all();
-        $orden = OrdenService::all()
-        ->where('iduser', $user);
+        $orden = OrdenService::where('iduser', Auth::id())->get();
 
         View::share('titleg', 'Historial de Ordenes');
 

@@ -131,6 +131,25 @@ class ServicesAdminController extends Controller
 
     }
 
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $service = Service::find($id);
+            $category = $service->categories_id;
+            $service->delete();
+            $route = route('services.index').'?category='.$category;
+            return redirect($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -203,33 +222,12 @@ class ServicesAdminController extends Controller
          }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        try {
-            $service = Service::find($id);
-            $category = $service->categories_id;
-            $service->delete();
-            $route = route('services.index').'?category='.$category;
-            return redirect($route)->with('msj-success', 'Servicio '.$id.' Eliminado');
-        } catch (\Throwable $th) {
-            dd($th);
-        }
-    }
-
-
-
 
     // permite ver la lista de ordenes
 
     public function indexAdmin()
     {
-        $orden = OrdenService::all();
+        $orden = OrdenService::whereIn('categories_id', ['3','4','5','6','7','8','9','14','16','17','18','19'])->get();
 
         View::share('titleg', 'Historial de Ordenes');
 
@@ -262,11 +260,15 @@ class ServicesAdminController extends Controller
         $orden = OrdenService::find($id);
 
         $fields = [
-            'status' => ['required']
+            'status' => ['required'],
+            'count_start' => ['required'],
+            'count_end' => ['required']
         ];
         
         $msj = [
             'status.required' => 'Es requerido el Estatus de la Orden',
+            'count_start.required' => 'Es requerido los seguidores actuales',
+            'count_end.required' => 'Es requerido los seguidores faltantes',
         ];
         
         $this->validate($request, $fields, $msj);
@@ -282,11 +284,22 @@ class ServicesAdminController extends Controller
 
     public function showAdmin($id)
     {
-   
        $orden = OrdenService::find($id);
        return view('record.componenteRecord.admin.show-order-admin')
        ->with('orden', $orden);
     }
+
+    // permite eliminar una orden
+    
+    public function destroyAdmin($id)
+    {
+      $orden = OrdenService::find($id);
+    
+      $orden->delete();
+    
+      return redirect()->route('record_order.index-admin')->with('msj-success', 'Orden '.$id.' Eliminada');
+    }
+   
    
 
 }

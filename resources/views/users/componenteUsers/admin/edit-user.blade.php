@@ -254,7 +254,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-4">
+                                                 <div class="col-4">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label class="required">Estado de la Cuenta</label>
@@ -275,7 +275,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> 
 
                                                 <div class="col-4">
                                                     <div class="form-group">
