@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\View;
+
 
 use Illuminate\Http\Request;
 
@@ -9,8 +9,7 @@ class SettlementController extends Controller
 {
 
     public function index(){
-        View::share('titleg', 'General Liquidaciones');
-        return view('settlement.index');
+        
     }
     public function history(){
         View::share('titleg', 'Liquidaciones Realizadas');

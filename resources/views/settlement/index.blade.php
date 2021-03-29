@@ -1,7 +1,23 @@
 @extends('layouts.dashboard')
 
-@section('content')
+@push('vendor_css')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
+@endpush
 
+@push('page_vendor_js')
+<script src="{{asset('assets/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('assets/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
+@endpush
+
+{{-- permite llamar las librerias montadas --}}
+@push('page_js')
+<script src="{{asset('assets/js/librerias/vue.js')}}"></script>
+<script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
+@endpush
+
+@push('custom_js')
+<script src="{{asset('assets/js/liquidation.js')}}"></script>
+@endpush
 
 @section('content')
 <div id="settlement">
@@ -13,29 +29,29 @@
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">                                
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>User</th>
+                                    <th>ID Usuario</th>
+                                    <th>Usuario</th>
                                     <th>Email</th>
-                                    <th>Pais</th>
-                                    <th>Fecha</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
-                                    
+                                    <th>Total Comision</th>
+                                    <th>Estado</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td> 1</td>
-                                    <td> admin</td>
-                                    <td> admin</td>
-                                    <td> admin@viralmedia.com</td>
-                                    <td>Vnezuela</td>                                    
-                                    <td>12/28/2020</td> 
-                                    <td>En Espera</td>                                   
-                                    <td> 1000</td>
-                                </tr>
-                               
+                                @foreach ($comisiones as $comision)
+                                    <tr class="text-center">
+                                        <td>{{$comision->iduser}}</td>
+                                        <td>{{$comision->getWalletUser->fullname}}</td>
+                                        <td>{{$comision->getWalletUser->email}}</td>
+                                        <td>{{$comision->total}}</td>
+                                        <td>{{$comision->getWalletUser->status}}</td>
+                                        <td>
+                                            <a onclick="vm_liquidation.getDetailComision({{$comision->iduser}})" class="btn btn-info">
+                                                <i class="feather icon-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -43,10 +59,8 @@
             </div>
         </div>
     </div>
-
+    @include('settlement.componentes.modalDetalles')
 </div>
-
-
 @endsection
 
 {{-- permite llamar a las opciones de las tablas --}}

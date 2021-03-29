@@ -74,9 +74,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('settlement')->group(function() 
     {
         //Ruta liquidaciones realizadas
-        Route::get('general', 'SettlementController@index')->name('settlement');
-        Route::get('history', 'SettlementController@history')->name('settlement_done');
-        Route::get('pending', 'SettlementController@pending')->name('settlement_pending');
+        Route::get('/', 'LiquidactionController@index')->name('settlement');
+        Route::resource('liquidation', 'LiquidactionController');
+        // Route::get('history', 'SettlementController@history')->name('settlement_done');
+        // Route::get('pending', 'SettlementController@pending')->name('settlement_pending');
 
     });
     

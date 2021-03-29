@@ -25,7 +25,7 @@
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $item->fullname }}</td>
                                     <td>{{ $item->referidos }}</td>                                    
-                                    <td>FALTA</td>
+                                    <td>{{ $item->comisiones }}</td>
                                 </tr>
                             </tbody>
                             @endforeach

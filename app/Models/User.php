@@ -80,6 +80,16 @@ class User extends Authenticatable implements HasMedia
     }
 
     /**
+     * Permite obtener todas la liquidaciones que tengo
+     *
+     * @return void
+     */
+    public function getLiquidate()
+    {
+        return $this->hasMany('App\Models\Liquidaction', 'iduser');
+    }
+
+    /**
      * Permite obtener las ordenes de servicio asociada a una categoria
      *
      * @return void 
