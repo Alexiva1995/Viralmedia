@@ -15,7 +15,7 @@ class CreateAddSaldosTable extends Migration
     {
         Schema::create('add_saldos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('iduser')->unsigned();;
+            $table->bigInteger('iduser')->unsigned();
             $table->foreign('iduser')->references('id')->on('users');
             $table->double('saldo');
             $table->string('metodo_pago');

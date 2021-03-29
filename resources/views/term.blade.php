@@ -1,7 +1,3 @@
-@php
-$config = \App\Models\Config::all()->where('id', '=', '1')->first();
-@endphp
-
 @extends('layouts.auth')
 
 @section('content')

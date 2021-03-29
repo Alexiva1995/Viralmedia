@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `config`
 --
 
-CREATE TABLE `config` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `keyword` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '0 - Mantenimiento, 1 - Produccion',
-  `term` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `config` (
+--   `id` bigint(20) UNSIGNED NOT NULL,
+--   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `keyword` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '0 - Mantenimiento, 1 - Produccion',
+--   `term` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `config`

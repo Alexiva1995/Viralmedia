@@ -1,7 +1,3 @@
-@php
-$config = \App\Models\Config::all()->where('id', '=', '1')->first();
-@endphp
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 

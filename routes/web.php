@@ -3,7 +3,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Models\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +15,13 @@ use App\Models\Config;
 |
 */
 
-$config = Config::all()->where('id', '=', '1')->first();
 
-if($config->status != 1){
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-}else{
-    
-Route::get('/', function () {
-
-    return view('auth.login');
-});
+Route::get('/', function () {return view('welcome');})->name('principal');
 
 Route::get('/term', 'ConfigController@term')->name('term');
 
-}
+
 
 Auth::routes();
 

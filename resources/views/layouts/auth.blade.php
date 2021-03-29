@@ -1,6 +1,3 @@
-@php
-$config = \App\Models\Config::all()->where('id', '=', '1')->first();
-@endphp
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -11,9 +8,9 @@ $config = \App\Models\Config::all()->where('id', '=', '1')->first();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
-    <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon">
+    {{-- <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon"> --}}
 
-    <title>ViralMediaPanel</title>
+    <title>{{$config->title}}</title>
     @include('layouts.componenteAuth.styles')
     
 </head>

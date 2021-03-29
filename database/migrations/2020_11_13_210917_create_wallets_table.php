@@ -29,7 +29,7 @@ class CreateWalletsTable extends Migration
             $table->tinyInteger('status')->default(0)->comment('0 - En espera, 1 - Pagado (liquidado), 2 - Cancelado');
             $table->tinyInteger('tipo_transaction')->default(0)->comment('0 - comision, 1 - retiro');
             $table->tinyInteger('liquidado')->default(0)->comment('0 - sin liquidar, 1 - liquidado');
-            $table->tcimestamps();
+            $table->timestamps();
         });
     }
 
