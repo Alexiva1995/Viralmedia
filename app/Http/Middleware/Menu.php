@@ -96,25 +96,11 @@ class Menu
             // Fin red
              // tickets
              'Tickets' => [
-                'submenu' => 1,
-                'ruta' => 'javascript:;',
+                'submenu' => 0,
+                'ruta' => route('ticket.list-user'),
                 'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-tag',
                 'complementoruta' => '',
-                'submenus' => [
-                    [
-                        'name' => 'Crear Ticket',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('ticket.create'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Lista de Tickets',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('ticket.list-user'),
-                        'complementoruta' => ''
-                    ],
-                ],
             ],
             // Fin tickets
             // Billetera
@@ -203,21 +189,13 @@ class Menu
             ],
             // Fin red
                        // tickets
-                    'Tickets' => [
-                        'submenu' => 1,
-                        'ruta' => 'javascript:;',
+                       'Tickets' => [
+                        'submenu' => 0,
+                        'ruta' => route('ticket.list-admin'),
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'icon' => 'feather icon-tag',
                         'complementoruta' => '',
-                        'submenus' => [
-                    [
-                        'name' => 'Lista de Tickets',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('ticket.list-admin'),
-                        'complementoruta' => ''
                     ],
-                ],
-            ],
              // Fin tickets
             // Historial
             'Historial' => [
@@ -297,19 +275,19 @@ class Menu
                     [
                         'name' => 'Registro Seguidores VIP',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('followers'),
+                        'ruta' => route('followers.list'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Grafico',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('graphics'),
+                        'ruta' => route('graphics.list'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro Comunity',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('comunity'),
+                        'ruta' => route('comunity.list'),
                         'complementoruta' => ''
                     ],
                 ],
@@ -373,7 +351,7 @@ class Menu
                     [
                         'name' => 'Noticias',
                         'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('news'),
+                        'ruta' => route('news.list'),
                         'complementoruta' => ''
                     ],
                     [

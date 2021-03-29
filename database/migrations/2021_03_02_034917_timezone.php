@@ -16,12 +16,9 @@ class Timezone extends Migration
         Schema::create('time_zone', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('list_value')->nullable();
-            $table->string('list_abbr')->nullable();
-            $table->string('list_offset')->nullable();
-            $table->string('list_isdst')->nullable();
             $table->string('list_text')->nullable();
             $table->string('list_utc')->nullable();
-
+            $table->timestamps();
         });
     }
 

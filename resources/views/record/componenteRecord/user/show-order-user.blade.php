@@ -88,11 +88,11 @@
                                 <div class="form-group d-flex justify-content-center">
                                     <div class="controls">
                                             @if ( $orden->status == 0 )
-                                            <a class=" btn btn-info text-white text-bold-600">En Espera</a>
+                                            <a class=" btn btn-info text-white text-bold-600">Pendiente</a>
                                             @elseif($orden->status == 1)
-                                            <a class=" btn btn-success text-white text-bold-600">Completada</a>
+                                            <a class=" btn btn-warning text-white text-bold-600">En progreso</a>
                                             @elseif($orden->status == 2)
-                                            <a class=" btn btn-warning text-white text-bold-600">Rechazada</a>
+                                            <a class=" btn btn-success text-white text-bold-600">Completada</a>
                                             @elseif($orden->status == 3)
                                             <a class=" btn btn-danger text-white text-bold-600">Cancelada</a>
                                             @endif
@@ -108,6 +108,3 @@
 </section>
 
 @endsection
-
-{{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')

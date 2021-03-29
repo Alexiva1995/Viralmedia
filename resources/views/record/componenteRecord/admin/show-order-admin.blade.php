@@ -108,6 +108,3 @@
 </section>
 
 @endsection
-
-{{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')

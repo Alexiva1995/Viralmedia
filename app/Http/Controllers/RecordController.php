@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\AddSaldo;
+use App\Models\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -21,11 +23,15 @@ class RecordController extends Controller
     }
 
     public function indexCommissions(){
+        $billetera = Wallet::all();
+
         View::share('titleg', 'Historial Comisiones');
-        return view('record.commissions');
+        return view('record.commissions')->with('billetera', $billetera);
     }
     public function indexRequest(){
+        $saldo = AddSaldo::all();
+
         View::share('titleg', 'Historial Pedidos');
-        return view('record.request');
+        return view('record.request')->with('saldo', $saldo);
     }
 }
