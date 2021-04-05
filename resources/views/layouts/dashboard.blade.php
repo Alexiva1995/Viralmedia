@@ -8,7 +8,7 @@
     
     <meta name="keywords" content="{{ $config->keyword }}">
     <meta name="description" content="{{ $config->description }}">
-    <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon">
+    {{-- <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon"> --}}
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title>{{ $config->title }}</title>
     {{-- Styles --}}
