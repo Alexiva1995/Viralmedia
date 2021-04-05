@@ -4,8 +4,12 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    {{-- <img src="{{ $config->getMedia('photo')->first()->getUrl() }}" height="35"> --}}
-                    {{-- <div class="brand-logo"></div> --}}
+                    @if(!$config->getMedia('photo')->isEmpty())
+                     <img src="{{ $config->getMedia('photo')->first()->getUrl() }}" height="35">
+                     @else
+                     <img src="{{ asset('assets/img/sistema/logo-viral_media-blanco.png') }}" height="35">
+                     @endif
+                     {{-- <div class="brand-logo"></div>  --}}
                     {{-- <h2 class="brand-text mb-0">Vuexy</h2> --}}
                 </a>
             </li>
