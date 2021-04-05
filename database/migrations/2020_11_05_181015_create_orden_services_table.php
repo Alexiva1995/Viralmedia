@@ -20,7 +20,7 @@ class CreateOrdenServicesTable extends Migration
             $table->bigInteger('categories_id')->unsigned();
             $table->foreign('categories_id')->references('id')->on('categories');
             $table->bigInteger('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('categories');
+            $table->foreign('service_id')->references('id')->on('services');
             $table->integer('cantidad');
             $table->string('link', 200)->nullable()->comment('para los servicios que usan link');
             $table->string('usuario', 200)->nullable()->comment('para los servicios que usan usuario');

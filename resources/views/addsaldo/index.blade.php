@@ -106,6 +106,14 @@
                                             </div>
                                         </div>
                                         <small>Transaction fee: @{{Fee}}%</small>
+                                        <br>
+                                        <label for="">Total a pagar</label>
+                                        <div class="input-group saldo">
+                                            <input type="text" class="form-control" placeholder="000.00" aria-describedby="basic-addon2" :value="totalPagar" disabled>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">$</span>
+                                            </div>
+                                        </div>
                                     </fieldset>
     
                                     <div class="form-group mt-2">

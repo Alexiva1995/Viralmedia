@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TreeController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class WalletController extends Controller
@@ -74,7 +76,8 @@ class WalletController extends Controller
                 }
             }
         } catch (\Throwable $th) {
-            dd($th);
+            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
+            Log::error('Funcion payComisiones -> '.$th);
         }
     }
 
@@ -126,7 +129,8 @@ class WalletController extends Controller
             ])->whereDate('created_at', '>=', $fecha->subDay(30))->get();
             return $saldos;
         } catch (\Throwable $th) {
-            dd($th);
+           // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
+           Log::error('Funcion getSaldo -> '.$th);
         }
     }
 
@@ -157,7 +161,70 @@ class WalletController extends Controller
                 }
             }
         } catch (\Throwable $th) {
-            dd($th);
+            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
+            Log::error('Funcion saveWallet -> '.$th);
+        }
+    }
+
+    /**
+     * Permite obtener el total disponible en comisiones
+     *
+     * @param integer $iduser
+     * @return float
+     */
+    public function getTotalComision($iduser): float
+    {
+        try {
+            $wallet = Wallet::where([['iduser', '=', $iduser], ['status', '=', 0]])->get()->sum('debito');
+            if ($iduser == 1) {
+                $wallet = Wallet::where([['status', '=', 0]])->get()->sum('debito');
+            }
+            return $wallet;
+        } catch (\Throwable $th) {
+            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
+            Log::error('Funcion getTotalComision -> '.$th);
+        }
+    }
+
+    /**
+     * Permite obtener el total de comisiones por meses
+     *
+     * @param integer $iduser
+     * @return void
+     */
+    public function getDataGraphiComisiones($iduser)
+    {
+        try {
+            $totalComision = [];
+            if (Auth::user()->admin == 1) {
+                $Comisiones = Wallet::select(DB::raw('SUM(debito) as Comision'))
+                                ->where([
+                                    ['status', '<=', 1]
+                                ])
+                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }else{
+                $Comisiones = Wallet::select(DB::raw('SUM(debito) as Comision'))
+                                ->where([
+                                    ['iduser', '=',  $iduser],
+                                    ['status', '<=', 1]
+                                ])
+                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                                ->take(6)
+                                ->get();
+            }
+            foreach ($Comisiones as $comi) {
+                $totalComision [] = $comi->Comision;
+            }
+            return $totalComision;
+        } catch (\Throwable $th) {
+            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
+            Log::error('Funcion getDataGraphiComisiones -> '.$th);
         }
     }
 }

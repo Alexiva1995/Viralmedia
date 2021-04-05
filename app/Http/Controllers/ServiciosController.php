@@ -79,15 +79,29 @@ class ServiciosController extends Controller
                 // }
                 $orden = User::all();
                 if($user->balance >= '10'){
-                $orden = OrdenService::create($request->all());
-                $saldoAcumulado = ($orden->getOrdenUser->balance - $request->total);
-                $orden->getOrdenUser->update(['balance' => $saldoAcumulado]);
-                $concepto = "Orden N° ".$orden->id." Procesando Exitosamente";
-                return redirect()->back()->with('msj-success', $concepto);
-            }else{
-                
-                return redirect()->back()->with('msj-warning', 'Saldo Insuficiente, Servicio no Adquirido');
-            }
+                    $servicio = Service::find($request->services_id);
+                    $msj = '';
+                    if ($servicio->minimum_amount > $request->total) {
+                        $msj = 'El total es menor al monto minimo';
+                    }
+
+                    if ($request->total > $servicio->mmaximum_amount) {
+                        $msj = 'El total es mayor al monto minimo';
+                    }
+
+                    if ($msj == '') {
+                        $orden = OrdenService::create($request->all());
+                        $saldoAcumulado = ($orden->getOrdenUser->balance - $request->total);
+                        $orden->getOrdenUser->update(['balance' => $saldoAcumulado]);
+                        $concepto = "Orden N° ".$orden->id." Procesando Exitosamente";
+                    }else{
+                        $concepto = $msj;
+                    }
+
+                    return redirect()->back()->with('msj-success', $concepto);
+                }else{
+                    return redirect()->back()->with('msj-warning', 'Saldo Insuficiente, Servicio no Adquirido');
+                }
             }
         } catch (\Throwable $th) {
             dd($th);
@@ -158,13 +172,6 @@ class ServiciosController extends Controller
         ->with('orden', $orden);
     }
 
-
-
-
-
-
-
- 
     /**
      * Permite obtener la cantidad de ordenes que tiene un usuario
      *

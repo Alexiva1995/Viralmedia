@@ -15,6 +15,15 @@ var vm_addsaldo = new Vue({
             }
         }
     },
+
+    computed:{
+        totalPagar: function(){
+            let porcenres = (this.Fee / 100)
+            let porcen = (this.Saldo * porcenres)
+            let total = (this.Saldo + porcen)
+            return total
+        }
+    },
     
     methods: {
         /**

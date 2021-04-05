@@ -8,7 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
-    {{-- <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon"> --}}
+    @if(!$config->getMedia('icon')->isEmpty())
+    <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon">
+    @else
+    <link rel="shortcut icon" href="{{ asset('assets/img/sistema/favicon.png') }}" type="image/x-icon">
+    @endif
 
     <title>{{$config->title}}</title>
     @include('layouts.componenteAuth.styles')

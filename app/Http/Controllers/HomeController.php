@@ -10,6 +10,7 @@ use App\Http\Controllers\TreeController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\AddSaldoController;
+use App\Http\Controllers\WalletController;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
     public $ticketController;
     public $servicioController;
     public $addsaldoController;
+    public $walletController;
 
     /**
      * Create a new controller instance.
@@ -30,6 +32,7 @@ class HomeController extends Controller
         $this->ticketController = new TicketsController;
         $this->servicioController = new ServiciosController;
         $this->addsaldoController = new AddSaldoController;
+        $this->walletController = new WalletController;
     }
 
     /**
@@ -66,7 +69,7 @@ class HomeController extends Controller
             'wallet' => Auth::user()->wallet,
             'balance' => Auth::user()->balance,
             'tickets' => $this->ticketController->getTotalTickets($iduser),
-            'comisiones' => 0,
+            'comisiones' => $this->walletController->getTotalComision($iduser),
             'ordenes' => $this->servicioController->getTotalOrdenes($iduser),
             'usuario' => Auth::user()->fullname
         ];
@@ -84,7 +87,7 @@ class HomeController extends Controller
         $iduser = Auth::id();
         $data = [
             'tickets' => $this->ticketController->getDataGraphiTickets($iduser),
-            'comisiones' => [0, 1, 0, 2, 0, 3],
+            'comisiones' => $this->walletController->getDataGraphiComisiones($iduser),
             'saldo' => $this->addsaldoController->getDataGraphicSaldo($iduser),
             'ordenes' => $this->servicioController->getDataGraphiOrdens($iduser)
         ];
