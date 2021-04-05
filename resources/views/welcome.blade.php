@@ -263,9 +263,6 @@ body {
   }
 }
 
-/*
-=> Wave: https://codepen.io/zkreations/pen/VGWzYv
-*/
 .wave {
   opacity: 0.6;
   position: absolute;
