@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {return view('welcome');})->name('principal');
+Route::get('/', function () {return view('welcome');})->name('mantenimiento');
 
 Route::get('/term', 'ConfigController@term')->name('term');
 

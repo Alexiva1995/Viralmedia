@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Config;
 use Closure;
 
 class StatusWeb
@@ -15,12 +16,13 @@ class StatusWeb
      */
     public function handle($request, Closure $next)
     {
-        $config = ModelsConfig::first();
-        if ($config->status == 1) {
-            
-        }else{
-
+        $config = Config::first();
+        if ($config->status == 0) {
+            if ($request->getPathInfo() != '/') {
+                return redirect()->route('mantenimiento');
+            }
         }
+        
         return $next($request);
     }
 }
