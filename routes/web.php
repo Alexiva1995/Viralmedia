@@ -27,6 +27,9 @@ Auth::routes();
 
 Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 {
+
+    Route::get('/terminoscondiciones', 'HomeController@terminosCondiciones')->name('terminos_condiciones');
+
     // Inicio
     Route::get('/home', 'HomeController@index')->name('home');
      // Inicio de usuarios

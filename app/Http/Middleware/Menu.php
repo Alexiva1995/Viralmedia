@@ -188,14 +188,14 @@ class Menu
                 ],
             ],
             // Fin red
-                       // tickets
-                       'Tickets' => [
-                        'submenu' => 0,
-                        'ruta' => route('ticket.list-admin'),
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'icon' => 'feather icon-tag',
-                        'complementoruta' => '',
-                    ],
+            // tickets
+            'Tickets' => [
+                'submenu' => 0,
+                'ruta' => route('ticket.list-admin'),
+                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-tag',
+                'complementoruta' => '',
+            ],
              // Fin tickets
             // Historial
             'Historial' => [

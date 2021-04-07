@@ -94,4 +94,15 @@ class HomeController extends Controller
         
         return json_encode($data);
     }
+
+    /**
+     * Lleva a la vista de terminos y condiciones
+     *
+     * @return void
+     */
+    public function terminosCondiciones()
+    {
+        View::share('titleg', 'Terminos y Condiciones');
+        return view('terminos_condiciones.index');
+    }
 }

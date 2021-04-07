@@ -127,7 +127,7 @@
                                                 </span>
                                                 <span class="">Si, yo acepto los</span>
                                             </div>
-                                            <a href="http://" style="margin: 0.25rem 0;">Terminos y condiciones de compra</a>
+                                            <a href="{{route('terminos_condiciones')}}" target="_blank" style="margin: 0.25rem 0;">Terminos y condiciones de compra</a>
                                         </div>
                                     </div>
                                     <div class="form-group">
