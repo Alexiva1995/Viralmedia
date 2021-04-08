@@ -5,7 +5,7 @@
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{route('home')}}">
                     @if(!$config->getMedia('photo')->isEmpty())
-                     <img src="{{ $config->getMedia('photo')->first()->getUrl() }}" height="35">
+                     <img src="{{ $config->photoUrl }}" height="35">
                      @else
                      <img src="{{ asset('assets/img/sistema/logo-viral_media-blanco.png') }}" height="35">
                      @endif

@@ -16,7 +16,7 @@ class ImpersonateController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('users.list-user')->with('msj-success','Te has logueado Exitosamente');
+        return redirect()->route('home.user')->with('msj-success','Te has logueado Exitosamente');
 
     }
 

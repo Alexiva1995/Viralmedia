@@ -17,8 +17,6 @@
                                     <th>Usuario</th>
                                     <th>Descripción</th>
                                     <th>Debito</th>
-                                    <th>Credito</th>
-                                    <th>Balance</th>
                                     <th>Fecha</th>
                                 </tr>
 
@@ -31,8 +29,6 @@
                                     <td> {{$item->getWalletUser->fullname}} </td>
                                     <td>{{ $item->descripcion}}</td>
                                     <td>{{ $item->debito}}</td>
-                                    <td>{{ $item->credito}}</td>
-                                    <td>{{ $item->balance}}</td>
                                     <td>{{ $item->created_at}}</td>
                                 </tr>
                                 @endforeach

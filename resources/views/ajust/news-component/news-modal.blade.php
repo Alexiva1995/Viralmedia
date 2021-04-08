@@ -33,11 +33,11 @@ $news = \App\Models\News::where('status', '1')->get();
                                     {{$new->title}}
                                 </strong></h4>
 
-                                <h4><p class="card-text">{{$new->description}}</p></h4>
+                                <h4><p class="card-text">{{$new->description}}</p></h4> 
                                 </section>
                                 <center>
                                     @if(!$new->getMedia('photo')->isEmpty())
-                                        <img src="{{ $new->getMedia('photo')->first()->getUrl() }}" alt="{{ $new->title }}" width="1000" height="1000" class="img-fluid">
+                                        <img src="{{ $new->photoUrl }}" alt="{{ $new->title }}" width="1000" height="1000" class="img-fluid">
                                     @endif
                                 </center>
                             </div>

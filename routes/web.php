@@ -121,7 +121,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     //Ruta usuarios
     Route::prefix('user')->group(function(){
 
-            Route::get('user-list', 'UserController@listUser')->name('users.list-user');
+            Route::get('user-list', 'UserController@listUser')->name('users.list-user')->middleware('auth', 'checkrole:1');
             Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
             Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
             Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
