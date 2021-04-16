@@ -8,11 +8,13 @@
     
     <meta name="keywords" content="{{ $config->keyword }}">
     <meta name="description" content="{{ $config->description }}">
+
     @if(!$config->getMedia('icon')->isEmpty())
     <link rel="shortcut icon" href="{{ $config->getMedia('icon')->first()->getUrl() }}" type="image/x-icon">
     @else
     <link rel="shortcut icon" href="{{ asset('assets/img/sistema/favicon.png') }}" type="image/x-icon">
     @endif
+    
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title>{{ $config->title }}</title>
     {{-- Styles --}}
