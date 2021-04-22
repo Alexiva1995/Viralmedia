@@ -29,17 +29,19 @@
                                 <input type="hidden" name="iduser" value="{{Auth::id()}}">
                                 <div class="form-group">
                                     <label for="">Categoria</label>
-                                    <select name="categories_id" class="form-control custom-select" v-model="Option.idCategory">
-                                        <option value="0" disabled selected>Seleccione una Opcion</option>
-                                        <option :value="item.id" v-for="(item, index) in Categories" v-text="item.name" v-on:click="setCategori(index)"></option>
+                                    <select class="form-control custom-select" v-model="Option.indexCategory">
+                                        <option value="-1" disabled selected>Seleccione una Opcion</option>
+                                        <option :value="index" v-for="(item, index) in Categories" v-text="item.name"></option>
                                     </select>
+                                    <input type="hidden" name="categories_id" v-model="Option.idCategory">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Orden del servicio</label>
-                                    <select name="service_id" id="" class="form-control custom-select" v-model="Option.idService">
-                                        <option value="0" disabled selected>Seleccione una Opcion</option>
-                                        <option :value="item.id" v-for="(item, index) in Services" v-text="item.package_name+' - '+item.price+'$'" v-on:click="setService(parseInt(index))"></option>
+                                    <select name="" id="" class="form-control custom-select" v-model="Option.indexService">
+                                        <option value="-1" disabled selected>Seleccione una Opcion</option>
+                                        <option :value="index" v-for="(item, index) in Services" v-text="item.package_name+' - '+item.price+'$'" :id="'s-'+index"></option>
                                     </select>
+                                    <input type="hidden" name="service_id" v-model="Option.idService">
                                 </div>
                                 
                                 <div class="form-group" v-for="item in Service.input_adicionales">

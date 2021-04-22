@@ -79,13 +79,13 @@ class ServiciosController extends Controller
                 // }
                 $orden = User::all();
                 if($user->balance >= '10'){
-                    $servicio = Service::find($request->services_id);
+                    $servicio = Service::find($request->service_id);
                     $msj = '';
                     if ($servicio->minimum_amount > $request->total) {
                         $msj = 'El total es menor al monto minimo';
                     }
 
-                    if ($request->total > $servicio->mmaximum_amount) {
+                    if ($request->total > $servicio->maximum_amount) {
                         $msj = 'El total es mayor al monto minimo';
                     }
 
