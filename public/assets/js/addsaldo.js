@@ -1,12 +1,20 @@
 var vm_addsaldo = new Vue({
     el: '#addsaldo',
+    created: function(){
+        $(document).ready(function(){
+            $('#modalAvisoServicio').modal({backdrop: 'static', keyboard: false, show:true})
+        })
+    },
     data: function(){
         return {
+            checkServicio: false,
+            showAlert: false,
             Metodo: 'Stripe',
             Fee: 10,
             Saldo: 0,
             CheckTerminos: false,
             StripeKey: '',
+            Total: 0,
             Payu:{
                 response: '',
                 reference: '',
@@ -21,6 +29,7 @@ var vm_addsaldo = new Vue({
             let porcenres = (this.Fee / 100)
             let porcen = (this.Saldo * porcenres)
             let total = (this.Saldo + porcen)
+            this.Total = total
             return total
         }
     },
@@ -39,6 +48,18 @@ var vm_addsaldo = new Vue({
             }
         },
 
+        /**
+         * Permite cerrar la modal del aviso
+         */
+         closeModal: function(){
+            if (this.checkServicio) {
+                $('#modalAvisoServicio').modal('hide')
+                this.showAlert = false
+            }else{
+                this.showAlert = true
+            }
+        },
+
         pagar: function(){
             if (this.CheckTerminos) {
                 if (this.Metodo == 'Stripe') {
@@ -51,6 +72,7 @@ var vm_addsaldo = new Vue({
                     let url = route('addsaldo.payu.generate')
                     let param = {
                         'saldo': this.Saldo,
+                        'total': this.Total,
                         '_token': window.csrf_token
                     }
                     axios.post(url, param).then((response) => {
@@ -78,7 +100,7 @@ var vm_addsaldo = new Vue({
             return '<script'+
             ' src="https://checkout.stripe.com/checkout.js" class="stripe-button"'+
             ' data-key="'+this.StripeKey+'"'+
-            ' data-amount="'+(this.Saldo * 100)+'"'+
+            ' data-amount="'+(this.Total * 100)+'"'+
             ' data-name="Añadir Saldo"'+
             ' data-description="Saldo a compras '+this.Saldo+'"'+
             ' data-image="https://stripe.com/img/documentation/checkout/marketplace.png"'+

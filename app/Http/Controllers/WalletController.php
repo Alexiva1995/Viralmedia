@@ -52,6 +52,7 @@ class WalletController extends Controller
             $saldos = $this->getSaldos(Auth::id());
             foreach ($saldos as $saldo) {
                 $sponsors = $this->treeController->getSponsor($saldo->iduser, [], 0, 'ID', 'referred_id');
+                // dd($sponsors);
                 if (!empty($sponsors)) {
                     foreach ($sponsors as $sponsor) {
                         if ($sponsor->id != $saldo->iduser) {
@@ -126,7 +127,7 @@ class WalletController extends Controller
             $saldos = AddSaldo::where([
                 ['iduser', '=', $iduser],
                 ['estado', '=', 1]
-            ])->whereDate('created_at', '>=', $fecha->subDay(30))->get();
+            ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
             return $saldos;
         } catch (\Throwable $th) {
            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');

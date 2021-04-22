@@ -237,6 +237,7 @@ class TreeController extends Controller
         $array_tree_user = [];
     
         $data = $this->getDataSponsor($child, $nivel, $typeTree);
+        
         if (count($data) > 0) {
             foreach($data as $user){
                 $array_tree_user [] = $user;

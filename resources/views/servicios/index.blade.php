@@ -31,14 +31,14 @@
                                     <label for="">Categoria</label>
                                     <select name="categories_id" class="form-control custom-select" v-model="Option.idCategory">
                                         <option value="0" disabled selected>Seleccione una Opcion</option>
-                                        <option :value="item.id" v-for="(item, index) in Categories" v-text="item.name" v-on:click="Option.indexCategory = index"></option>
+                                        <option :value="item.id" v-for="(item, index) in Categories" v-text="item.name" v-on:click="setCategori(index)"></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Orden del servicio</label>
                                     <select name="service_id" id="" class="form-control custom-select" v-model="Option.idService">
                                         <option value="0" disabled selected>Seleccione una Opcion</option>
-                                        <option :value="item.id" v-for="(item, index) in Services" v-text="item.package_name+' - '+item.price+'$'" v-on:click="Option.indexService = parseInt(index)"></option>
+                                        <option :value="item.id" v-for="(item, index) in Services" v-text="item.package_name+' - '+item.price+'$'" v-on:click="setService(parseInt(index))"></option>
                                     </select>
                                 </div>
                                 

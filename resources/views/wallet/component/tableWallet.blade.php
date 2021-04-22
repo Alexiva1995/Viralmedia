@@ -3,11 +3,11 @@
         <tr class="text-center text-white bg-purple-alt2">
             <th>ID</th>
             <th>Concepto</th>
+            <th>Fecha</th>
             <th>Debito</th>
             <th>Credito</th>
             <th>Balance</th>
             <th>Estado</th>
-            <th>Fecha</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +15,7 @@
         <tr class="text-center">
             <td>{{$wallet->id}}</td>
             <td>{{$wallet->descripcion}}</td>
+            <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
             <td>$ {{$wallet->debito}}</td>
             <td>$ {{$wallet->credito}}</td>
             <td>$ {{$wallet->balance}}</td>
@@ -27,7 +28,6 @@
                     En Espera
                 @endif
             </td>
-            <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
         </tr>
         @endforeach
     </tbody>

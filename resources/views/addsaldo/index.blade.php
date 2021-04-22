@@ -167,5 +167,7 @@
     @include('addsaldo.formPasarelas.modalResumen')
     @endif
     {{-- fin modal de detalles de pago --}}
+    {{-- modal de aviso --}}
+    @include('servicios.componentes.modalAviso')
 </div>
 @endsection

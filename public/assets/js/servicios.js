@@ -31,7 +31,10 @@ var vm_servicios = new Vue({
         Service: function(){
             if (this.Option.idCategory != 0 && this.Option.idService != 0) {
                 this.Total.precio = this.Categories[this.Option.indexCategory].services[this.Option.indexService].price
-                return this.Categories[this.Option.indexCategory].services[this.Option.indexService]
+                console.log(this.Option.indexCategory, this.Option.indexService);
+                let servicio = this.Categories[this.Option.indexCategory].services[this.Option.indexService]
+                console.log(servicio);
+                return servicio
             }else{
                 return []
             }
@@ -59,6 +62,23 @@ var vm_servicios = new Vue({
         }
     },
     methods: {
+
+        /**
+         * Permite obtener la categoria
+         * @param {integer} idcate 
+         */
+        setCategori: function(idcate){
+            this.Option.indexCategory = idcate
+        },
+
+        /**
+         * Permite obtener el servicio
+         * @param {integer} idservi 
+         */
+        setService: function(idservi){
+            this.Option.indexService = idservi
+        },
+
         /**
          * Permite cerrar la modal del aviso
          */

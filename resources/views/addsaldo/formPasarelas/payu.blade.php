@@ -3,7 +3,7 @@
     <input name="accountId"          type="hidden"  value="{{env('PAYU_ACCOUNT_ID')}}" >
     <input name="description"        type="hidden"  :value="'Saldo a compras ' + Saldo"  >
     <input name="refVenta"           type="hidden"  :value="Payu.reference" >
-    <input name="amount"             type="hidden"  :value="Saldo"   >
+    <input name="amount"             type="hidden"  :value="Total"   >
     <input name="tax"                type="hidden"  value=""  >
     <input name="taxReturnBase"      type="hidden"  value="0" >
     <input name="currency"           type="hidden"  value="COP" >

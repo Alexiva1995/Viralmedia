@@ -63,7 +63,7 @@ class AddSaldoController extends Controller
 
             $charge = Charge::create(array(
                 'customer' => $customer->id,
-                'amount'   => ($request->saldo * 100),
+                'amount'   => ($request->total * 100),
                 'currency' => 'usd'
             ));
 
@@ -73,8 +73,8 @@ class AddSaldoController extends Controller
                 'estado' => 1
             ]);
 
-            $fee = ($request->saldo * 0.10);
-            $saldo = $request->saldo - $fee;
+            // $fee = ($request->saldo * 0.10);
+            $saldo = $request->saldo;
             $saldoAcumulado = (AddSaldo::find($idorden)->getUser->balance + $saldo);
             AddSaldo::find($idorden)->getUser->update(['balance' => $saldoAcumulado]);
 
@@ -104,7 +104,7 @@ class AddSaldoController extends Controller
 
             $idorden = $this->saveAddSaldo($orden);
             $payuReference = 'Payu-'.$idorden;
-            $signature = env('PAYU_API_KEY').'~'.env('PAYU_MERCHANT_ID').'~'.$payuReference.'~'.$request->saldo.'~COP';
+            $signature = env('PAYU_API_KEY').'~'.env('PAYU_MERCHANT_ID').'~'.$payuReference.'~'.$request->total.'~COP';
             $data = [
                 'idorden' => $payuReference,
                 'signature' => md5($signature)
@@ -251,8 +251,8 @@ class AddSaldoController extends Controller
                 'estado' => $estado
             ]);
 
-            $fee = ($request->value * 0.10);
-            $saldo = $request->value - $fee;
+            // $fee = ($request->value * 0.10);
+            $saldo = AddSaldo::find($idorden)->saldo;
 
             $saldoAcumulado = (AddSaldo::find($idorden)->getUser->balance + $saldo);
             AddSaldo::find($idorden)->getUser->update(['balance' => $saldoAcumulado]);
@@ -293,7 +293,7 @@ class AddSaldoController extends Controller
                     'redirect_url' => route('addsaldo.coinbase.status', ['pendiente']),
                     'cancel_url' => route('addsaldo.coinbase.status', ['cancelada']),
                     'local_price' => [
-                        'amount' => $request->saldo,
+                        'amount' => $request->total,
                         'currency' => 'USD'
                     ],
                     'name' => 'Recarga de Saldo',
