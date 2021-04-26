@@ -28,7 +28,8 @@
                     <div class="table-responsive">
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
-                                <tr class="text-center text-white bg-purple-alt2">                                
+                                <tr class="text-center text-white bg-purple-alt2">
+                                    {{-- <th> Seleccionar Todo </th>                              --}}
                                     <th>ID Usuario</th>
                                     <th>Usuario</th>
                                     <th>Email</th>
@@ -40,6 +41,9 @@
                             <tbody>
                                 @foreach ($comisiones as $comision)
                                     <tr class="text-center">
+                                        {{-- <td>
+                                            <input type="checkbox" value="item.id" name="listComisiones[]">
+                                        </td> --}}
                                         <td>{{$comision->iduser}}</td>
                                         <td>{{$comision->getWalletUser->fullname}}</td>
                                         <td>{{$comision->getWalletUser->email}}</td>
@@ -59,7 +63,7 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles')
+    @include('settlement.componentes.modalDetalles', ['all' => true])
 </div>
 @endsection
 

@@ -240,18 +240,24 @@ class Menu
                         'ruta' => route('settlement'),
                         'complementoruta' => ''
                     ],
-                    // [
-                    //     'name' => 'Liquidaciones Pendientes',
-                    //     'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                    //     'ruta' => route('settlement_pending'),
-                    //     'complementoruta' => ''
-                    // ],
-                    // [
-                    //     'name' => 'Liquidaciones Realizadas',
-                    //     'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                    //     'ruta' => route('settlement_done'),
-                    //     'complementoruta' => ''
-                    // ],
+                    [
+                        'name' => 'Liquidaciones Pendientes',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.pending'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Liquidaciones Pagadas',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.history.status', 'Pagadas'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Liquidaciones Reservadas',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.history.status', 'Reservadas'),
+                        'complementoruta' => ''
+                    ],
                 ],
             ],
             // Fin Liquidaciones

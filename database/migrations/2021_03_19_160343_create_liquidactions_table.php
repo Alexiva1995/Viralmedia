@@ -20,8 +20,8 @@ class CreateLiquidactionsTable extends Migration
             $table->double('total');
             $table->double('monto_bruto');
             $table->double('feed');
-            $table->string('hash');
-            $table->string('wallet_used');
+            $table->string('hash')->nullable();
+            $table->string('wallet_used')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
         });

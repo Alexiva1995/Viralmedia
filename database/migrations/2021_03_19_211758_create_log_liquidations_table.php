@@ -17,7 +17,7 @@ class CreateLogLiquidationsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idliquidation')->unsigned();
             $table->foreign('idliquidation')->references('id')->on('liquidactions');
-            $table->string('comentario');
+            $table->string('comentario')->nullable();
             $table->string('accion');
             $table->timestamps();
         });

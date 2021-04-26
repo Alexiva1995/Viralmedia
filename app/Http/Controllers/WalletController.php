@@ -33,6 +33,7 @@ class WalletController extends Controller
     public function index()
     {
         $this->payComision();
+        // dd('parar');
         if (Auth::user()->admin == 1) {
             $wallets = Wallet::all();
         }else{
@@ -49,7 +50,7 @@ class WalletController extends Controller
     public function payComision()
     {
         try {
-            $saldos = $this->getSaldos(Auth::id());
+            $saldos = $this->getSaldos();
             foreach ($saldos as $saldo) {
                 $sponsors = $this->treeController->getSponsor($saldo->iduser, [], 0, 'ID', 'referred_id');
                 // dd($sponsors);
@@ -77,8 +78,8 @@ class WalletController extends Controller
                 }
             }
         } catch (\Throwable $th) {
-            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
             Log::error('Funcion payComisiones -> '.$th);
+            return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
         }
     }
 
@@ -120,14 +121,20 @@ class WalletController extends Controller
      * @param integer $iduser
      * @return object
      */
-    public function getSaldos($iduser): object
+    public function getSaldos($iduser = null): object
     {
         try {
             $fecha = Carbon::now();
-            $saldos = AddSaldo::where([
-                ['iduser', '=', $iduser],
-                ['estado', '=', 1]
-            ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
+            if ($iduser == null) {
+                $saldos = AddSaldo::where([
+                    ['estado', '=', 1]
+                ])->whereDate('created_at', '>=', $fecha->subDay(10))->get();
+            }else{
+                $saldos = AddSaldo::where([
+                    ['iduser', '=', $iduser],
+                    ['estado', '=', 1]
+                ])->whereDate('created_at', '>=', $fecha->subDay(10))->get();
+            }
             return $saldos;
         } catch (\Throwable $th) {
            // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
@@ -144,22 +151,26 @@ class WalletController extends Controller
     public function saveWallet($data)
     {
         try {
-            $check = Wallet::where([
-                ['iduser', '=', $data['iduser']],
-                ['orden_id', '=', $data['orden_id']]
-            ])->first();
-            if ($check == null) {
-                if ($data['tipo_transaction'] == 1) {
-                    $wallet = Wallet::create($data);
-                    $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['credito']);
-                    $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
-                    $wallet->update(['balance' => $saldoAcumulado]);
+            if ($data['tipo_transaction'] == 1) {
+                $wallet = Wallet::create($data);
+                $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['credito']);
+                $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
+                $wallet->update(['balance' => $saldoAcumulado]);
+            }else{
+                if ($data['orden_id'] != null) {
+                    $check = Wallet::where([
+                        ['iduser', '=', $data['iduser']],
+                        ['orden_id', '=', $data['orden_id']]
+                    ])->first();
+                    if ($check == null) {
+                        $wallet = Wallet::create($data);
+                    }
                 }else{
                     $wallet = Wallet::create($data);
-                    $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['debito']);
-                    $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
-                    $wallet->update(['balance' => $saldoAcumulado]);
                 }
+                $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['debito']);
+                $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
+                $wallet->update(['balance' => $saldoAcumulado]);
             }
         } catch (\Throwable $th) {
             // return redirect()->back()->with('msj', 'Ocurrio un error, Por favor comunicarse con el administrador');
